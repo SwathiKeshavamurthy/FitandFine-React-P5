@@ -4,7 +4,11 @@
     min-height: 100vh;
     color: #ffa62e; 
   }
-  
+
+  .Main {
+    padding-top: 120px;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -12,7 +16,7 @@
   /* Link styles */
   a {
     color: #555555; 
-    transition: color 0.5s ease-in-out; 
+    transition: color 0.4s ease-in-out; 
     text-decoration: none; 
   }
   
@@ -26,12 +30,13 @@
     font-size: 2.2rem; 
     padding: 7px;
     vertical-align: middle;
-    transition: color 0.7s ease-in-out; 
+    transition: color 0.4s ease-in-out; 
   }
   
   i:hover {
     color: #ff792e;
     cursor: pointer; 
+    transition: color ease-in-out 0.3s;
   }
   
  
