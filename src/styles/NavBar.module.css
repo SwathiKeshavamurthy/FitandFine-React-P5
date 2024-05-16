@@ -10,3 +10,24 @@
   .Active i {
     color: #ff792e;
   }
+
+.NavBarBrand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.BrandText {
+  font-size: 3rem; 
+  margin-left: 10px; 
+  color: #333;
+  font-weight: bold; 
+}
+
+.BrandTagline {
+  font-size: 1.3rem;
+  color: #666;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-weight: bold; 
+}

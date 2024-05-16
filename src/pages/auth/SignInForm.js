@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios"
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -13,8 +13,11 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { SetCurrentUserContext } from "../../App";
+
 
 function SignInForm() {
+    const setCurrentUser = useContext(SetCurrentUserContext);
     const [signInData, setSignInData] = useState({
       username: "",
       password: "",
@@ -27,12 +30,14 @@ function SignInForm() {
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        await axios.post("/dj-rest-auth/login/", signInData);
+        const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+        setCurrentUser(data.user);
         history.push("/");
       } catch (err) {
         setErrors(err.response?.data);
       }
     };
+  
     const handleChange = (event) => {
       setSignInData({
         ...signInData,
@@ -58,10 +63,10 @@ function SignInForm() {
                     />
                 </Form.Group>
                 {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+                 <Alert key={idx} variant="warning">
+                   {message}
+                 </Alert>
+               ))}
 
                 <Form.Group controlId="password">
                     <Form.Label className="d-none">Password</Form.Label>
@@ -89,12 +94,12 @@ function SignInForm() {
               <Alert key={idx} variant="warning" className="mt-3">
                 {message}
               </Alert>
-            ))}git ad
+             ))}
             </Form>
             </Container>
             <Container className={`mt-3 ${appStyles.Content}`}>
               <Link className={styles.Link} to="/signup">
-                Don't have an account? <span>Sign up now!</span>
+                Don't have an account? <span>Register/Sign up now!</span>
               </Link>
             </Container>
           </Col>
