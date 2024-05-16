@@ -24,7 +24,7 @@ const NavBar = () => {
               <i className="fas fa-trophy"></i>Challenges
             </Nav.Link>
             <Nav.Link>
-              <i className="fas fa-circle-info"></i>About
+              <i className="fas fa-circle-info"></i>About&Collaborate
             </Nav.Link>
             <Nav.Link>
               <i className="fas fa-right-to-bracket"></i>Login
