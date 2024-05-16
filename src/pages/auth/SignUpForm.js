@@ -8,17 +8,6 @@ import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
-function submitData(userData) {
-  axios.post('/api/submit-data', userData)
-    .then(response => {
-      console.log('Data submitted successfully', response.data);
-    })
-    .catch(error => {
-      console.error('Failed to submit data', error.response?.data);
-    });
-}
-
-
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
     username: "",
