@@ -56,7 +56,8 @@
 }
 
 .SignUpImage {
-    width: 100%; /* Set the width to 20% */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
+    margin-top: -80px;
   }
   
