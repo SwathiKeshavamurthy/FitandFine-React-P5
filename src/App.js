@@ -5,6 +5,7 @@ import styles from './App.module.css';
 import { Container } from 'react-bootstrap';
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
+import SignInForm from "./pages/auth/SignInForm";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             <Route exact path="/" render={() => <h1>Home Page</h1>} />
             <Route path="/challenges" render={() => <h1>Challenges Page</h1>} />
             <Route path="/collaborate" render={() => <h1>About & Collaborate</h1>} />
-            <Route path="/signin" render={() => <h1>Sign In</h1>} />
+            <Route path="/signin" render={() => <SignInForm />} />
             <Route path="/signup" render={() => <SignUpForm />} />
             <Route component={() => <p>Page not found!</p>} />
             
