@@ -22,7 +22,7 @@ const Post = (props) => {
     tags,
     updated_at,
     postPage,
-    setPosts, // Added setPosts prop
+    setPosts,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -78,7 +78,7 @@ const Post = (props) => {
         <Card.Img
           src={image}
           alt={title}
-          className={styles[image_filter]} // Apply the image filter class
+          className={styles[image_filter]}
         />
       </Link>
       <Card.Body>

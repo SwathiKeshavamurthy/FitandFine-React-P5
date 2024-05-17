@@ -23,7 +23,7 @@ const NavBar = () => {
   };
 
   const handleDropdownClick = (e) => {
-    e.stopPropagation();  // Prevents navbar toggle from being triggered
+    e.stopPropagation(); 
   };
 
   return (
