@@ -1,20 +1,20 @@
 import React from "react";
-import styles from "../../styles/Comment.module.css";
 import { Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import styles from "../../styles/Comment.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Comment = (props) => {
   const {
-    id,
-    owner,
     profile_id,
     profile_image,
+    owner,
+    updated_at,
     content,
-    created_at,
+    id,
     setPost,
     setComments,
   } = props;
@@ -25,10 +25,6 @@ const Comment = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
-      setComments((prevComments) => ({
-        ...prevComments,
-        results: prevComments.results.filter((comment) => comment.id !== id),
-      }));
       setPost((prevPost) => ({
         results: [
           {
@@ -37,25 +33,36 @@ const Comment = (props) => {
           },
         ],
       }));
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.filter((comment) => comment.id !== id),
+      }));
     } catch (err) {
       console.log(err);
     }
   };
 
+  const handleEdit = () => {
+    // Functionality for editing comments can be added here
+  };
+
   return (
-    <Media>
-      <Link to={`/profiles/${profile_id}`}>
-        <Avatar src={profile_image} height={45} />
-      </Link>
-      <Media.Body className="ml-2">
-        <span className={styles.Owner}>{owner}</span>
-        <span className={styles.Date}>{created_at}</span>
-        <p>{content}</p>
+    <div>
+      <hr />
+      <Media>
+        <Link to={`/profiles/${profile_id}`}>
+          <Avatar src={profile_image} />
+        </Link>
+        <Media.Body className="align-self-center ml-2">
+          <span className={styles.Owner}>{owner}</span>
+          <span className={styles.Date}>{updated_at}</span>
+          <p>{content}</p>
+        </Media.Body>
         {is_owner && (
-          <MoreDropdown handleDelete={handleDelete} />
+          <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
         )}
-      </Media.Body>
-    </Media>
+      </Media>
+    </div>
   );
 };
 
