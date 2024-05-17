@@ -2,3 +2,8 @@
     min-height: 343px;
     border-color: #ffa62e; 
   }
+
+.hidden-file-input {
+    display: none;
+  }
+  

@@ -58,4 +58,23 @@
     background: #555;
   }
  
+  /* Post Create */
   
+  .Content {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #ffa62e; 
+  }
+  
+  .FillerImage {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+  }
