@@ -5,6 +5,8 @@ import { Container } from 'react-bootstrap';
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+import PostCreateForm from "./pages/posts/PostCreateForm";
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
             <Route path="/collaborate" render={() => <h1>About & Collaborate</h1>} />
             <Route path="/signin" render={() => <SignInForm />} />
             <Route path="/signup" render={() => <SignUpForm />} />
+            <Route exact path="/posts/create" render={() => <PostCreateForm />} />
             <Route component={() => <p>Page not found!</p>} />
             
           </Switch>
