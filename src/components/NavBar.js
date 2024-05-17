@@ -57,11 +57,11 @@ const NavBar = () => {
                   <i className="fas fa-calendar-alt"></i> Add Daily Routine
                 </NavLink>
                 <NavDropdown title={<Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />} id="basic-nav-dropdown" onClick={handleDropdownClick}>
-                  <NavDropdown.Item as={NavLink} to="/profile" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item as={NavLink} to="/profile/profiles" onClick={() => setExpanded(false)}>
                     <i className="fas fa-user-circle"></i> My Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/profile/feed" onClick={() => setExpanded(false)}>
-                    <i className="fas fa-rss"></i> My Feed
+                    <i className="fas fa-rss"></i> My Feeds
                   </NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/profile/likes" onClick={() => setExpanded(false)}>
                     <i className="fas fa-heart"></i> My Likes
