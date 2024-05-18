@@ -26,11 +26,12 @@ const ProfileEditForm = () => {
   const imageFile = useRef();
 
   const [profileData, setProfileData] = useState({
-    name: "",
     content: "",
     image: "",
+    email: "",
+    birthday: "",
   });
-  const { name, content, image } = profileData;
+  const { content, image, email, birthday } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -39,8 +40,8 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
+          const { content, image, email, birthday } = data;
+          setProfileData({ content, image, email, birthday });
         } catch (err) {
           console.error("Error fetching profile data:", err);
           history.push("/");
@@ -63,8 +64,13 @@ const ProfileEditForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
     formData.append("content", content);
+    formData.append("email", email);
+
+   
+    if (birthday) {
+      formData.append("birthday", birthday);
+    }
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
@@ -105,6 +111,37 @@ const ProfileEditForm = () => {
           {message}
         </Alert>
       ))}
+
+      <Form.Group>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          value={email}
+          onChange={handleChange}
+          name="email"
+        />
+      </Form.Group>
+      {errors?.email?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Birthday</Form.Label>
+        <Form.Control
+          type="date"
+          value={birthday}
+          onChange={handleChange}
+          name="birthday"
+        />
+      </Form.Group>
+      {errors?.birthday?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -153,7 +190,7 @@ const ProfileEditForm = () => {
                     });
                   }
                 }}
-                style={{ display: "none" }} // Hide the default file input
+                style={{ display: "none" }}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
