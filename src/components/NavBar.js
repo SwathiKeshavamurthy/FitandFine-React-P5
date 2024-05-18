@@ -33,7 +33,7 @@ const NavBar = () => {
           <img src={logo} alt="Fit&Fine Logo" height="70" />
           <div>
             <h1 className={styles.BrandText}>Fit&Fine</h1>
-            <h3 className={styles.BrandTagline}>Set. Sweat. Share. Shine</h3>
+            <h3 className={styles.BrandTagline}>Set. Sweat. Share. Shine. Smile.</h3>
           </div>
         </NavLink>
         <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
@@ -57,7 +57,7 @@ const NavBar = () => {
                   <i className="fas fa-calendar-alt"></i> Add Daily Routine
                 </NavLink>
                 <NavDropdown title={<Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />} id="basic-nav-dropdown" onClick={handleDropdownClick}>
-                  <NavDropdown.Item as={NavLink} to="/profile/profiles" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} onClick={() => setExpanded(false)}>
                     <i className="fas fa-user-circle"></i> My Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/profile/feed" onClick={() => setExpanded(false)}>

@@ -15,7 +15,6 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
-
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
@@ -62,7 +61,6 @@ function App() {
             <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
             <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
             <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />}/>
-            <Route exact path="/profile/profiles" render={() => <ProfilePage />} />
             <Route path="/challenges" render={() => <h1>Challenges Page</h1>} />
             <Route path="/collaborate" render={() => <h1>About & Collaborate</h1>} />
             <Route render={() => <p>Page not found!</p>} />
