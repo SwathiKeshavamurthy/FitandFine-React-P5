@@ -1,0 +1,76 @@
+.DailyRoutineList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .DailyRoutineCard {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 2px solid #ffa62e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .DailyRoutineCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .DailyRoutineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .DailyRoutineTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffa62e;
+  }
+  
+  .DailyRoutineDate {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .DailyRoutineContent {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+  
+  .DailyRoutineActions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .EditButton,
+  .DeleteButton {
+    background-color: #ffa62e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .EditButton:hover,
+  .DeleteButton:hover {
+    background-color: #ff792e;
+  }
+  
+  .EditButton i,
+  .DeleteButton i {
+    margin-right: 5px;
+  }
+  
