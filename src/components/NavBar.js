@@ -53,7 +53,7 @@ const NavBar = () => {
                 <NavLink to="/posts/create" className={styles.NavLink} activeClassName={styles.Active} onClick={() => setExpanded(false)}>
                   <i className="fas fa-plus-circle"></i> Add Post
                 </NavLink>
-                <NavLink to="/daily-routine" className={styles.NavLink} activeClassName={styles.Active} onClick={() => setExpanded(false)}>
+                <NavLink to="/dailyroutines/create" className={styles.NavLink} activeClassName={styles.Active} onClick={() => setExpanded(false)}>
                   <i className="fas fa-calendar-alt"></i> Add Daily Routine
                 </NavLink>
                 <NavDropdown title={<Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />} id="basic-nav-dropdown" onClick={handleDropdownClick}>
