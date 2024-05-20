@@ -33,7 +33,7 @@ const NavBar = () => {
           <img src={logo} alt="Fit&Fine Logo" height="70" />
           <div>
             <h1 className={styles.BrandText}>Fit&Fine</h1>
-            <h3 className={styles.BrandTagline}>Set. Sweat. Share. Shine. Smile.</h3>
+            <h3 className={styles.BrandTagline}>Set. Sweat. Share. Shine.</h3>
           </div>
         </NavLink>
         <Navbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />

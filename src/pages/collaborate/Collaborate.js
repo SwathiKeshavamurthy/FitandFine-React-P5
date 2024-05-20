@@ -54,7 +54,7 @@ const Collaborate = () => {
            <p>
              Join Fit&Fine today and become a part of our thriving community. Set your goals, sweat through the challenges, share your journey, shine with your achievements, and smile with pride. Together, we can achieve greatness.
 
-             Fit&Fine: Set. Sweat. Share. Shine. Smile.
+             Fit&Fine: Set. Sweat. Share. Shine.
              On this page, you can reach out to us for collaboration opportunities.
              Please fill out the form below and we'll get back to you as soon as
              possible.
