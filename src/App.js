@@ -15,6 +15,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import DailyRoutineCreateForm from './pages/dailyroutines/DailyRoutineCreateForm';
+import DailyRoutineEditForm from './pages/dailyroutines/DailyRoutineEditForm';
 import MyDailyRoutineList from './pages/dailyroutines/MyDailyRoutineList';
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
             <Route path="/challenges" render={() => <h1>Challenges Page</h1>} />
             <Route exact path="/dailyroutines/create" component={DailyRoutineCreateForm} />
             <Route exact path="/dailyroutines" component={MyDailyRoutineList} />
+            <Route exact path="/dailyroutines/:id/edit" component={DailyRoutineEditForm} />
             <Route path="/collaborate" render={() => <h1>About & Collaborate</h1>} />
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
