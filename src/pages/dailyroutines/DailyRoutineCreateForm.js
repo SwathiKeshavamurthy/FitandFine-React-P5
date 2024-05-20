@@ -34,14 +34,18 @@ const DailyRoutineCreateForm = () => {
     event.preventDefault();
     try {
       await axiosReq.post('/dailyroutines/', routineData);
-      history.push('/mydailyroutines');
+      history.push('/dailyroutines');
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
 
+  const handleCancel = () => {
+    history.push('/');
+  };
+
   return (
-    <Container>
+    <Container className={styles.Container}>
       <h1>Create Daily Routine</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="person_name">
@@ -230,7 +234,14 @@ const DailyRoutineCreateForm = () => {
           </Alert>
         ))}
 
-        <Button type="submit">Create</Button>
+        <div className={styles.ButtonGroup}>
+          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button className={`${styles.Button} ${styles.CreateButton}`} type="submit">
+            Create
+          </Button>
+        </div>
       </Form>
     </Container>
   );
