@@ -1,23 +1,48 @@
-.Input {
-    background: #ffffff;
-    border: 1px solid #ffa62e;
-    box-sizing: border-box;
-    border-radius: 2px;
-    color: #7177a1;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .Button {
-    background-color: #ff792e;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .Button:hover {
-    background-color: #ff9254;
-  }
-  
+/* DailyRoutineCreateEditForm.module.css */
+.Container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.Header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.Form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.Form .form-group {
+  margin-bottom: 1rem;
+}
+
+.ButtonGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.Button {
+  flex: 1;
+  margin: 0 0.5rem;
+}
+
+.UpdateButton {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.CancelButton {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
