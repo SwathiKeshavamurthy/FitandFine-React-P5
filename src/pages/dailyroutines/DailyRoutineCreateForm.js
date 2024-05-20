@@ -235,11 +235,11 @@ const DailyRoutineCreateForm = () => {
         ))}
 
         <div className={styles.ButtonGroup}>
-          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={handleCancel}>
-            Cancel
-          </Button>
           <Button className={`${styles.Button} ${styles.CreateButton}`} type="submit">
             Create
+          </Button>
+          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={handleCancel}>
+            Cancel
           </Button>
         </div>
       </Form>

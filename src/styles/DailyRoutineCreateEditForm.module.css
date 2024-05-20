@@ -36,13 +36,40 @@
 }
 
 .UpdateButton {
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #e77d1a;
+  border-color: #050505;
   color: white;
 }
 
 .CancelButton {
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #e77d1a;
+  border-color: #050505;
   color: white;
+}
+
+.UpdateButton:hover {
+  color: hsl(0, 0%, 8%);
+  background-color: #fcfaf8;
+  cursor: pointer; 
+  transition: color ease-in-out 0.3s;
+}
+
+.CancelButton:hover {
+  color: hsl(0, 0%, 8%);
+  background-color: #fcfaf8;
+  cursor: pointer; 
+  transition: color ease-in-out 0.3s;
+}
+
+.CreateButton {
+  background-color: #e77d1a;
+  border-color: #050505;
+  color: white;
+}
+
+.CreateButton:hover {
+  color: hsl(0, 0%, 8%);
+  background-color: #fcfaf8;
+  cursor: pointer; 
+  transition: color ease-in-out 0.3s;
 }

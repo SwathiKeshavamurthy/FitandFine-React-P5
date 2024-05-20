@@ -23,13 +23,13 @@
 }
 
 .EditIcon {
-  color: #007bff;
+  color: #0a0a0a;
   cursor: pointer;
   margin-right: 0.5rem;
 }
 
 .DeleteIcon {
-  color: #dc3545;
+  color: #0e0d0d;
   cursor: pointer;
 }
 

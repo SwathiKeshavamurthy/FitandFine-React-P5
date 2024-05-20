@@ -1,12 +1,12 @@
 .App {
     font-family: 'Radio Canada Big', sans-serif; 
-    background-color: #fcf3df;
+    background-color: #f7f1e5;
     min-height: 100vh;
     color: #ffa62e; 
   }
 
   .Main {
-    padding-top: 120px;
+    padding-top: 140px;
   }
 
   * {
