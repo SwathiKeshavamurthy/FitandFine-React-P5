@@ -17,7 +17,8 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import DailyRoutineCreateForm from './pages/dailyroutines/DailyRoutineCreateForm';
 import DailyRoutineEditForm from './pages/dailyroutines/DailyRoutineEditForm';
 import MyDailyRoutineList from './pages/dailyroutines/MyDailyRoutineList';
-import Collaborate from './pages/collaborate/Collaborate'; 
+import Collaborate from './pages/collaborate/Collaborate';
+import Challenges from "./pages/challenges/Challenges";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -65,7 +66,7 @@ function App() {
             <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
             <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
             <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />}/>
-            <Route path="/challenges" render={() => <h1>Challenges Page</h1>} />
+            <Route exact path="/challenges" render={() => <h1>Challenges Page</h1>} />
             <Route exact path="/dailyroutines/create" component={DailyRoutineCreateForm} />
             <Route exact path="/dailyroutines" component={MyDailyRoutineList} />
             <Route exact path="/dailyroutines/:id/edit" component={DailyRoutineEditForm} />
