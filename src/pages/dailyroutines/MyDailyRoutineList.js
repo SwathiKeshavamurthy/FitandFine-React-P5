@@ -9,7 +9,7 @@ import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/MyDailyRoutineList.module.css";
 
-function MyDailyRoutineList({ message, filter = "" }) {
+function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
   const [routines, setRoutines] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -117,7 +117,7 @@ function MyDailyRoutineList({ message, filter = "" }) {
             </InfiniteScroll>
           ) : (
             <Container className={styles.Content}>
-              <Asset src={NoResults} message={message} />
+              <Asset src={NoResults} message="No Routines added. First Add Daily Routines to view them." />
             </Container>
           )}
         </>
