@@ -46,7 +46,7 @@ const NavBar = () => {
               <i className="fas fa-trophy"></i> Challenges
             </NavLink>
             <NavLink to="/collaborate" className={styles.NavLink} activeClassName={styles.Active} onClick={() => setExpanded(false)}>
-              <i className="fas fa-info-circle"></i> About & Collaborate
+              <i className="fas fa-handshake"></i> About&Collaborate
             </NavLink>
             {currentUser ? (
               <>
