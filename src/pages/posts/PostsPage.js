@@ -12,7 +12,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/noresults.JPG";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles"; // Import PopularProfiles
+import PopularProfiles from "../profiles/PopularProfiles"; 
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });

@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import styles from "../../styles/DailyRoutine.module.css"; // Ensure you have styles for this component
+import styles from "../../styles/DailyRoutine.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const DailyRoutine = ({

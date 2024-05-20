@@ -20,7 +20,7 @@ function MyDailyRoutineList({ message, filter = "" }) {
     const fetchRoutines = async () => {
       try {
         const { data } = await axiosReq.get(`/dailyroutines/?${filter}`);
-        // Filter routines by owner
+        
         const filteredData = {
           ...data,
           results: data.results.filter(routine => routine.owner === currentUser?.username),
