@@ -1,70 +1,133 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap';
-import { axiosReq } from '../../api/axiosDefaults';
-import styles from '../../styles/MyDailyRoutineList.module.css';
+import React, { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Asset from "../../components/Asset";
+import { useLocation, useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import NoResults from "../../assets/noresults.JPG";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import styles from "../../styles/MyDailyRoutineList.module.css";
 
-const MyDailyRoutineList = () => {
-  const [routines, setRoutines] = useState([]);
-  const [errors, setErrors] = useState([]);
+function MyDailyRoutineList({ message, filter = "" }) {
+  const [routines, setRoutines] = useState({ results: [] });
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const { pathname } = useLocation();
+  const history = useHistory();
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchRoutines = async () => {
       try {
-        const { data } = await axiosReq.get('/dailyroutines/');
-        setRoutines(data);
+        const { data } = await axiosReq.get(`/dailyroutines/?${filter}`);
+        // Filter routines by owner
+        const filteredData = {
+          ...data,
+          results: data.results.filter(routine => routine.owner === currentUser?.username),
+        };
+        setRoutines(filteredData);
+        setHasLoaded(true);
       } catch (err) {
-        setErrors(err.response?.data);
+        console.log(err);
       }
     };
 
-    fetchRoutines();
-  }, []);
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      fetchRoutines();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, pathname, currentUser]);
+
+  const handleEdit = (id) => {
+    history.push(`/dailyroutines/${id}/edit`);
+  };
 
   const handleDelete = async (id) => {
     try {
       await axiosReq.delete(`/dailyroutines/${id}/`);
-      setRoutines((prevRoutines) => prevRoutines.filter((routine) => routine.id !== id));
+      setRoutines((prevRoutines) => ({
+        ...prevRoutines,
+        results: prevRoutines.results.filter((routine) => routine.id !== id),
+      }));
     } catch (err) {
-      setErrors(err.response?.data);
+      console.log(err);
     }
   };
 
   return (
-    <Container>
-      <h1>My Daily Routines</h1>
-      {errors && errors.map((error, idx) => (
-        <Alert variant="warning" key={idx}>{error}</Alert>
-      ))}
-      <Row>
-        {routines.map((routine) => (
-          <Col md={4} key={routine.id} className="mb-4">
-            <Card>
-              <Card.Body>
-                <Card.Title>{routine.person_name || 'My'}'s Routine on {routine.date}</Card.Title>
-                <Card.Text>
-                  <strong>Wake Up Time:</strong> {routine.wake_up_time} <br />
-                  <strong>Breakfast Time:</strong> {routine.breakfast_time} <br />
-                  <strong>Lunch Time:</strong> {routine.lunch_time} <br />
-                  <strong>Dinner Time:</strong> {routine.dinner_time} <br />
-                  <strong>Total Calorie Intake:</strong> {routine.total_calorie_intake} kcal <br />
-                  <strong>Water Intake:</strong> {routine.water_intake} ml <br />
-                  <strong>Sleep Time:</strong> {routine.sleep_time} <br />
-                  <strong>Workout Minutes:</strong> {routine.workout_minutes} minutes <br />
-                  <strong>Mood:</strong> {routine.mood} <br />
-                  <strong>Junk Food Consumed:</strong> {routine.junk ? 'Yes' : 'No'}
-                </Card.Text>
-                <Link to={`/dailyroutines/${routine.id}/edit`}>
-                  <Button variant="primary" className="mr-2">Edit</Button>
-                </Link>
-                <Button variant="danger" onClick={() => handleDelete(routine.id)}>Delete</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+    <Container className="mt-3">
+      {hasLoaded ? (
+        <>
+          {routines.results.length ? (
+            <InfiniteScroll
+              dataLength={routines.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!routines.next}
+              next={() => fetchMoreData(routines, setRoutines)}
+            >
+              <div className={styles.ExcelSheet}>
+                <div className={styles.ExcelRow}>
+                  <span className={styles.ExcelHeader}>#</span>
+                  <span className={styles.ExcelHeader}>Person Name</span>
+                  <span className={styles.ExcelHeader}>Date</span>
+                  <span className={styles.ExcelHeader}>Wake Up Time</span>
+                  <span className={styles.ExcelHeader}>Breakfast Time</span>
+                  <span className={styles.ExcelHeader}>Lunch Time</span>
+                  <span className={styles.ExcelHeader}>Dinner Time</span>
+                  <span className={styles.ExcelHeader}>Total Calorie Intake</span>
+                  <span className={styles.ExcelHeader}>Water Intake</span>
+                  <span className={styles.ExcelHeader}>Sleep Time</span>
+                  <span className={styles.ExcelHeader}>Workout Minutes</span>
+                  <span className={styles.ExcelHeader}>Junk Food Consumed</span>
+                  <span className={styles.ExcelHeader}>Mood</span>
+                  <span className={styles.ExcelHeader}>Actions</span>
+                </div>
+                {routines.results.map((routine, index) => (
+                  <div key={routine.id} className={styles.ExcelRow}>
+                    <span className={styles.ExcelCell}>{index + 1}</span>
+                    <span className={styles.ExcelCell}>{routine.person_name || "N/A"}</span>
+                    <span className={styles.ExcelCell}>{routine.date}</span>
+                    <span className={styles.ExcelCell}>{routine.wake_up_time}</span>
+                    <span className={styles.ExcelCell}>{routine.breakfast_time}</span>
+                    <span className={styles.ExcelCell}>{routine.lunch_time}</span>
+                    <span className={styles.ExcelCell}>{routine.dinner_time}</span>
+                    <span className={styles.ExcelCell}>{routine.total_calorie_intake}</span>
+                    <span className={styles.ExcelCell}>{routine.water_intake} ml</span>
+                    <span className={styles.ExcelCell}>{routine.sleep_time}</span>
+                    <span className={styles.ExcelCell}>{routine.workout_minutes} min</span>
+                    <span className={styles.ExcelCell}>{routine.junk ? "Yes" : "No"}</span>
+                    <span className={styles.ExcelCell}>{routine.mood}</span>
+                    <span className={styles.ExcelCell}>
+                      <i
+                        className={`fas fa-edit ${styles.EditIcon}`}
+                        onClick={() => handleEdit(routine.id)}
+                      ></i>
+                      <i
+                        className={`fas fa-trash ${styles.DeleteIcon}`}
+                        onClick={() => handleDelete(routine.id)}
+                      ></i>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </InfiniteScroll>
+          ) : (
+            <Container className={styles.Content}>
+              <Asset src={NoResults} message={message} />
+            </Container>
+          )}
+        </>
+      ) : (
+        <Container className={styles.Content}>
+          <Asset spinner />
+        </Container>
+      )}
     </Container>
   );
-};
+}
 
 export default MyDailyRoutineList;
