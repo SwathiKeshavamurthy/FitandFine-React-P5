@@ -17,6 +17,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import DailyRoutineCreateForm from './pages/dailyroutines/DailyRoutineCreateForm';
 import DailyRoutineEditForm from './pages/dailyroutines/DailyRoutineEditForm';
 import MyDailyRoutineList from './pages/dailyroutines/MyDailyRoutineList';
+import Collaborate from './pages/collaborate/Collaborate'; 
 
 function App() {
   const currentUser = useCurrentUser();
@@ -68,7 +69,7 @@ function App() {
             <Route exact path="/dailyroutines/create" component={DailyRoutineCreateForm} />
             <Route exact path="/dailyroutines" component={MyDailyRoutineList} />
             <Route exact path="/dailyroutines/:id/edit" component={DailyRoutineEditForm} />
-            <Route path="/collaborate" render={() => <h1>About & Collaborate</h1>} />
+            <Route exact path="/collaborate" component={Collaborate} />
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
         </Container>
