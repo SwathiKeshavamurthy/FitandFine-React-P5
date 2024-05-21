@@ -1,8 +1,31 @@
-.MyChallenges {
-    margin-top: 20px;
-  }
-  
-  .ChallengeCard {
-    margin-bottom: 20px;
-  }
-  
+.ChallengesPage {
+  margin-top: 20px;
+}
+
+.Header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ChallengeCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.CardImg {
+  height: 200px;
+  object-fit: cover;
+}
+
+.LeaveButton {
+  margin-top: auto;
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.LeaveButton:hover {
+  background-color: #c82333;
+}
