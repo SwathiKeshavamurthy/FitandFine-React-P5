@@ -66,7 +66,7 @@ const NavBar = () => {
                   <NavDropdown.Item as={NavLink} to="/profile/likes" onClick={() => setExpanded(false)}>
                     <i className="fas fa-heart"></i> My Likes
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/profile/challenges" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item as={NavLink} to="/my-challenges" onClick={() => setExpanded(false)}>
                     <i className="fas fa-trophy"></i> My Challenges
                   </NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/dailyroutines" onClick={() => setExpanded(false)}>
