@@ -1,51 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { axiosReq } from '../../api/axiosDefaults';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Challenge from './Challenges';
-import Asset from '../../components/Asset';
-import styles from '../../styles/Challenges.module.css';
-import NoResults from '../../assets/noresults.JPG';
+import React from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
+import styles from "../../styles/Challenge.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function Challenges() {
-  const [challenges, setChallenges] = useState({ results: [] });
-  const [hasLoaded, setHasLoaded] = useState(false);
+const Challenge = ({
+  id,
+  owner,
+  title,
+  description,
+  start_date,
+  end_date,
+  sport,
+  image,
+  participants,
+  setChallenges,
+}) => {
+  const currentUser = useCurrentUser();
+  const history = useHistory();
 
-  useEffect(() => {
-    const fetchChallenges = async () => {
-      try {
-        const { data } = await axiosReq.get('/challenges/');
-        setChallenges(data);
-        setHasLoaded(true);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  const isParticipant = participants?.includes(currentUser?.id);
 
-    fetchChallenges();
-  }, []);
+  const handleJoin = async () => {
+    try {
+      await axiosRes.post(`/challenges/${id}/join/`);
+      setChallenges((prevChallenges) => ({
+        ...prevChallenges,
+        results: prevChallenges.results.map((challenge) =>
+          challenge.id === id
+            ? { ...challenge, participants: [...challenge.participants, currentUser.id] }
+            : challenge
+        ),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleLeave = async () => {
+    try {
+      await axiosRes.post(`/challenges/${id}/leave/`);
+      setChallenges((prevChallenges) => ({
+        ...prevChallenges,
+        results: prevChallenges.results.map((challenge) =>
+          challenge.id === id
+            ? { ...challenge, participants: challenge.participants.filter((pid) => pid !== currentUser.id) }
+            : challenge
+        ),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
-    <Container>
-      <h1 className={styles.Header}>Challenges</h1>
-      <Row>
-        {hasLoaded ? (
-          challenges.results.length ? (
-            challenges.results.map((challenge) => (
-              <Col key={challenge.id} md={6} lg={4}>
-                <Challenge {...challenge} />
-              </Col>
-            ))
+    <Card className={styles.Challenge}>
+      <Card.Img variant="top" src={image} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        <Card.Text><strong>Start Date:</strong> {start_date}</Card.Text>
+        <Card.Text><strong>End Date:</strong> {end_date}</Card.Text>
+        <Card.Text><strong>Sport:</strong> {sport}</Card.Text>
+        {currentUser ? (
+          isParticipant ? (
+            <Button onClick={handleLeave} variant="danger">Leave Challenge</Button>
           ) : (
-            <Asset src={NoResults} message="No Challenges Found" />
+            <Button onClick={handleJoin} variant="primary">Join Challenge</Button>
           )
         ) : (
-          <Asset spinner />
+          <Button onClick={() => history.push("/signin")} variant="primary">Sign In to Join</Button>
         )}
-      </Row>
-    </Container>
+      </Card.Body>
+    </Card>
   );
-}
+};
 
-export default Challenges;
+export default Challenge;
