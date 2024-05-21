@@ -18,7 +18,8 @@ import DailyRoutineCreateForm from './pages/dailyroutines/DailyRoutineCreateForm
 import DailyRoutineEditForm from './pages/dailyroutines/DailyRoutineEditForm';
 import MyDailyRoutineList from './pages/dailyroutines/MyDailyRoutineList';
 import Collaborate from './pages/collaborate/Collaborate';
-import Challenges from "./pages/challenges/Challenges";
+import ChallengesPage from "./pages/challenges/ChallengesPage";
+import UserChallengesPage from "./pages/challenges/UserChallengesPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -66,11 +67,12 @@ function App() {
             <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
             <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
             <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />}/>
-            <Route exact path="/challenges" render={() => <h1>Challenges Page</h1>} />
             <Route exact path="/dailyroutines/create" component={DailyRoutineCreateForm} />
             <Route exact path="/dailyroutines" component={MyDailyRoutineList} />
             <Route exact path="/dailyroutines/:id/edit" component={DailyRoutineEditForm} />
             <Route exact path="/collaborate" component={Collaborate} />
+            <Route exact path="/challenges" render={() => <ChallengesPage />} />
+            <Route exact path="/my-challenges" render={() => <UserChallengesPage />} />
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
         </Container>
