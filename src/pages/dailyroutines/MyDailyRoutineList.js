@@ -117,7 +117,7 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
             </InfiniteScroll>
           ) : (
             <Container className={styles.Content}>
-              <Asset src={NoResults} message="No Routines added. First Add Daily Routines to view them." />
+              <Asset src={NoResults} message="You haven't added any Daily Routines yet." />
             </Container>
           )}
         </>
