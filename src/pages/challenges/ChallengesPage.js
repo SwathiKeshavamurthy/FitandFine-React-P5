@@ -30,26 +30,12 @@ function ChallengesPage() {
     try {
       const { data } = await axiosReq.get(url);
       console.log("Fetched challenges:", data);
-
-      setChallenges(prevChallenges => {
-        const updatedChallenges = [...prevChallenges, ...data.results];
-        // Filter out duplicate challenges
-        const uniqueChallenges = updatedChallenges.reduce((acc, current) => {
-          const x = acc.find(item => item.id === current.id);
-          if (!x) {
-            return acc.concat([current]);
-          } else {
-            return acc;
-          }
-        }, []);
-        setFilteredChallenges(uniqueChallenges);
-        return uniqueChallenges;
-      });
-
-      if (data.next) {
-        fetchChallenges(data.next);
-      } else {
+      setChallenges(prevChallenges => [...prevChallenges, ...data.results]);
+      setFilteredChallenges(prevChallenges => [...prevChallenges, ...data.results]);
+      if (!data.next) {
         setHasLoaded(true);
+      } else {
+        fetchChallenges(data.next);
       }
     } catch (err) {
       console.error("Error fetching challenges:", err);
@@ -74,7 +60,7 @@ function ChallengesPage() {
       setChallenges((prevChallenges) => {
         const updatedChallenges = prevChallenges.map((challenge) =>
           challenge.id === id
-            ? { ...challenge, participants: [...(challenge.participants || []), currentUser.id] }
+            ? { ...challenge, is_joined: true }
             : challenge
         );
         setFilteredChallenges(updatedChallenges);
@@ -87,14 +73,10 @@ function ChallengesPage() {
 
   const filterChallenges = (sport) => {
     setSelectedSport(sport);
-    console.log(`Filtering challenges by sport: ${sport}`);
     if (sport === "All") {
       setFilteredChallenges(challenges);
     } else {
-      const filtered = challenges.filter(challenge => {
-        console.log(`Checking challenge sport: ${challenge.sport}`);
-        return challenge.sport.toLowerCase() === sport.toLowerCase();
-      });
+      const filtered = challenges.filter(challenge => challenge.sport.toLowerCase() === sport.toLowerCase());
       setFilteredChallenges(filtered);
     }
   };
@@ -140,7 +122,7 @@ function ChallengesPage() {
                     <Card.Text>{challenge.description}</Card.Text>
                     <Card.Text><strong>Sport:</strong> {challenge.sport}</Card.Text>
                     {currentUser ? (
-                      (challenge.participants || []).includes(currentUser.id) ? (
+                      challenge.is_joined ? (
                         <Button variant="success" disabled className={styles.JoinButton}>
                           Joined
                         </Button>
