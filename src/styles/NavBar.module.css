@@ -1,15 +1,15 @@
 .NavBar {
-    background-color: #f7f1e5;
-    border: 2px solid #ffa62e;
-  }
+  background-color: #f7f1e5;
+  border: 2px solid #ffa62e;
+}
 
-  .NavLink {
-    padding: 5px;
-  }
-  
-  .Active i {
-    color: #ff792e;
-  }
+.NavLink {
+  padding: 5px;
+}
+
+.Active i {
+  color: #ff792e;
+}
 
 .NavBarBrand {
   display: flex;
@@ -18,10 +18,10 @@
 }
 
 .BrandText {
-  font-size: 2.2rem; 
-  margin-left: 10px; 
+  font-size: 2.2rem;
+  margin-left: 10px;
   color: #333;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .BrandTagline {
@@ -29,5 +29,13 @@
   color: #666;
   margin-top: 5px;
   margin-left: 10px;
-  font-weight: bold; 
+  font-weight: bold;
+}
+.navbar-nav .dropdown-menu .dropdown-item.active,
+.navbar-nav .dropdown-menu .dropdown-item:active,
+.navbar-nav .dropdown-menu .dropdown-item:focus {
+  background-color: #ff792e !important;
+  color: #ffffff !important;
+  outline: none;
+  box-shadow: none;
 }

@@ -23,7 +23,7 @@ const NavBar = () => {
   };
 
   const handleDropdownClick = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
   };
 
   return (
