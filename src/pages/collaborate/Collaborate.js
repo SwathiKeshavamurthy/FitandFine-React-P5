@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Collaborate.module.css";
-import image from "../../assets/about.png"; 
+import image from "../../assets/about.webp"; 
 const Collaborate = () => {
   const [collaborateData, setCollaborateData] = useState({
     name: "",
