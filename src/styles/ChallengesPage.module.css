@@ -35,6 +35,34 @@
   cursor: default;
 }
 
+.FilterButton {
+  background-color: #ff792e;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.FilterButton:hover {
+  background-color: #ffa62e;
+}
+
+.SelectedFilterButton {
+  background-color: #ffa62e;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.FilterButton:focus, .FilterButton:active,
+.JoinButton:focus, .JoinButton:active,
+.SelectedFilterButton:focus, .SelectedFilterButton:active {
+  outline: none;
+  box-shadow: none;
+  background-color: #ffa62e;
+}
+
 .Alert {
   text-align: center;
   margin-top: 20px;
