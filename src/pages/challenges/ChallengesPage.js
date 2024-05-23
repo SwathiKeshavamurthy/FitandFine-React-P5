@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Container, Row, Col, Card, Button, Alert, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
@@ -26,22 +26,42 @@ function ChallengesPage() {
   const [showAlert, setShowAlert] = useState(false);
   const currentUser = useCurrentUser();
 
-  const fetchChallenges = async () => {
+  const fetchChallenges = useCallback(async (url = "/challenges/") => {
     try {
-      const { data } = await axiosReq.get("/challenges/");
+      const { data } = await axiosReq.get(url);
       console.log("Fetched challenges:", data);
-      setChallenges(data.results);
-      setFilteredChallenges(data.results);
-      setHasLoaded(true);
+
+      setChallenges(prevChallenges => {
+        const updatedChallenges = [...prevChallenges, ...data.results];
+        // Filter out duplicate challenges
+        const uniqueChallenges = updatedChallenges.reduce((acc, current) => {
+          const x = acc.find(item => item.id === current.id);
+          if (!x) {
+            return acc.concat([current]);
+          } else {
+            return acc;
+          }
+        }, []);
+        setFilteredChallenges(uniqueChallenges);
+        return uniqueChallenges;
+      });
+
+      if (data.next) {
+        fetchChallenges(data.next);
+      } else {
+        setHasLoaded(true);
+      }
     } catch (err) {
       console.error("Error fetching challenges:", err);
-      setHasLoaded(true); 
+      setHasLoaded(true);
     }
-  };
+  }, []);
 
   useEffect(() => {
+    setChallenges([]); 
+    setFilteredChallenges([]);
     fetchChallenges();
-  }, [currentUser]);
+  }, [currentUser, fetchChallenges]);
 
   const joinChallenge = async (id) => {
     if (!currentUser) {
