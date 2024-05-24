@@ -9,6 +9,7 @@ import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostEditForm from "./pages/posts/PostEditForm";
 import PostPage from "./pages/posts/PostPage"; 
 import PostsPage from "./pages/posts/PostsPage";
+import MyCommentsList from "./pages/posts/MyCommentsList";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
@@ -55,6 +56,15 @@ function App() {
                 <PostsPage
                   message="No results found. Adjust the search keyword or like a post."
                   filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/profile/comments"
+              render={() => (
+                <MyCommentsList
+                  message="No comments found. Adjust the search keyword or comment on a post."
                 />
               )}
             />
