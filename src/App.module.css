@@ -7,6 +7,7 @@
 
   .Main {
     padding-top: 140px;
+    padding-bottom: 140px;
   }
 
   * {
@@ -15,13 +16,13 @@
   
   /* Link styles */
   a {
-    color: #555555; 
+    color: #0e0d0d;
     transition: color 0.4s ease-in-out; 
     text-decoration: none; 
   }
   
   a:hover {
-    color: #ff792e;
+    color: #f7f2f0;
   }
   
   /* Icon styles */
@@ -34,7 +35,7 @@
   }
   
   i:hover {
-    color: #ff792e;
+    color: #fa2d09;
     cursor: pointer; 
     transition: color ease-in-out 0.3s;
   }

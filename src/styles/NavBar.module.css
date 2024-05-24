@@ -1,6 +1,6 @@
 .NavBar {
-  background-color: #f7f1e5;
-  border: 2px solid #ffa62e;
+  background-color: #ee9852;
+  border: 2px solid  #0e0d0d;
 }
 
 .NavLink {
@@ -20,13 +20,13 @@
 .BrandText {
   font-size: 2.2rem;
   margin-left: 10px;
-  color: #333;
+  color: #0e0d0d;
   font-weight: bold;
 }
 
 .BrandTagline {
   font-size: 0.9rem;
-  color: #666;
+  color:#0e0d0d;
   margin-top: 5px;
   margin-left: 10px;
   font-weight: bold;
