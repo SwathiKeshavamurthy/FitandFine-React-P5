@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.footer {
+  font-family: 'Radio Canada Big', sans-serif; 
+  background-color: #f7f1e5;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 2px solid #ffa62e;
+}
+
+.footer-icons {
+  margin-bottom: 10px;
+}
+
+.footer-icons a {
+  color: #000;
+  margin: 0 10px;
+  font-size: 1.5rem; 
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.footer-icons a i {
+  font-size: inherit;
+}
+
+.footer-icons a:hover {
+  color: #ff792e;
+}
+
+.footer-text {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+}
