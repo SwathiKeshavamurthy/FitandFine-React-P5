@@ -1,6 +1,6 @@
 .NavBar {
   background-color: #ee9852;
-  border: 2px solid  #0e0d0d;
+  border: 2px solid #0e0d0d;
 }
 
 .NavLink {
@@ -26,14 +26,26 @@
 
 .BrandTagline {
   font-size: 0.9rem;
-  color:#0e0d0d;
+  color: #0e0d0d;
   margin-top: 5px;
   margin-left: 10px;
   font-weight: bold;
 }
-.navbar-nav .dropdown-menu .dropdown-item.active,
-.navbar-nav .dropdown-menu .dropdown-item:active,
-.navbar-nav .dropdown-menu .dropdown-item:focus {
+
+.CurrentUserDropdownItem {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: transparent;
+  text-align: left;
+}
+
+.CurrentUserDropdownItem:hover, 
+.CurrentUserDropdownItem:focus, 
+.CurrentUserDropdownItem:active,
+.navbar-nav .dropdown-menu .CurrentUserDropdownItem.active,
+.navbar-nav .dropdown-menu .CurrentUserDropdownItem.show,
+.navbar-nav .dropdown-menu .CurrentUserDropdownItem:visited {
   background-color: #ff792e !important;
   color: #ffffff !important;
   outline: none;

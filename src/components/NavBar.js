@@ -57,26 +57,26 @@ const NavBar = () => {
                   <i className="fas fa-calendar-alt"></i> Add Daily Routine
                 </NavLink>
                 <NavDropdown title={<Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />} id="basic-nav-dropdown" onClick={handleDropdownClick}>
-                  <NavDropdown.Item as={NavLink} to={`/profiles/${currentUser?.profile_id}`} onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to={`/profiles/${currentUser?.profile_id}`} onClick={() => setExpanded(false)}>
                     <i className="fas fa-user-circle"></i> My Profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/profile/feed" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to="/profile/feed" onClick={() => setExpanded(false)}>
                     <i className="fas fa-rss"></i> My Feeds
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/profile/likes" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to="/profile/likes" onClick={() => setExpanded(false)}>
                     <i className="fas fa-heart"></i> My Likes
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/profile/comments" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to="/profile/comments" onClick={() => setExpanded(false)}>
                     <i className="fas fa-comments"></i> My Comments
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/my-challenges" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to="/my-challenges" onClick={() => setExpanded(false)}>
                     <i className="fas fa-trophy"></i> My Challenges
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/dailyroutines" onClick={() => setExpanded(false)}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to="/dailyroutines" onClick={() => setExpanded(false)}>
                     <i className="fas fa-calendar-day"></i> My Daily Routine
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={() => { handleSignOut(); setExpanded(false); }}>
+                  <NavDropdown.Item className={styles.CurrentUserDropdownItem} onClick={() => { handleSignOut(); setExpanded(false); }}>
                     <i className="fas fa-sign-out-alt"></i> Sign out
                   </NavDropdown.Item>
                 </NavDropdown>
