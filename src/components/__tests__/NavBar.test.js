@@ -1,4 +1,3 @@
-// src/components/__tests__/NavBar.test.js
 import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
