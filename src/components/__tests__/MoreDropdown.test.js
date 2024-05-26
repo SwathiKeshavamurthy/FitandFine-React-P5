@@ -4,7 +4,6 @@ import { MoreDropdown, ProfileEditDropdown } from '../MoreDropdown';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-// Mock useHistory
 const mockPush = jest.fn();
 
 jest.mock('react-router-dom', () => ({
