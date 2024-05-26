@@ -1,7 +1,7 @@
-import React from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import styles from "../styles/MoreDropdown.module.css";
-import { useHistory } from "react-router";
+import React from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import styles from '../styles/MoreDropdown.module.css';
+import { useHistory } from 'react-router-dom';
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -11,6 +11,8 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
       e.preventDefault();
       onClick(e);
     }}
+    aria-label="toggle-dropdown"
+    role="button"
   />
 ));
 
@@ -21,7 +23,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 
       <Dropdown.Menu
         className="text-center"
-        popperConfig={{ strategy: "fixed" }}
+        popperConfig={{ strategy: 'fixed' }}
       >
         <Dropdown.Item
           className={styles.DropdownItem}
