@@ -21,7 +21,7 @@ import MyDailyRoutineList from './pages/dailyroutines/MyDailyRoutineList';
 import Collaborate from './pages/collaborate/Collaborate';
 import ChallengesPage from "./pages/challenges/ChallengesPage";
 import UserChallengesPage from "./pages/challenges/UserChallengesPage";
-
+import NotFound from './components/NotFound';
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
@@ -83,7 +83,7 @@ function App() {
             <Route exact path="/collaborate" component={Collaborate} />
             <Route exact path="/challenges" render={() => <ChallengesPage />} />
             <Route exact path="/my-challenges" render={() => <UserChallengesPage />} />
-            <Route render={() => <p>Page not found!</p>} />
+            <Route render={() => <NotFound />} />
           </Switch>
         </Container>
       </div>
