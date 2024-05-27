@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container, Form } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";

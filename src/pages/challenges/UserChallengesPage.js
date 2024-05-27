@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/noresults.JPG";
@@ -35,7 +39,6 @@ function UserChallengesPage() {
 
   return (
     <Container className={styles.ChallengesPage}>
-      
       {hasLoaded ? (
         challenges.length ? (
           <Row>
