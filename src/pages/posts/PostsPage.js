@@ -12,13 +12,15 @@ import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/noresults.JPG";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles"; 
+import PopularProfiles from "../profiles/PopularProfiles";
+import { useCurrentUser } from "../../contexts/CurrentUserContext"; // Import the useCurrentUser hook
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
+  const currentUser = useCurrentUser(); // Call the useCurrentUser hook
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -39,7 +41,7 @@ function PostsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query, pathname, currentUser]); // Add currentUser to the dependency array
 
   return (
     <Row className="h-100">
