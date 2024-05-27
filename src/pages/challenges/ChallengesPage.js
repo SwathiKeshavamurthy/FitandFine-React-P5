@@ -36,7 +36,7 @@ function ChallengesPage() {
   const fetchChallenges = useCallback(async (url = "/challenges/") => {
     try {
       const { data } = await axiosReq.get(url);
-      console.log("Fetched challenges:", data);
+      // console.log("Fetched challenges:", data);
       setChallenges(prevChallenges => [...prevChallenges, ...data.results]);
       setFilteredChallenges(prevChallenges => [...prevChallenges, ...data.results]);
       if (!data.next) {

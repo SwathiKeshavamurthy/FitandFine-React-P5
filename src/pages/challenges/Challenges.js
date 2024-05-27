@@ -35,7 +35,7 @@ const Challenge = ({
         ),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -51,7 +51,7 @@ const Challenge = ({
         ),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

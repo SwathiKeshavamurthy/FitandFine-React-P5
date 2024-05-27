@@ -38,7 +38,7 @@ const DailyRoutine = ({
         results: prevRoutines.results.filter((routine) => routine.id !== id),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

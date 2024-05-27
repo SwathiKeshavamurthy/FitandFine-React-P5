@@ -28,7 +28,7 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
         setRoutines(filteredData);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -54,7 +54,7 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
         results: prevRoutines.results.filter((routine) => routine.id !== id),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

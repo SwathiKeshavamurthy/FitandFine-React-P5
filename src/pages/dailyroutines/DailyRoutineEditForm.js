@@ -32,7 +32,7 @@ function DailyRoutineEditForm() {
         const { data } = await axiosReq.get(`/dailyroutines/${id}/`);
         setRoutineData(data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchRoutineData();
@@ -73,7 +73,7 @@ function DailyRoutineEditForm() {
       await axiosReq.put(`/dailyroutines/${id}/`, routineData);
       history.push("/dailyroutines");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

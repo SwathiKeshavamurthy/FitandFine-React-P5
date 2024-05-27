@@ -20,7 +20,7 @@ function UserChallengesPage() {
         setChallenges(data.results);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -33,7 +33,7 @@ function UserChallengesPage() {
       alert("You have left the challenge!");
       setChallenges(challenges.filter(challenge => challenge.id !== id));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
