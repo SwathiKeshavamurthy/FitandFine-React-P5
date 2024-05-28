@@ -7,9 +7,12 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/noresults.JPG";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/ChallengesPage.module.css";
 
@@ -32,11 +35,11 @@ function ChallengesPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const currentUser = useCurrentUser();
+  const history = useHistory();
 
   const fetchChallenges = useCallback(async (url = "/challenges/") => {
     try {
       const { data } = await axiosReq.get(url);
-      // console.log("Fetched challenges:", data);
       setChallenges(prevChallenges => [...prevChallenges, ...data.results]);
       setFilteredChallenges(prevChallenges => [...prevChallenges, ...data.results]);
       if (!data.next) {
@@ -55,6 +58,20 @@ function ChallengesPage() {
     setFilteredChallenges([]);
     fetchChallenges();
   }, [currentUser, fetchChallenges]);
+
+  const handleEdit = (id) => {
+    history.push(`/challenges/${id}/edit`);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axiosReq.delete(`/challenges/${id}/`);
+      setChallenges((prevChallenges) => prevChallenges.filter(challenge => challenge.id !== id));
+      setFilteredChallenges((prevFilteredChallenges) => prevFilteredChallenges.filter(challenge => challenge.id !== id));
+    } catch (err) {
+      console.error("Error deleting challenge:", err);
+    }
+  };
 
   const joinChallenge = async (id) => {
     if (!currentUser) {
@@ -115,51 +132,72 @@ function ChallengesPage() {
       )}
       {hasLoaded ? (
         filteredChallenges.length ? (
-          <Row>
-            {filteredChallenges.map(challenge => (
-              <Col key={challenge.id} md={6} lg={4} className="mb-4">
-                <Card className={styles.ChallengeCard}>
-                  <Card.Img
-                    variant="top"
-                    src={challenge.image}
-                    className={styles.CardImg}
-                  />
-                  <Card.Body>
-                    <Card.Title>{challenge.title}</Card.Title>
-                    <Card.Text>{challenge.description}</Card.Text>
-                    <Card.Text><strong>Sport:</strong> {challenge.sport}</Card.Text>
-                    {currentUser ? (
-                      challenge.is_joined ? (
-                        <Button variant="success" disabled className={styles.JoinButton}>
-                          Joined
-                        </Button>
+          <InfiniteScroll
+            dataLength={filteredChallenges.length}
+            loader={<Asset spinner />}
+            hasMore={!!filteredChallenges.next}
+            next={() => fetchMoreData(filteredChallenges, setFilteredChallenges)}
+          >
+            <Row>
+              {filteredChallenges.map(challenge => (
+                <Col key={challenge.id} md={6} lg={4} className="mb-4">
+                  <Card className={styles.ChallengeCard}>
+                    <Card.Img
+                      variant="top"
+                      src={challenge.image}
+                      className={styles.CardImg}
+                    />
+                    <Card.Body>
+                      <Card.Title>{challenge.title}</Card.Title>
+                      <Card.Text>{challenge.description}</Card.Text>
+                      <Card.Text><strong>Sport:</strong> {challenge.sport}</Card.Text>
+                      {currentUser ? (
+                        <>
+                          {challenge.is_joined ? (
+                            <Button variant="success" disabled className={styles.JoinButton}>
+                              Joined
+                            </Button>
+                          ) : (
+                            <Button
+                              onClick={() => joinChallenge(challenge.id)}
+                              variant="primary"
+                              className={styles.JoinButton}
+                            >
+                              Join Challenge
+                            </Button>
+                          )}
+                          {currentUser.is_superuser && (
+                            <div className={styles.ActionIcons}>
+                              <i
+                                className={`fas fa-edit ${styles.EditIcon}`}
+                                onClick={() => handleEdit(challenge.id)}
+                              ></i>
+                              <i
+                                className={`fas fa-trash ${styles.DeleteIcon}`}
+                                onClick={() => handleDelete(challenge.id)}
+                              ></i>
+                            </div>
+                          )}
+                        </>
                       ) : (
-                        <Button
-                          onClick={() => joinChallenge(challenge.id)}
-                          variant="primary"
-                          className={styles.JoinButton}
+                        <OverlayTrigger
+                          placement="top"
+                          overlay={renderTooltip}
                         >
-                          Join Challenge
-                        </Button>
-                      )
-                    ) : (
-                      <OverlayTrigger
-                        placement="top"
-                        overlay={renderTooltip}
-                      >
-                        <Button
-                          variant="primary"
-                          className={styles.JoinButton}
-                        >
-                          Join Challenge
-                        </Button>
-                      </OverlayTrigger>
-                    )}
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+                          <Button
+                            variant="primary"
+                            className={styles.JoinButton}
+                          >
+                            Join Challenge
+                          </Button>
+                        </OverlayTrigger>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </InfiniteScroll>
         ) : (
           <Asset src={NoResults} message="No challenges available." />
         )
