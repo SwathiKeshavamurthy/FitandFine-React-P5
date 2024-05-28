@@ -17,7 +17,10 @@ export const CurrentUserProvider = ({ children }) => {
   const handleMount = async () => {
     try {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
-      setCurrentUser(data);
+      setCurrentUser({
+        ...data,
+        is_superuser: data.is_superuser,  // Ensure is_superuser is included
+      });
     } catch (err) {
       // console.log("Error on mount:", err);
     }
