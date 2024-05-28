@@ -21,7 +21,10 @@ import MyDailyRoutineList from './pages/dailyroutines/MyDailyRoutineList';
 import Collaborate from './pages/collaborate/Collaborate';
 import ChallengesPage from "./pages/challenges/ChallengesPage";
 import UserChallengesPage from "./pages/challenges/UserChallengesPage";
+import ChallengeCreateForm from './pages/challenges/ChallengeCreateForm';
+import ChallengeEditForm from './pages/challenges/ChallengeEditForm';
 import NotFound from './components/NotFound';
+
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
@@ -83,6 +86,8 @@ function App() {
             <Route exact path="/collaborate" component={Collaborate} />
             <Route exact path="/challenges" render={() => <ChallengesPage />} />
             <Route exact path="/my-challenges" render={() => <UserChallengesPage />} />
+            <Route exact path="/challenges/create" component={ChallengeCreateForm} />
+            <Route exact path="/challenges/:id/edit" component={ChallengeEditForm} />
             <Route render={() => <NotFound />} />
           </Switch>
         </Container>
