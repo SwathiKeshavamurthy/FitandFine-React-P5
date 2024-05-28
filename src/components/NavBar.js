@@ -61,6 +61,11 @@ const NavBar = () => {
                 <NavLink to="/dailyroutines/create" className={styles.NavLink} activeClassName={styles.Active} onClick={() => setExpanded(false)}>
                   <i className="fas fa-calendar-alt"></i> Add Daily Routine
                 </NavLink>
+                {currentUser.is_superuser && (
+                  <NavLink to="/challenges/create" className={styles.NavLink} activeClassName={styles.Active} onClick={() => setExpanded(false)}>
+                    <i className="fas fa-plus-circle"></i> Add Challenge
+                  </NavLink>
+                )}
                 <NavDropdown title={<Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />} id="basic-nav-dropdown" onClick={handleDropdownClick}>
                   <NavDropdown.Item className={styles.CurrentUserDropdownItem} as={NavLink} to={`/profiles/${currentUser?.profile_id}`} onClick={() => setExpanded(false)}>
                     <i className="fas fa-user-circle"></i> My Profile
