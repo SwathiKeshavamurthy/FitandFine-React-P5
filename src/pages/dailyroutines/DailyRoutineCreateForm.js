@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
+import { toast } from 'react-toastify';
 import { axiosReq } from '../../api/axiosDefaults';
 import styles from '../../styles/DailyRoutineCreateEditForm.module.css';
 
@@ -37,9 +38,11 @@ const DailyRoutineCreateForm = () => {
     event.preventDefault();
     try {
       await axiosReq.post('/dailyroutines/', routineData);
+      toast.success("Daily routine created successfully!");
       history.push('/dailyroutines');
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Failed to create daily routine.");
     }
   };
 
