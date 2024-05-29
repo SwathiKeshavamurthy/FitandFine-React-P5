@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Card from "react-bootstrap/Card";
@@ -35,7 +35,10 @@ const Post = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
-  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -44,11 +47,12 @@ const Post = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
-      toast.success("Post deleted successfully!");
-      history.goBack();
+      toast.success("Post deleted successfully.");
+      history.push("/");
     } catch (err) {
       toast.error("Failed to delete post.");
     }
+    handleClose();
   };
 
   const handleLike = async () => {
@@ -84,82 +88,80 @@ const Post = (props) => {
   };
 
   return (
-    <Card className={styles.Post}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-            {is_owner && postPage && (
-              <>
+    <>
+      <Card className={styles.Post}>
+        <Card.Body>
+          <Media className="align-items-center justify-content-between">
+            <Link to={`/profiles/${profile_id}`}>
+              <Avatar src={profile_image} height={55} />
+              {owner}
+            </Link>
+            <div className="d-flex align-items-center">
+              <span>{updated_at}</span>
+              {is_owner && postPage && (
                 <MoreDropdown
                   handleEdit={handleEdit}
-                  handleDelete={() => setShowDeleteModal(true)}
+                  handleDelete={handleShow}
                 />
-                <Modal
-                  show={showDeleteModal}
-                  onHide={() => setShowDeleteModal(false)}
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Delete Post</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
-                      Cancel
-                    </Button>
-                    <Button variant="danger" onClick={handleDelete}>
-                      Delete
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
-              </>
+              )}
+            </div>
+          </Media>
+        </Card.Body>
+        <Link to={`/posts/${id}`}>
+          <Card.Img src={image} alt={title} className={styles[image_filter]} />
+        </Link>
+        <Card.Body>
+          {title && <Card.Title className="text-center">{title}</Card.Title>}
+          {content && <Card.Text>{content}</Card.Text>}
+          {tags && <div className="text-center"><small>{tags}</small></div>}
+          <div className={styles.PostBar}>
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              >
+                <i className="far fa-heart" />
+              </OverlayTrigger>
+            ) : like_id ? (
+              <span onClick={handleUnlike}>
+                <i className={`fas fa-heart ${styles.Heart}`} />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleLike}>
+                <i className={`far fa-heart ${styles.HeartOutline}`} />
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to like posts!</Tooltip>}
+              >
+                <i className="far fa-heart" />
+              </OverlayTrigger>
             )}
+            {likes_count}
+            <Link to={`/posts/${id}`}>
+              <i className="far fa-comments" />
+            </Link>
+            {comments_count}
           </div>
-        </Media>
-      </Card.Body>
-      <Link to={`/posts/${id}`}>
-        <Card.Img src={image} alt={title} className={styles[image_filter]} />
-      </Link>
-      <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
-        {tags && <div className="text-center"><small>{tags}</small></div>}
-        <div className={styles.PostBar}>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          ) : like_id ? (
-            <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to like posts!</Tooltip>}
-            >
-              <i className="far fa-heart" />
-            </OverlayTrigger>
-          )}
-          {likes_count}
-          <Link to={`/posts/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {comments_count}
-        </div>
-      </Card.Body>
-    </Card>
+        </Card.Body>
+      </Card>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
