@@ -11,6 +11,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import { toast } from "react-toastify";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
@@ -34,7 +35,7 @@ function PostEditForm() {
 
         is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
-        // console.log(err);
+        toast.error("Failed to fetch post details.");
       }
     };
 
@@ -71,9 +72,10 @@ function PostEditForm() {
 
     try {
       await axiosReq.put(`/posts/${id}/`, formData);
+      toast.success("Post updated successfully!");
       history.push(`/posts/${id}`);
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to update post.");
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
