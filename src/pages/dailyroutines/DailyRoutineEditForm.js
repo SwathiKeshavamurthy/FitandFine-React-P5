@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
+import { toast } from 'react-toastify';
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/DailyRoutineCreateEditForm.module.css";
 
@@ -32,7 +33,7 @@ function DailyRoutineEditForm() {
         const { data } = await axiosReq.get(`/dailyroutines/${id}/`);
         setRoutineData(data);
       } catch (err) {
-        // console.log(err);
+        toast.error("Failed to fetch daily routine data.");
       }
     };
     fetchRoutineData();
@@ -71,10 +72,11 @@ function DailyRoutineEditForm() {
     event.preventDefault();
     try {
       await axiosReq.put(`/dailyroutines/${id}/`, routineData);
+      toast.success("Daily routine updated successfully!");
       history.push("/dailyroutines");
     } catch (err) {
-      // console.log(err);
       setErrors(err.response?.data);
+      toast.error("Failed to update daily routine.");
     }
   };
 
