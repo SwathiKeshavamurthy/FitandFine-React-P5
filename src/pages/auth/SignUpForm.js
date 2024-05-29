@@ -4,9 +4,9 @@ import signupImage from "../../assets/signup.webp";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -31,9 +31,11 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
+      toast.success("Successfully signed up! Please sign in.");
       history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Failed to sign up.");
     }
   };
 
