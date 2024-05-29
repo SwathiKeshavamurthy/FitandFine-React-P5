@@ -7,8 +7,10 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Modal from "react-bootstrap/Modal";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/noresults.JPG";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -34,6 +36,8 @@ function ChallengesPage() {
   const [selectedSport, setSelectedSport] = useState("All");
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteChallengeId, setDeleteChallengeId] = useState(null);
   const currentUser = useCurrentUser();
   const history = useHistory();
 
@@ -68,9 +72,27 @@ function ChallengesPage() {
       await axiosReq.delete(`/challenges/${id}/`);
       setChallenges((prevChallenges) => prevChallenges.filter(challenge => challenge.id !== id));
       setFilteredChallenges((prevFilteredChallenges) => prevFilteredChallenges.filter(challenge => challenge.id !== id));
+      toast.success("Challenge deleted successfully!");
     } catch (err) {
       console.error("Error deleting challenge:", err);
+      toast.error("Failed to delete challenge.");
     }
+  };
+
+  const confirmDelete = (id) => {
+    setDeleteChallengeId(id);
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    handleDelete(deleteChallengeId);
+    setShowDeleteModal(false);
+    setDeleteChallengeId(null);
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteModal(false);
+    setDeleteChallengeId(null);
   };
 
   const joinChallenge = async (id) => {
@@ -80,7 +102,7 @@ function ChallengesPage() {
     }
     try {
       await axiosReq.post(`/challenges/${id}/join/`);
-      alert("You have joined the challenge!");
+      toast.success("You have joined the challenge!");
       setChallenges((prevChallenges) => {
         const updatedChallenges = prevChallenges.map((challenge) =>
           challenge.id === id
@@ -92,6 +114,7 @@ function ChallengesPage() {
       });
     } catch (err) {
       console.error("Error joining challenge:", err);
+      toast.error("Failed to join the challenge.");
     }
   };
 
@@ -174,7 +197,7 @@ function ChallengesPage() {
                               ></i>
                               <i
                                 className={`fas fa-trash ${styles.DeleteIcon}`}
-                                onClick={() => handleDelete(challenge.id)}
+                                onClick={() => confirmDelete(challenge.id)}
                               ></i>
                             </div>
                           )}
@@ -204,6 +227,21 @@ function ChallengesPage() {
       ) : (
         <Asset spinner />
       )}
+
+      <Modal show={showDeleteModal} onHide={handleDeleteCancel}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Challenge</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this challenge?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleDeleteCancel}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDeleteConfirm}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }
