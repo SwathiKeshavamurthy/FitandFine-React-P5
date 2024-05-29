@@ -24,6 +24,7 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/noresults.JPG";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { toast } from "react-toastify";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -53,11 +54,29 @@ function ProfilePage() {
         setProfilePosts(profilePosts);
         setHasLoaded(true);
       } catch (err) {
-        // console.log(err);
+        toast.error("Error fetching profile data.");
       }
     };
     fetchData();
   }, [id, setProfileData]);
+
+  const handleFollowClick = async () => {
+    try {
+      await handleFollow(profile);
+      toast.success("Followed successfully.");
+    } catch (err) {
+      toast.error("Failed to follow.");
+    }
+  };
+
+  const handleUnfollowClick = async () => {
+    try {
+      await handleUnfollow(profile);
+      toast.success("Unfollowed successfully.");
+    } catch (err) {
+      toast.error("Failed to unfollow.");
+    }
+  };
 
   const mainProfile = (
     <>
@@ -93,14 +112,14 @@ function ProfilePage() {
             (profile?.following_id ? (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-                onClick={() => handleUnfollow(profile)}
+                onClick={handleUnfollowClick}
               >
                 unfollow
               </Button>
             ) : (
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => handleFollow(profile)}
+                onClick={handleFollowClick}
               >
                 follow
               </Button>
