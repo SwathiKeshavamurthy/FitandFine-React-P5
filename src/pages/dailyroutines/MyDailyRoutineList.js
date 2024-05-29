@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
 import { useLocation, useHistory } from "react-router";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { axiosReq } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import NoResults from "../../assets/noresults.JPG";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
@@ -12,6 +15,8 @@ import styles from "../../styles/MyDailyRoutineList.module.css";
 function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
   const [routines, setRoutines] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [routineToDelete, setRoutineToDelete] = useState(null);
   const { pathname } = useLocation();
   const history = useHistory();
   const currentUser = useCurrentUser();
@@ -28,7 +33,7 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
         setRoutines(filteredData);
         setHasLoaded(true);
       } catch (err) {
-        // console.log(err);
+        toast.error("Failed to fetch daily routines.");
       }
     };
 
@@ -53,9 +58,11 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
         ...prevRoutines,
         results: prevRoutines.results.filter((routine) => routine.id !== id),
       }));
+      toast.success("Daily routine deleted successfully!");
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to delete daily routine.");
     }
+    setShowDeleteModal(false);
   };
 
   return (
@@ -108,7 +115,7 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
                       ></i>
                       <i
                         className={`fas fa-trash ${styles.DeleteIcon}`}
-                        onClick={() => handleDelete(routine.id)}
+                        onClick={() => { setShowDeleteModal(true); setRoutineToDelete(routine.id); }}
                       ></i>
                     </span>
                   </div>
@@ -126,6 +133,21 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
           <Asset spinner />
         </Container>
       )}
+
+      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Daily Routine</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this daily routine?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={() => handleDelete(routineToDelete)}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }
