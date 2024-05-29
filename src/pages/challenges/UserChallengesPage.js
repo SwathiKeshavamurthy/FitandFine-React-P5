@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { axiosReq } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/noresults.JPG";
 import styles from "../../styles/UserChallengesPage.module.css";
@@ -20,7 +21,7 @@ function UserChallengesPage() {
         setChallenges(data.results);
         setHasLoaded(true);
       } catch (err) {
-        // console.log(err);
+        console.error(err);
       }
     };
 
@@ -30,10 +31,10 @@ function UserChallengesPage() {
   const leaveChallenge = async (id) => {
     try {
       await axiosReq.post(`/challenges/${id}/leave/`);
-      alert("You have left the challenge!");
+      toast.success("You have left the challenge!");
       setChallenges(challenges.filter(challenge => challenge.id !== id));
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to leave the challenge.");
     }
   };
 
