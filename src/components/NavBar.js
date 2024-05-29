@@ -11,6 +11,7 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import logo from "../assets/logo.JPG";
 import styles from "../styles/NavBar.module.css";
 import { removeTokenTimestamp } from "../utils/utils";
+import { toast } from 'react-toastify';  // Import toast from react-toastify
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -22,8 +23,10 @@ const NavBar = () => {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
+      toast.success("Successfully logged out!");  // Show success message
     } catch (err) {
       console.error('Sign out failed: ', err);
+      toast.error("Failed to log out.");  // Show error message
     }
   };
 
