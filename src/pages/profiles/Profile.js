@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import { toast } from "react-toastify";
 
 const Profile = (props) => {
   const { profile, mobile, imageSize = 55 } = props;
@@ -15,6 +16,24 @@ const Profile = (props) => {
   const is_owner = currentUser?.username === owner;
 
   const { handleFollow, handleUnfollow } = useSetProfileData();
+
+  const handleFollowClick = async () => {
+    try {
+      await handleFollow(profile);
+      toast.success("Followed successfully.");
+    } catch (err) {
+      toast.error("Failed to follow.");
+    }
+  };
+
+  const handleUnfollowClick = async () => {
+    try {
+      await handleUnfollow(profile);
+      toast.success("Unfollowed successfully.");
+    } catch (err) {
+      toast.error("Failed to unfollow.");
+    }
+  };
 
   return (
     <div
@@ -35,14 +54,14 @@ const Profile = (props) => {
           (following_id ? (
             <Button
               className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-              onClick={() => handleUnfollow(profile)}
+              onClick={handleUnfollowClick}
             >
               unfollow
             </Button>
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Black}`}
-              onClick={() => handleFollow(profile)}
+              onClick={handleFollowClick}
             >
               follow
             </Button>
