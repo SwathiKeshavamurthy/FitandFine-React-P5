@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { axiosRes } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import styles from "../../styles/DailyRoutine.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -25,6 +28,7 @@ const DailyRoutine = ({
   const currentUser = useCurrentUser();
   const isOwner = currentUser?.username === owner;
   const history = useHistory();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleEdit = () => {
     history.push(`/dailyroutines/${id}/edit`);
@@ -37,9 +41,11 @@ const DailyRoutine = ({
         ...prevRoutines,
         results: prevRoutines.results.filter((routine) => routine.id !== id),
       }));
+      toast.success("Daily routine deleted successfully!");
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to delete daily routine.");
     }
+    setShowDeleteModal(false);
   };
 
   return (
@@ -62,12 +68,27 @@ const DailyRoutine = ({
             <button onClick={handleEdit} className={styles.EditButton}>
               Edit
             </button>
-            <button onClick={handleDelete} className={styles.DeleteButton}>
+            <button onClick={() => setShowDeleteModal(true)} className={styles.DeleteButton}>
               Delete
             </button>
           </div>
         )}
       </Card.Body>
+
+      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Daily Routine</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this daily routine?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Card>
   );
 };
