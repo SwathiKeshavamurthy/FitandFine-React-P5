@@ -14,6 +14,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+import { toast } from "react-toastify";
 
 const TAG_CHOICES = [
   { value: 'cycling', label: 'Cycling' },
@@ -69,9 +70,10 @@ function PostCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
+      toast.success("Post created successfully!");
       history.push(`/posts/${data.id}`);
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to create post.");
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
