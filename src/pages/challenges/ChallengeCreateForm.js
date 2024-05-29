@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import styles from "../../styles/DailyRoutineCreateEditForm.module.css";
 
 const ChallengeCreateForm = () => {
@@ -49,9 +50,11 @@ const ChallengeCreateForm = () => {
 
     try {
       await axiosReq.post("/challenges/", formData);
+      toast.success("Challenge created successfully!");
       history.push("/challenges");
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Failed to create challenge.");
     }
   };
 
