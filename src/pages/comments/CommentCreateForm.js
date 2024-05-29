@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { toast } from 'react-toastify';
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -36,8 +35,9 @@ function CommentCreateForm(props) {
         ],
       }));
       setContent("");
+      toast.success("Comment posted successfully!");
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to post comment.");
     }
   };
 

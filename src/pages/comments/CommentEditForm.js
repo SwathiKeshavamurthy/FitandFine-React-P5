@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-
+import { toast } from 'react-toastify';
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
-
 import styles from "../../styles/CommentCreateEditForm.module.css";
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
-
   const [formContent, setFormContent] = useState(content);
 
   const handleChange = (event) => {
@@ -33,8 +31,9 @@ function CommentEditForm(props) {
         }),
       }));
       setShowEditForm(false);
+      toast.success("Comment edited successfully!");
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to edit comment.");
     }
   };
 
@@ -59,7 +58,7 @@ function CommentEditForm(props) {
         </button>
         <button
           className={styles.Button}
-          disabled={!content.trim()}
+          disabled={!formContent.trim()}
           type="submit"
         >
           save
