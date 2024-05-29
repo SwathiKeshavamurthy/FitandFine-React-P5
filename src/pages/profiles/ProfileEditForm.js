@@ -17,6 +17,7 @@ import {
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { toast } from "react-toastify";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -43,7 +44,7 @@ const ProfileEditForm = () => {
           const { content, image, email, birthday } = data;
           setProfileData({ content, image, email, birthday });
         } catch (err) {
-          console.error("Error fetching profile data:", err);
+          toast.error("Error fetching profile data.");
           history.push("/");
         }
       } else {
@@ -67,7 +68,6 @@ const ProfileEditForm = () => {
     formData.append("content", content);
     formData.append("email", email);
 
-   
     if (birthday) {
       formData.append("birthday", birthday);
     }
@@ -78,18 +78,15 @@ const ProfileEditForm = () => {
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
-      // console.log("Profile updated successfully:", data);
+      toast.success("Profile updated successfully.");
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.image,
       }));
       history.goBack();
     } catch (err) {
-      console.error("Error updating profile:", err);
-      if (err.response) {
-        console.error("Response data:", err.response.data);
-        setErrors(err.response.data);
-      }
+      toast.error("Error updating profile.");
+      setErrors(err.response?.data);
     }
   };
 
