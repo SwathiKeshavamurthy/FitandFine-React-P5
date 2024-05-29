@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-
+import { toast } from 'react-toastify';
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
@@ -45,10 +43,11 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
+      toast.success("Username changed successfully!");
       history.goBack();
     } catch (err) {
-      // console.log(err);
       setErrors(err.response?.data);
+      toast.error("Failed to change username.");
     }
   };
 

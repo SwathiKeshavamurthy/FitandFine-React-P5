@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import btnStyles from "../../styles/Button.module.css";
 
 const UserPasswordForm = () => {
@@ -28,9 +29,11 @@ const UserPasswordForm = () => {
     event.preventDefault();
     try {
       await axiosReq.post(`/dj-rest-auth/password/change/`, passwordData);
+      toast.success("Password changed successfully!");
       history.goBack();
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Failed to change password.");
     }
   };
 
