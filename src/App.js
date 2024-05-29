@@ -24,6 +24,8 @@ import UserChallengesPage from "./pages/challenges/UserChallengesPage";
 import ChallengeCreateForm from './pages/challenges/ChallengeCreateForm';
 import ChallengeEditForm from './pages/challenges/ChallengeEditForm';
 import NotFound from './components/NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const currentUser = useCurrentUser();
@@ -91,6 +93,7 @@ function App() {
             <Route render={() => <NotFound />} />
           </Switch>
         </Container>
+        <ToastContainer />
       </div>
     </Router>
   );
