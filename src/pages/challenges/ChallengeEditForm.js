@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import styles from "../../styles/DailyRoutineCreateEditForm.module.css";
 
 const ChallengeEditForm = () => {
@@ -29,7 +30,8 @@ const ChallengeEditForm = () => {
           image: data.image || "",
         });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
+        toast.error("Failed to load challenge.");
       }
     };
 
@@ -66,9 +68,11 @@ const ChallengeEditForm = () => {
 
     try {
       await axiosRes.put(`/challenges/${id}/`, formData);
+      toast.success("Challenge updated successfully!");
       history.push(`/challenges`);
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Failed to update challenge.");
     }
   };
 
