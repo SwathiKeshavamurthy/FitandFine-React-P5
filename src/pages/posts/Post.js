@@ -9,6 +9,9 @@ import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { toast } from "react-toastify";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 const Post = (props) => {
   const {
@@ -32,6 +35,7 @@ const Post = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
+  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -40,9 +44,10 @@ const Post = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
+      toast.success("Post deleted successfully!");
       history.goBack();
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to delete post.");
     }
   };
 
@@ -58,7 +63,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to like post.");
     }
   };
 
@@ -74,7 +79,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      toast.error("Failed to unlike post.");
     }
   };
 
@@ -89,10 +94,29 @@ const Post = (props) => {
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
             {is_owner && postPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+              <>
+                <MoreDropdown
+                  handleEdit={handleEdit}
+                  handleDelete={() => setShowDeleteModal(true)}
+                />
+                <Modal
+                  show={showDeleteModal}
+                  onHide={() => setShowDeleteModal(false)}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Delete Post</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>Are you sure you want to delete this post?</Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+                      Cancel
+                    </Button>
+                    <Button variant="danger" onClick={handleDelete}>
+                      Delete
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </>
             )}
           </div>
         </Media>
