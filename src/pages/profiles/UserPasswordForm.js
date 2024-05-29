@@ -9,12 +9,11 @@ import btnStyles from "../../styles/Button.module.css";
 
 const UserPasswordForm = () => {
   const [passwordData, setPasswordData] = useState({
-    old_password: "",
     new_password1: "",
     new_password2: "",
   });
 
-  const { old_password, new_password1, new_password2 } = passwordData;
+  const { new_password1, new_password2 } = passwordData;
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
@@ -38,21 +37,6 @@ const UserPasswordForm = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Old Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="old_password"
-            value={old_password}
-            onChange={handleChange}
-          />
-        </Form.Group>
-        {errors.old_password?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-
         <Form.Group>
           <Form.Label>New Password</Form.Label>
           <Form.Control
