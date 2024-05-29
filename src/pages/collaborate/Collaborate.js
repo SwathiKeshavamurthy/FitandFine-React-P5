@@ -7,8 +7,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import { axiosReq } from "../../api/axiosDefaults";
+import { toast } from 'react-toastify';
 import styles from "../../styles/Collaborate.module.css";
-import image from "../../assets/about.webp"; 
+import image from "../../assets/about.webp";
 
 const Collaborate = () => {
   const [collaborateData, setCollaborateData] = useState({
@@ -31,9 +32,11 @@ const Collaborate = () => {
     event.preventDefault();
     try {
       await axiosReq.post("/collaborate/", collaborateData);
+      toast.success("Message sent successfully!");
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
+      toast.error("Failed to send message.");
     }
   };
 
@@ -53,18 +56,17 @@ const Collaborate = () => {
       <Row className="mb-4">
         <Col>
           <h1>About Fit and Fine</h1>
-            <p>
-             Welcome to Fit&Fine, your ultimate fitness companion designed to help you achieve your health and wellness goals. Our platform is built for fitness enthusiasts of all levels, from beginners to seasoned athletes, providing the tools and community support you need to stay motivated and on track.
-             At Fit&Fine, we believe that fitness is a journey best taken together. Our mission is to create a supportive and inspiring community where users can set personal goals, track their progress, share their achievements, and shine together. With a wide range of features, including personalized daily routines, social life, and challenges, Fit&Fine is here to help you smile through every step of your fitness journey.
-            </p>
-           <p>
-             Join Fit&Fine today and become a part of our thriving community. Set your goals, sweat through the challenges, share your journey, shine with your achievements, and smile with pride. Together, we can achieve greatness.
-
-             Fit&Fine: Set. Sweat. Share. Shine.
-             On this page, you can reach out to us for collaboration opportunities.
-             Please fill out the form below and we'll get back to you as soon as
-             possible.
-           </p>
+          <p>
+            Welcome to Fit&Fine, your ultimate fitness companion designed to help you achieve your health and wellness goals. Our platform is built for fitness enthusiasts of all levels, from beginners to seasoned athletes, providing the tools and community support you need to stay motivated and on track.
+            At Fit&Fine, we believe that fitness is a journey best taken together. Our mission is to create a supportive and inspiring community where users can set personal goals, track their progress, share their achievements, and shine together. With a wide range of features, including personalized daily routines, social life, and challenges, Fit&Fine is here to help you smile through every step of your fitness journey.
+          </p>
+          <p>
+            Join Fit&Fine today and become a part of our thriving community. Set your goals, sweat through the challenges, share your journey, shine with your achievements, and smile with pride. Together, we can achieve greatness.
+            Fit&Fine: Set. Sweat. Share. Shine.
+            On this page, you can reach out to us for collaboration opportunities.
+            Please fill out the form below and we'll get back to you as soon as
+            possible.
+          </p>
         </Col>
       </Row>
       <Row>
