@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="documentation/screenshots/about.webp" alt="Fit&Fine Logo" style="width: 200px; height: auto;">
+</p>
+<h1 align="center">Fit&Fine</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Welcome</h2>
 
-## Available Scripts
+Link to live website: [CLICK HERE!](https://fitandfine-react-p5-f5d23da9d77c.herokuapp.com/)
 
-In the project directory, you can run:
+![Am I Responsive Image](documentation/screenshots/amiresponsive.JPG)
 
-### `npm start`
+# Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Fit and Fine
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Welcome to Fit and Fine, a comprehensive fitness and wellness platform designed to promote a healthy and active lifestyle. Fit and Fine connects individuals, fitness enthusiasts, and wellness experts, providing tools and resources to help you achieve your health goals. Our platform offers a variety of features to support your fitness journey, including challenge participation, daily routine tracking, and community interaction. Whether you are looking to improve your fitness, track your daily activities, or engage with a supportive community, Fit and Fine is your go-to destination for all things wellness.
 
-### `npm test`
+Fit and Fine focuses on leveraging the latest web technologies, including React for the frontend and Django for the backend, ensuring a seamless and engaging user experience. It is designed for anyone passionate about fitness, from beginners to advanced athletes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Our Website Features
 
-### `npm run build`
+Fit and Fine offers a range of features to help you stay motivated and connected on your wellness journey, including:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **User Authentication:** Sign up, log in, and manage your profile with ease.
+- **Profile Management:** Customize your profile, including personal information and profile picture.
+- **Challenge Participation:** Join and create fitness challenges, track your progress, and stay motivated.
+- **Daily Routine Tracking:** Log your daily activities, including meals, workouts, and water intake.
+- **Community Interaction:** Share updates through - post content, like, and comment on posts within the community.
+- **Responsive Design:** Access the platform from any device, whether it's a desktop, tablet, or mobile phone.
+- **Resource Hub:** Access a curated selection of fitness and wellness resources, guides, and articles.
+- **User Contributions:** Registered users can contribute their own posts, share their fitness journeys, and add to the collective knowledge base of Fit and Fine.
+- **About and Collaborate:** Learn more about our mission and vision in the About section, and connect with us through the Collaborate section to share ideas, feedback, or partnership opportunities.
+- **Footer:** Navigate easily with our comprehensive footer, which includes links to essential pages, social media channels, and contact information.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Engage In**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Join Fit and Fine today and become part of a community dedicated to health and wellness. Whether you’re here to set new fitness goals, track your progress, or engage with others who share your passion, we welcome you to our platform. Let's embark on this fitness journey together and achieve a healthier, happier life!
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Table of Contents- [Introduction](#introduction)
+- [Introduction](#introduction)
+  - [Fit and Fine](#fit-and-fine)
+  - [Our Website Features](#our-website-features)
+- [Table of Contents- Introduction](#table-of-contents--introduction)
