@@ -54,6 +54,7 @@ function UserChallengesPage() {
                   <Card.Body>
                     <Card.Title>{challenge.title}</Card.Title>
                     <Card.Text>{challenge.description}</Card.Text>
+                    <Card.Text><strong>Sport:</strong> {challenge.sport}</Card.Text>
                     <Button onClick={() => leaveChallenge(challenge.id)} variant="danger" className={styles.LeaveButton}>
                       Leave Challenge
                     </Button>
