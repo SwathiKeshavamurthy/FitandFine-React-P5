@@ -1,10 +1,10 @@
-<div style="display: flex; align-items: center; justify-content: space-between;">
-  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 50px; height: auto;"><h1 style="margin: 0;">Fit&Fine</h1>
-  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 50px; height: auto;">
-</div>
+<p align="center">
+  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" width="50" height="50" style="vertical-align: middle;">
+  <span style="font-size: 2em; margin: 0 10px;">Fit&Fine</span>
+  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" width="50" height="50" style="vertical-align: middle;">
+</p>
 
 <h2 style="text-align: center;">Welcome</h2>
-
 
 Link to Fit&Fine React Frontend Live website: [CLICK HERE!](https://fitandfine-react-p5-f5d23da9d77c.herokuapp.com/)
 
@@ -89,6 +89,11 @@ Join Fit and Fine today and become part of a community dedicated to health and w
       - [Footer](#footer)
       - [Error Handling](#error-handling)
   - [Future Features](#future-features)
+- [Technology Used](#technology-used)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [Deployment and Version Control](#deployment-and-version-control)
+  - [Development Tools](#development-tools)
 
 # UX Experience
 
@@ -927,3 +932,29 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 - **Description**: Enable integration with popular wearable fitness devices (e.g., Fitbit, Apple Watch) to automatically sync workout data and track progress.
 - **Benefit**: Streamlines the process of logging workouts and provides a more comprehensive view of a user's fitness journey by incorporating data from various sources.
 
+# Technology Used
+
+## Frontend
+- [**HTML5**](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5): Structure of the web pages.
+- [**CSS3**](https://developer.mozilla.org/en-US/docs/Web/CSS): Styling of the web content.
+- [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript): Enhancements of interactivity and web behaviors.
+- [**React**](https://reactjs.org/): JavaScript library for building user interfaces.
+- [**Bootstrap**](https://getbootstrap.com/): Responsive design and layout framework.
+
+## Backend
+- [**Django**](https://www.djangoproject.com/): A high-level Python web framework.
+- [**Django REST Framework (DRF)**](https://www.django-rest-framework.org/): Toolkit for building Web APIs with Django.
+- [**Python**](https://www.python.org/): Backend programming language.
+- [**SQLite**](https://www.sqlite.org/index.html) (Development) / [**PostgreSQL**](https://www.postgresql.org/) (Production): Database systems.
+
+## Deployment and Version Control
+- [**Git**](https://git-scm.com/): Used for version control.
+- [**GitHub**](https://github.com/): Hosts the repository and facilitates version control and collaboration.
+- [**Heroku**](https://www.heroku.com/): Platform as a service (PaaS) for deploying applications.
+- [**Cloudinary**](https://cloudinary.com/): Media management and optimization.
+
+## Development Tools
+- [**GitPod**](https://www.gitpod.io/): Preferred IDE for writing and editing code.
+- [**Django Extensions**](https://github.com/django-extensions/django-extensions): Provides custom management extensions for Django.
+- [**Balsamiq**](https://balsamiq.com/wireframes/): Used for creating wireframes and mockups.
+- [**dbdiagram**](https://dbdiagram.io/home): Used to design site's ERD.
