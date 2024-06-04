@@ -50,6 +50,11 @@ Join Fit and Fine today and become part of a community dedicated to health and w
       - [User Stories](#user-stories)
       - [Milestones](#milestones)
       - [Epics](#epics)
+  - [Scope Plane](#scope-plane)
+    - [Features and Functionalities:](#features-and-functionalities)
+  - [Structural Plane](#structural-plane)
+    - [Information Architecture:](#information-architecture)
+      - [Navigation Structure:](#navigation-structure)
 
 # UX Experience
 
@@ -72,7 +77,7 @@ Fit and Fine offers a range of features to help you stay motivated and connected
 
 - **New Users:** Easily create an account, set up a profile, and start engaging with the community.
 - **Returning Users:** Quickly log in, track their fitness progress, participate in challenges, and interact with posts.
-- **Community Members:** Comment on posts, like and bookmark favorite content, and follow other users.
+- **Community Members:** Comment on posts, like favorite content, and follow other users.
 - **Fitness Enthusiasts:** Find and join fitness challenges, log daily routines, and track calorie intake and workouts.
 - **Contributors:** Create and share new posts related to fitness and wellness.
 
@@ -361,3 +366,119 @@ Epics are large bodies of work that can be broken down into smaller tasks or use
 2. **Documentation - Enhancing Understanding:** As a developer, I want to provide clear documentation so that other developers and users can understand the application.
 3. **Contact Functionality:** As a user, I want to have a contact functionality so that I can reach out for support or inquiries.
 4. **Application Deployment:** Deploy the application to a live environment, ensuring all features work correctly and the platform is stable.
+
+## Scope Plane
+
+The scope plane defines the specific features and functionalities that Fit&Fine will offer. It outlines what the application will do to meet user needs and the business goals.
+
+### Features and Functionalities:
+
+1. **User Management:**
+   - User Registration: Allow users to create an account to participate in challenges and track their fitness.
+   - Secure User Login: Enable users to log in securely to access personal data and interact with the site.
+   - Profile Customization: Let users customize their profiles to express themselves and manage their preferences.
+   - Editable User Profiles: Provide users with the ability to edit their profiles to update their information.
+
+2. **Social Interaction and Community:**
+   - Posting Fitness Updates: Allow users to share their fitness progress with the community.
+   - Commenting on Posts: Enable users to comment on posts to engage with the community.
+   - Liking Posts: Let users like posts to show appreciation for the content.
+   - Following Other Users: Allow users to follow others to stay updated with their activities.
+
+3. **Fitness Challenges and Routines:**
+   - Create Challenges: Superusers can create challenges to engage users with fitness activities.
+   - Edit/Delete Challenges: Superusers can edit or delete challenges to manage them effectively.
+   - View Challenges: Users can view available challenges to decide which ones to participate in.
+   - Join/Leave Challenges: Users can join or leave challenges based on their preferences.
+   - Filtering Challenges: Users can filter challenges by specific sports to find those that match their interests.
+   - Create/View/Edit/Delete Daily Routines: Users can manage their daily fitness routines to track activities.
+
+4. **Platform Navigation and User Experience:**
+   - Pre-login Homepage Viewing: Visitors can view the homepage to understand the platform before logging in.
+   - Accessing the "About" Page: Users can learn more about the platform through an "About" page.
+   - Dynamic Navigation Bar: The navigation bar updates dynamically based on the user's login status and role.
+   - Seamless Routing: Ensure smooth navigation throughout the app.
+   - Enhanced Navigation & Authentication: Provide a streamlined user experience for accessing and using the platform.
+
+5. **Testing and Deployment:**
+   - Thorough Testing: Conduct comprehensive testing to ensure the application's reliability.
+   - Documentation: Provide clear documentation to enhance understanding for developers and users.
+   - Contact Functionality: Allow users to reach out for support or inquiries.
+   - Application Deployment: Deploy the application to a live environment, ensuring stability and correctness.
+
+## Structural Plane
+
+The structural plane outlines the organization and hierarchy of information within Fit&Fine. It defines how the features and functionalities are structured and how users will interact with them.
+
+### Information Architecture:
+
+1. **Home Page:**
+   - Overview of the platform
+   - Access to login and registration
+   - Preview of featured challenges and posts
+
+2. **User Authentication:**
+   - Login Page: Secure login form
+   - Registration Page: User registration form
+
+3. **User Dashboard:**
+   - Summary of user activities
+   - Links to user profile, challenges, and daily routines
+
+4. **User Profile:**
+   - Profile customization options
+   - View and edit profile information
+   - Display of user's posts, comments, likes, and followers
+
+5. **Challenges:**
+   - Challenge Listing Page: Browse and filter challenges
+   - Challenge Detail Page: View challenge details, join or leave challenges
+   - Create/Edit Challenge Page: For superusers to manage challenges
+
+6. **Daily Routines:**
+   - Daily Routine Listing Page: View user's daily routines
+   - Daily Routine Detail Page: View details of a specific routine
+   - Create/Edit Daily Routine Page: Manage daily routines
+
+7. **Social Interaction:**
+   - Post Listing Page: View posts from followed users and the community
+   - Post Detail Page: View detailed post content, comment, and like
+   - Create/Edit Post Page: Manage fitness updates
+
+8. **About and Collaborate Page:**
+   - Information about Fit&Fine
+   - Mission and vision of the platform
+   - Collaborate form for users for collaborations, inquiries and support.
+
+9.  **Footer:**
+    - Links to social media profiles
+    - Quick links to important sections of the site
+
+#### Navigation Structure:
+
+- **Top Navigation Bar:**
+  - Home
+  - Challenges
+  - About&Collaborate
+  - Add Post
+  - Add Daily Routine
+  - Add Challenge(Shown only for logged Superusers)
+  - User Profile (dynamic, shows when logged in)
+  - Login/Register (dynamic, shows when not logged in)
+
+- **Side Navigation (Username Dashboard):**
+  - My Profile
+  - My Likes
+  - My Feeds
+  - My Comments
+  - My Challenges
+  - My Daily Routines
+  - Signout (dynamic, shows when logged in)
+
+
+- **Footer:**
+  - Social Media Links
+  - App download Links
+  - Copy right
+
+This structure ensures that users can easily navigate through the platform, find relevant information, and interact with the community effectively. The combination of the scope and structural planes provides a comprehensive blueprint for developing and organizing Fit&Fine.
