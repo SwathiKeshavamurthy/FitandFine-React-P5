@@ -4,6 +4,35 @@
   <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 100px; height: auto;">
 </div>
 
+- [Introduction - Fit and Fine](#introduction---fit-and-fine)
+- [Table of Contents](#table-of-contents)
+- [UX Experience](#ux-experience)
+  - [Key Features](#key-features)
+  - [User Goals](#user-goals)
+  - [Planning](#planning)
+  - [User Journey](#user-journey)
+- [Design](#design)
+  - [Colors](#colors)
+  - [Fonts](#fonts)
+    - [Logo and Branding](#logo-and-branding)
+- [Project Planning](#project-planning)
+  - [Strategy Plane](#strategy-plane)
+  - [Agile Methodologies - Project Management](#agile-methodologies---project-management)
+    - [Story Points Allocation](#story-points-allocation)
+    - [Sprint Planning](#sprint-planning)
+      - [Allocating Story Points to Milestones](#allocating-story-points-to-milestones)
+    - [MoSCoW Prioritization](#moscow-prioritization)
+    - [User Stories, Milestones, and Epics](#user-stories-milestones-and-epics)
+      - [User Stories](#user-stories)
+      - [Milestones](#milestones)
+      - [Epics](#epics)
+  - [Scope Plane](#scope-plane)
+    - [Features and Functionalities:](#features-and-functionalities)
+  - [Structural Plane](#structural-plane)
+    - [Information Architecture:](#information-architecture)
+      - [Navigation Structure:](#navigation-structure)
+- [Skeleton \& Surface Planes](#skeleton--surface-planes)
+  - [Wireframes](#wireframes)
 
 <h2 style="text-align: center;">Welcome</h2>
 
@@ -55,6 +84,8 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Structural Plane](#structural-plane)
     - [Information Architecture:](#information-architecture)
       - [Navigation Structure:](#navigation-structure)
+- [Skeleton \& Surface Planes](#skeleton--surface-planes)
+  - [Wireframes](#wireframes)
 
 # UX Experience
 
@@ -235,40 +266,45 @@ User stories capture the requirements and functionalities from the user's perspe
 
 | Title                                      | User Story                                                                                           | MoSCoW Priority  | Milestone                              |
 |--------------------------------------------|------------------------------------------------------------------------------------------------------|------------------|----------------------------------------|
-| User Registration                          | As a **user**, I want to **register an account** so that I can **participate in challenges and track my fitness**. | **MUST HAVE**     | Core Backend APIs                      |
-| Secure User Login                          | As a **user**, I want to **log in securely** so that I can **access my personal data and interact with the site**. | **MUST HAVE**     | Core Backend APIs                      |
-| User Profile Customization                 | As a **user**, I want to **customize my profile** so that I can **express myself and manage my preferences**. | **MUST HAVE**     | Core Backend APIs                      |
-| Posting Fitness Updates                    | As a **user**, I want to **post my fitness updates** so that I can **share my progress with the community**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Commenting on Posts                        | As a **user**, I want to **comment on posts** so that I can **engage with the community**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Liking Posts                               | As a **user**, I want to **like posts** so that I can **show my appreciation for the content**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Following Other Users                      | As a **user**, I want to **follow other users** so that I can **stay updated with their activities**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Searching for Posts and Users              | As a **user**, I want to **search for posts and users** so that I can **find relevant content and people**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Pre-login Homepage Viewing                 | As a **visitor**, I want to **view the homepage before logging in** so that I can **understand the platform**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Editable User Profiles                     | As a **user**, I want to **edit my profile** so that I can **update my information and preferences**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Comprehensive Profile View                 | As a **user**, I want to **view comprehensive profiles** so that I can **learn more about other users**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| View Daily Routine                         | As a **user**, I want to **view my daily routine** so that I can **track my fitness activities**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Create Daily Routine                       | As a **user**, I want to **create a daily routine** so that I can **plan and track my daily activities**. | **MUST HAVE**     | Basic User Interface and Functionality |
-| Join Challenge                             | As a **user**, I want to **join fitness challenges** so that I can **stay motivated and achieve my goals**. | **MUST HAVE**     | Advanced Features and Final Integration |
-| Leave Challenge                            | As a **user**, I want to **leave a challenge** so that I can **withdraw my participation if needed**. | **MUST HAVE**     | Advanced Features and Final Integration |
-| Create Challenge (Superuser Only)          | As a **superuser**, I want to **create challenges** so that I can **engage users with fitness activities**. | **MUST HAVE**     | Advanced Features and Final Integration |
-| Edit Challenge (Superuser Only)            | As a **superuser**, I want to **edit existing challenges** so that I can **update or correct challenge details**. | **MUST HAVE**     | Advanced Features and Final Integration |
-| Delete Challenge (Superuser Only)          | As a **superuser**, I want to **delete challenges** so that I can **remove outdated or irrelevant challenges**. | **MUST HAVE**     | Advanced Features and Final Integration |
-| Logging Out Securely                       | As a **user**, I want to **log out securely** so that I can **ensure my account is safe**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Filtering Challenges by Specific Sport     | As a **user**, I want to **filter challenges by specific sport** so that I can **find challenges that match my interests**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Managing User Content                      | As a **user**, I want to **manage my content** so that I can **edit or delete my posts**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Editing and Deleting Posted Content        | As a **user**, I want to **edit or delete my posted content** so that I can **correct or remove it if necessary**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Dynamic Navigation Bar Updates             | As a **user**, I want the **navigation bar to update dynamically** based on my login status and role. | **COULD HAVE**    | Advanced Features and Final Integration |
-| Dynamic Authentication Display             | As a **user**, I want the **authentication display to be dynamic** so that I can **see login/register options when logged out and my profile when logged in**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Authentication - Refreshing Access Tokens  | As a **user**, I want **my session to stay active** without frequently logging in. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Seamless Routing                           | As a **user**, I want **seamless navigation** so that I can **move through the app without interruptions**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Enhanced Navigation & Authentication       | As a **user**, I want **enhanced navigation and authentication** so that I can **easily access and use the platform**. | **SHOULD HAVE**   | Advanced Features and Final Integration |
-| Delete Daily Routine (Schedule) Entries    | As a **user**, I want to **delete my daily routine entries** so that I can **manage my schedule**. | **COULD HAVE**    | Advanced Features and Final Integration |
-| Edit Daily Routine                         | As a **user**, I want to **edit my daily routine** so that I can **update my activities**. | **COULD HAVE**    | Advanced Features and Final Integration |
-| Modify or Delete Comment on a Post         | As a **user**, I want to **modify or delete my comment on a post** so that I can **correct or remove it**. | **COULD HAVE**    | Advanced Features and Final Integration |
-| Accessing the "About" Page                 | As a **user**, I want to **access the "About" page** so that I can **learn more about the platform**. | **SHOULD HAVE**   | Basic User Interface and Functionality |
-| Testing - Ensuring Application Reliability | As a **developer**, I want to **conduct thorough testing** so that I can **ensure the application is reliable**. | **SHOULD HAVE**   | Testing and Bug Fixes |
-| Documentation - Enhancing Understanding    | As a **developer**, I want to **provide clear documentation** so that **other developers and users can understand the application**. | **SHOULD HAVE**   | Testing and Bug Fixes |
-| Collaborate Functionality                      | As a **user**, I want to **have a collaborate functionality** so that I can **reach out for any inquiries and collaborations**. | **COULD HAVE**    | Testing and Bug Fixes |
+| User Registration                          | As a user, I want to register an account so that I can participate in challenges and track my fitness. | MUST HAVE        | Core Backend APIs                      |
+| Secure User Login                          | As a user, I want to log in securely so that I can access my personal data and interact with the site. | MUST HAVE        | Core Backend APIs                      |
+| User Profile Customization                 | As a user, I want to customize my profile so that I can express myself and manage my preferences.     | MUST HAVE        | Core Backend APIs                      |
+| Validation - Data Integrity and User Input | As a developer, I want to validate user input to ensure data integrity.                               | SHOULD HAVE      | Core Backend APIs                      |
+| Posting Fitness Updates                    | As a user, I want to post my fitness updates so that I can share my progress with the community.      | MUST HAVE        | Basic User Interface and Functionality |
+| Commenting on Posts                        | As a user, I want to comment on posts so that I can engage with the community.                        | MUST HAVE        | Basic User Interface and Functionality |
+| Liking Posts                               | As a user, I want to like posts so that I can show my appreciation for the content.                   | MUST HAVE        | Basic User Interface and Functionality |
+| Following Other Users                      | As a user, I want to follow other users so that I can stay updated with their activities.             | MUST HAVE        | Basic User Interface and Functionality |
+| Searching for Posts and Users              | As a user, I want to search for posts and users so that I can find relevant content and people.       | MUST HAVE        | Basic User Interface and Functionality |
+| Pre-login Homepage Viewing                 | As a visitor, I want to view the homepage before logging in so that I can understand the platform.    | MUST HAVE        | Basic User Interface and Functionality |
+| Editable User Profiles                     | As a user, I want to edit my profile so that I can update my information and preferences.             | MUST HAVE        | Basic User Interface and Functionality |
+| Comprehensive Profile View                 | As a user, I want to view comprehensive profiles so that I can learn more about other users.          | MUST HAVE        | Basic User Interface and Functionality |
+| View Daily Routine                         | As a user, I want to view my daily routine so that I can track my fitness activities.                 | MUST HAVE        | Basic User Interface and Functionality |
+| Create Daily Routine                       | As a user, I want to create a daily routine so that I can plan and track my daily activities.         | MUST HAVE        | Basic User Interface and Functionality |
+| Join Challenge                             | As a user, I want to join fitness challenges so that I can stay motivated and achieve my goals.       | MUST HAVE        | Advanced Features and Final Integration |
+| Leave Challenge                            | As a user, I want to leave a challenge so that I can withdraw my participation if needed.             | MUST HAVE        | Advanced Features and Final Integration |
+| Create Challenge (Superuser Only)          | As a superuser, I want to create challenges so that I can engage users with fitness activities.       | MUST HAVE        | Advanced Features and Final Integration |
+| Edit Challenge (Superuser Only)            | As a superuser, I want to edit existing challenges so that I can update or correct challenge details. | MUST HAVE        | Advanced Features and Final Integration |
+| Delete Challenge (Superuser Only)          | As a superuser, I want to delete challenges so that I can remove outdated or irrelevant challenges.   | MUST HAVE        | Advanced Features and Final Integration |
+| Logging Out Securely                       | As a user, I want to log out securely so that I can ensure my account is safe.                        | SHOULD HAVE      | Advanced Features and Final Integration |
+| Filtering Challenges by Specific Sport     | As a user, I want to filter challenges by specific sport so that I can find challenges that match my interests. | SHOULD HAVE | Advanced Features and Final Integration |
+| Managing User Content                      | As a user, I want to manage my content so that I can edit or delete my posts.                         | SHOULD HAVE      | Advanced Features and Final Integration |
+| Editing and Deleting Posted Content        | As a user, I want to edit or delete my posted content so that I can correct or remove it if necessary. | SHOULD HAVE      | Advanced Features and Final Integration |
+| Dynamic Navigation Bar Updates             | As a user, I want the navigation bar to update dynamically based on my login status and role.         | COULD HAVE       | Advanced Features and Final Integration |
+| Dynamic Authentication Display             | As a user, I want the authentication display to be dynamic so that I can see login/register options when logged out and my profile when logged in. | SHOULD HAVE | Advanced Features and Final Integration |
+| Authentication - Refreshing Access Tokens  | As a user, I want my session to stay active without frequently logging in.                            | SHOULD HAVE      | Advanced Features and Final Integration |
+| Seamless Routing                           | As a user, I want seamless navigation so that I can move through the app without interruptions.       | SHOULD HAVE      | Advanced Features and Final Integration |
+| Enhanced Navigation & Authentication       | As a user, I want enhanced navigation and authentication so that I can easily access and use the platform. | SHOULD HAVE | Advanced Features and Final Integration |
+| Delete Daily Routine (Schedule) Entries    | As a user, I want to delete my daily routine entries so that I can manage my schedule.                | COULD HAVE       | Advanced Features and Final Integration |
+| Edit Daily Routine                         | As a user, I want to edit my daily routine so that I can update my activities.                        | COULD HAVE       | Advanced Features and Final Integration |
+| Modify or Delete Comment on a Post         | As a user, I want to modify or delete my comment on a post so that I can correct or remove it.        | COULD HAVE       | Advanced Features and Final Integration |
+| Accessing the "About" Page                 | As a user, I want to access the "About" page so that I can learn more about the platform.             | SHOULD HAVE      | Basic User Interface and Functionality  |
+| Testing - Ensuring Application Reliability | As a developer, I want to conduct thorough testing so that I can ensure the application is reliable.   | SHOULD HAVE      | Testing and Bug Fixes                  |
+| Documentation - Enhancing Understanding    | As a developer, I want to provide clear documentation so that other developers and users can understand the application. | SHOULD HAVE | Testing and Bug Fixes |
+| Contact Functionality                      | As a user, I want to have a contact functionality so that I can reach out for support or inquiries.   | COULD HAVE       | Testing and Bug Fixes                  |
+| Heroku - Application Deployment            | Deploy the application to a live environment to ensure all features work correctly and the platform is stable. | SHOULD HAVE | Project Setup and Initial Framework |
+| ElephantSQL - Database Management          | Manage the database using ElephantSQL for reliable data storage and retrieval.                        | SHOULD HAVE      | Project Setup and Initial Framework    |
+| Cloudinary - Media Management              | Integrate Cloudinary for efficient media management and storage.                                     | SHOULD HAVE      | Project Setup and Initial Framework    |
+| ReactJS - Frontend Development             | Develop the frontend using ReactJS to ensure a responsive and dynamic user interface.                | MUST HAVE        | Project Setup and Initial Framework    |
 
 #### Milestones
 
@@ -482,3 +518,136 @@ The structural plane outlines the organization and hierarchy of information with
   - Copy right
 
 This structure ensures that users can easily navigate through the platform, find relevant information, and interact with the community effectively. The combination of the scope and structural planes provides a comprehensive blueprint for developing and organizing Fit&Fine.
+
+# Skeleton & Surface Planes
+
+## Wireframes
+
+I've used [Balsamiq](https://balsamiq.com/wireframes) to design the site wireframes.
+
+**Home Page Wireframes**
+<details>
+<summary>Click to View Home Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/home.JPG)
+</details>
+
+<details>
+<summary>Click to View Home Page after Login wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/homeafterlogin.JPG)
+
+</details>
+<br>
+
+**Challenges Page Wireframes**
+<details>
+<summary>Click to View Challenges Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/challenges.JPG)
+</details>
+<br>
+
+**Add Challenges Page Wireframes**
+<details>
+<summary>Click to View Create Challenge Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/addchallenge.JPG)
+</details>
+<br>
+
+**My Challenges Page Wireframes**
+
+<details>
+<summary>Click to View My Challenges Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/mychallenges.JPG)
+</details>
+<br>
+
+**My Daily Routine Page Wireframes**
+
+<details>
+<summary>Click to View My Daily Routine Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/mydailyroutine.JPG)
+</details>
+<br>
+
+**Add  Daily Routine Page Wireframes**
+<details>
+<summary>Click to View Create Daily Routine Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/adddailyroutine.JPG)
+</details>
+<br>
+
+**Register Page Wireframes**
+<details>
+<summary>Click to View Register Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/register.JPG)
+</details>
+<br>
+
+**Login Page Wireframes**
+<details>
+<summary>Click to View Login Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/login.JPG)
+</details>
+<br>
+
+**My Posts Page Wireframes**
+<details>
+<summary>Click to View My Posts Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/postview.JPG)
+</details>
+<br>
+
+**Add Post Page Wireframes**
+<details>
+<summary>Click to View My Posts Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/addpost.JPG)
+</details>
+<br>
+
+**My Comments Page Wireframes**
+<details>
+<summary>Click to View My Comments Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/postview.JPG)
+</details>
+<br>
+
+**About & Collaborate Page Wireframes**
+<details>
+<summary>Click to View About & Collaborate Page wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/collaborate.JPG)
+</details>
+<br>
+
+**Profile Wireframes**
+<details>
+<summary>Click to View Profile wireframes</summary>
+
+**Desktop**
+![wireframes](documentation/wireframes/profile.JPG)
+</details>
+<br>
