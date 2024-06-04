@@ -1,7 +1,6 @@
 <div style="display: flex; align-items: center; justify-content: space-between;">
-  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 100px; height: auto;">
-  <h1 style="margin: 0;">Fit&Fine</h1>
-  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 100px; height: auto;">
+  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 50px; height: auto;"><h1 style="margin: 0;">Fit&Fine</h1>
+  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 50px; height: auto;">
 </div>
 
 <h2 style="text-align: center;">Welcome</h2>
