@@ -4,36 +4,6 @@
   <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" style="width: 100px; height: auto;">
 </div>
 
-- [Introduction - Fit and Fine](#introduction---fit-and-fine)
-- [Table of Contents](#table-of-contents)
-- [UX Experience](#ux-experience)
-  - [Key Features](#key-features)
-  - [User Goals](#user-goals)
-  - [Planning](#planning)
-  - [User Journey](#user-journey)
-- [Design](#design)
-  - [Colors](#colors)
-  - [Fonts](#fonts)
-    - [Logo and Branding](#logo-and-branding)
-- [Project Planning](#project-planning)
-  - [Strategy Plane](#strategy-plane)
-  - [Agile Methodologies - Project Management](#agile-methodologies---project-management)
-    - [Story Points Allocation](#story-points-allocation)
-    - [Sprint Planning](#sprint-planning)
-      - [Allocating Story Points to Milestones](#allocating-story-points-to-milestones)
-    - [MoSCoW Prioritization](#moscow-prioritization)
-    - [User Stories, Milestones, and Epics](#user-stories-milestones-and-epics)
-      - [User Stories](#user-stories)
-      - [Milestones](#milestones)
-      - [Epics](#epics)
-  - [Scope Plane](#scope-plane)
-    - [Features and Functionalities:](#features-and-functionalities)
-  - [Structural Plane](#structural-plane)
-    - [Information Architecture:](#information-architecture)
-      - [Navigation Structure:](#navigation-structure)
-- [Skeleton \& Surface Planes](#skeleton--surface-planes)
-  - [Wireframes](#wireframes)
-
 <h2 style="text-align: center;">Welcome</h2>
 
 
@@ -86,6 +56,21 @@ Join Fit and Fine today and become part of a community dedicated to health and w
       - [Navigation Structure:](#navigation-structure)
 - [Skeleton \& Surface Planes](#skeleton--surface-planes)
   - [Wireframes](#wireframes)
+  - [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
+    - [Database Schema](#database-schema)
+    - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+    - [Tables Overview](#tables-overview)
+    - [Relationships](#relationships)
+    - [Design Considerations](#design-considerations)
+  - [Security](#security)
+    - [Data Encryption](#data-encryption)
+    - [CSRF Tokens](#csrf-tokens)
+    - [Django AllAuth](#django-allauth)
+    - [API Security](#api-security)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+    - [Features Functionality](#features-functionality)
+    - [CRUD Functionality](#crud-functionality)
 
 # UX Experience
 
@@ -260,9 +245,17 @@ To effectively manage project scope, Fit&Fine implements the MoSCoW prioritizati
 
 ### User Stories, Milestones, and Epics
 
-#### User Stories
+[Fit&Fine Kanban Board Link](https://github.com/users/SwathiKeshavamurthy/projects/10)
 
-User stories capture the requirements and functionalities from the user's perspective. Each user story includes a brief description of the feature or functionality, acceptance criteria, and story points.
+[Fit&Fine User Stories Link](https://github.com/SwathiKeshavamurthy/FitandFine-P5/issues?page=2&q=is%3Aissue+is%3Aclosed)
+
+[Fit&Fine Milestones Link](https://github.com/SwathiKeshavamurthy/FitandFine-P5/milestones)
+
+[Fit&Fine Frontend GitHub Link](https://github.com/SwathiKeshavamurthy/fitandfine-react-p5)
+
+[Fit&Fine Backend GitHub Link](https://github.com/SwathiKeshavamurthy/FitandFine-P5)
+
+#### User Stories
 
 | Title                                      | User Story                                                                                           | MoSCoW Priority  | Milestone                              |
 |--------------------------------------------|------------------------------------------------------------------------------------------------------|------------------|----------------------------------------|
@@ -651,3 +644,122 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design the site wirefra
 ![wireframes](documentation/wireframes/profile.JPG)
 </details>
 <br>
+
+## Database Schema - Entity Relationship Diagram
+
+I've used [dbdiagram](https://dbdiagram.io/home) to design my site's ERD.
+
+### Database Schema
+
+The Fit&Fine application is structured on a robust database schema designed to facilitate the efficient organization and retrieval of data. Below is an overview of the database schema and the relationships between the different entities.
+
+### Entity Relationship Diagram (ERD)
+
+The Entity Relationship Diagram (ERD) represents the database schema of Fit&Fine, detailing the system's tables, the data fields within them, and the relationships between the tables.
+
+![ERD of Fit&Fine](documentation/screenshots/erd.png)
+
+### Tables Overview
+
+- **User**: Stores information about the users of the platform, including username, email, and password. The `is_superuser` field indicates whether a user has administrative privileges.
+
+- **Profile**: Contains extended user information such as name, profile image, join date, and other personal details. This table extends the `User` table by associating profiles with user accounts.
+
+- **Challenge**: Central to the application, the `Challenge` table holds data about fitness challenges including title, description, start and end dates, sport type, and the challenge creator (owner).
+
+- **ChallengeParticipant**: Keeps track of which users have joined which challenges. Each record links a user to a specific challenge.
+
+- **DailyRoutine**: Stores data related to users' daily fitness routines, including times for wake-up, meals, workouts, and sleep, as well as additional notes about the user's activities for the day.
+
+- **Post**: Stores posts created by users, including the post content, associated media, creation date, and the user who created the post.
+
+- **Comment**: Enables community interaction by storing comments made by users on posts. Each comment is linked to a specific post and user.
+
+- **Like**: Records likes given by users to posts, tracking which user liked which post.
+
+- **Follower**: Tracks the relationships between users, allowing one user to follow another.
+
+- **About**: Stores static information about the application, such as the company's background, mission statement, and contact details.
+
+- **Collaborate**: Stores user inquiries or messages submitted through the platform's contact form.
+
+### Relationships
+
+- A **one-to-many** relationship exists between `User` and `Challenge`, where one user (as a superuser) can create many challenges.
+- A **many-to-many** relationship exists between `User` and `Challenge` through the `ChallengeParticipant` table, allowing multiple users to join multiple challenges.
+- A **one-to-many** relationship is set between `Challenge` and `ChallengeParticipant`, where one challenge can have many participants.
+- A **one-to-many** relationship exists between `User` and `DailyRoutine`, where one user can have many daily routines.
+- A **one-to-many** relationship exists between `User` and `Post`, where one user can create many posts.
+- A **one-to-many** relationship exists between `Post` and `Comment`, where one post can have many comments.
+- A **one-to-many** relationship exists between `User` and `Comment`, where one user can create many comments.
+- A **one-to-many** relationship exists between `Post` and `Like`, where one post can have many likes.
+- A **one-to-many** relationship exists between `User` and `Like`, where one user can like many posts.
+- A **one-to-many** relationship exists between `User` and `Follower`, where one user can follow many users.
+- A **one-to-one** relationship exists between `User` and `Profile`, where each user has one profile.
+
+### Design Considerations
+
+The schema was designed with scalability in mind, ensuring that as the platform grows, new features and data types can be easily incorporated. For example, the separation of the `User` and `Profile` tables allows for flexible user management and the possibility to include additional user attributes in the future without altering the core user authentication system.
+
+## Security
+
+Security is a critical aspect, especially for a platform like Fit&Fine that handles user-generated content and personal data.
+
+### Data Encryption
+- All sensitive data, including user passwords and personal information, are encrypted using robust encryption methods to protect against unauthorized access and breaches.
+
+### CSRF Tokens
+- CSRF (Cross-Site Request Forgery) tokens are included in every form to help authenticate the request with the server when the form is submitted. The absence of these tokens can leave a site vulnerable to attackers who may steal user data.
+
+### Django AllAuth
+- Django AllAuth is an installable framework that handles the user registration and authentication process. Authentication is essential to determine when a user is registered or unregistered and to control what content is accessible on Fit&Fine.
+
+### API Security
+- The backend uses Django REST framework (DRF) for building the API, with token-based authentication to ensure secure access to the API endpoints.
+- Only authenticated users can perform actions like creating posts, joining challenges, and updating profiles.
+- Superuser permissions are required for actions like creating, editing, or deleting challenges.
+
+# Features
+
+## Existing Features
+
+### Features Functionality
+
+| Feature                   | Unregistered User Access | Registered User Access         | CRUD Functionality               |
+|---------------------------|--------------------------|--------------------------------|----------------------------------|
+| **Landing Page**          | Viewable                 | Viewable                       | Read                             |
+| **Registration**          | Available                | N/A                            | Create                           |
+| **Login**                 | Available                | N/A                            | Create/Read                      |
+| **Browse Challenges**     | Viewable                 | Viewable                       | Read                             |
+| **View Challenge Details**| Limited Interaction      | Full Interaction (join, leave, comment) | (superuser only) Read/Create/Update/Delete    |
+| **Profile Management**    | Not Available            | Available                      | Create/Read/Update      |
+| **Create New Challenge**  | Not Available            | Available (Superuser only)     | Create                           |
+| **Edit/Delete Challenge** | Not Available            | Available (Superuser only) | Update/Delete                    |
+| **Join/Leave Challenges** | Not Available            | Available                      | Create/Delete                    |
+| **Daily Routines**        | Not Available            | Available                      | Create/Read/Update/Delete        |
+| **Create Post**           | Not Available            | Available                      | Create                           |
+| **Edit/Delete Post**      | Not Available            | Available (Own Posts)          | Update/Delete                    |
+| **Like Posts**            | Not Available            | Available                      | Create/Delete                    |
+| **Comment on Posts**      | Not Available            | Available                      | Create/Update/Delete             |
+| **Search Functionality**  | Available                | Enhanced (user-specific results) | Read                             |
+|**Follow/Unfollow**        | Not Available            |	Available	 | Create/Delete             |
+| **User Interaction**      | Not Available            | Follow/Unfollow Users, Interact with Community | Create/Read/Delete             |
+| **About & Collaborate**   | Viewable                 | Viewable                       | Read/Create                             |
+
+---
+
+### CRUD Functionality
+
+The table below describes the CRUD operations that can be performed on Fit&Fine's main features by a registered, logged-in user.
+
+| Feature               | Create                    | Read                        | Update               | Delete                 |
+|-----------------------|---------------------------|-----------------------------|----------------------|------------------------|
+| **User Accounts**     | Sign up for a new account | View own and others' profiles | Edit own profile     | - |
+| **Challenges**        | Create new challenges (Superuser only) | Browse and read all challenges | Edit own challenges (Superuser only) | Remove challenges (Superuser only) |
+| **Challenge Participants** | Join challenges         | View joined challenges      | -                    | Leave challenges        |
+| **Daily Routines**    | Add new routines          | View daily routines         | Edit own routines    | Delete own routines     |
+| **Posts**             | Publish new posts         | Browse and read all posts   | Edit own posts       | Remove own posts        |
+| **Comments**          | Comment on posts          | View comments               | Edit own comments    | Delete own comments     |
+| **Likes**             | Like posts   | See likes on posts| -                    | Unlike posts  |
+|**Follow/Unfollow**  | Follow users       |	View followers and following lists	 | - | Unfollow users             |
+| **Search**            | -                         | Search posts/users          | -                    | -                       |
