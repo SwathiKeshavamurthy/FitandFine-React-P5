@@ -70,6 +70,24 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Existing Features](#existing-features)
     - [Features Functionality](#features-functionality)
     - [CRUD Functionality](#crud-functionality)
+    - [All Existing Features with Screenshots](#all-existing-features-with-screenshots)
+      - [Home Page](#home-page)
+      - [User Registration, Login](#user-registration-login)
+      - [User Profile](#user-profile)
+      - [Search Functionality](#search-functionality)
+      - [Responsive Navigation Bar](#responsive-navigation-bar)
+      - [Challenges Page](#challenges-page)
+      - [Add Challenge Page(only for superusers)](#add-challenge-pageonly-for-superusers)
+      - [My Challenges Page](#my-challenges-page)
+      - [Add Posts](#add-posts)
+      - [Comments](#comments)
+      - [My Posts](#my-posts)
+      - [Add Daily Routines](#add-daily-routines)
+      - [My Daily Routines](#my-daily-routines)
+      - [My Likes](#my-likes)
+      - [My Feeds](#my-feeds)
+      - [Footer](#footer)
+      - [Error Handling](#error-handling)
 
 # UX Experience
 
@@ -341,59 +359,59 @@ Epics are large bodies of work that can be broken down into smaller tasks or use
 **Description:** Implement functionalities related to user registration, login, profile management, and authentication.
 
 **User Stories:**
-1. **User Registration:** As a user, I want to register an account so that I can participate in challenges and track my fitness.
-2. **Secure User Login:** As a user, I want to log in securely so that I can access my personal data and interact with the site.
-3. **User Profile Customization:** As a user, I want to customize my profile so that I can express myself and manage my preferences.
-4. **Editable User Profiles:** As a user, I want to edit my profile so that I can update my information and preferences.
-5. **Comprehensive Profile View:** As a user, I want to view comprehensive profiles so that I can learn more about other users.
-6. **Logging Out Securely:** As a user, I want to log out securely so that I can ensure my account is safe.
+1. User Registration
+2. Secure User Login
+3. User Profile Customization
+4. Editable User Profiles
+5. Comprehensive Profile View
+6. Logging Out Securely
 
 **Epic 2: Social Interaction and Community**
 **Description:** Develop features that allow users to interact with each other, share their fitness progress, and engage with the community.
 
 **User Stories:**
-1. **Posting Fitness Updates:** As a user, I want to post my fitness updates so that I can share my progress with the community.
-2. **Commenting on Posts:** As a user, I want to comment on posts so that I can engage with the community.
-3. **Liking Posts:** As a user, I want to like posts so that I can show my appreciation for the content.
-4. **Following Other Users:** As a user, I want to follow other users so that I can stay updated with their activities.
-5. **Managing User Content:** As a user, I want to manage my content so that I can edit or delete my posts.
-6. **Modify or Delete Comment on a Post:** As a user, I want to modify or delete my comment on a post so that I can correct or remove it.
+1. Posting Fitness Updates
+2. Commenting on Posts
+3. Liking Posts
+4. Following Other Users
+5. Managing User Content
+6. Modify or Delete Comment on a Post
 
 **Epic 3: Fitness Challenges and Routines**
 **Description:** Create and manage fitness challenges and daily routines, allowing users to join, participate, and track their progress.
 
 **User Stories:**
-1. **Create Challenge (Superuser Only):** As a superuser, I want to create challenges so that I can engage users with fitness activities.
-2. **Edit Challenge (Superuser Only):** As a superuser, I want to edit existing challenges so that I can update or correct challenge details.
-3. **Delete Challenge (Superuser Only):** As a superuser, I want to delete challenges so that I can remove outdated or irrelevant challenges.
-4. **View Challenges:** As a user, I want to view available challenges so that I can choose which ones to participate in.
-5. **Join Challenge:** As a user, I want to join fitness challenges so that I can stay motivated and achieve my goals.
-6. **Leave Challenge:** As a user, I want to leave a challenge so that I can withdraw my participation if needed.
-7. **Filtering Challenges by Specific Sport:** As a user, I want to filter challenges by specific sport so that I can find challenges that match my interests.
-8. **Create Daily Routine:** As a user, I want to create a daily routine so that I can plan and track my daily activities.
-9. **View Daily Routine:** As a user, I want to view my daily routine so that I can track my fitness activities.
-10. **Edit Daily Routine:** As a user, I want to edit my daily routine so that I can update my activities.
-11. **Delete Daily Routine (Schedule) Entries:** As a user, I want to delete my daily routine entries so that I can manage my schedule.
+1. Create Challenge (Superuser Only)
+2. Edit Challenge (Superuser Only)
+3. Delete Challenge (Superuser Only)
+4. View Challenges
+5. Join Challenge
+6. Leave Challenge
+7. Filtering Challenges by Specific Sport
+8. Create Daily Routine
+9. View Daily Routine
+10. Edit Daily Routine
+11. Delete Daily Routine (Schedule) Entries
 
 **Epic 4: Platform Navigation and User Experience**
 **Description:** Enhance the user experience by implementing seamless navigation, dynamic updates, and responsive design.
 
 **User Stories:**
-1. **Pre-login Homepage Viewing:** As a visitor, I want to view the homepage before logging in so that I can understand the platform.
-2. **Accessing the "About" Page:** As a user, I want to access the "About" page so that I can learn more about the platform.
-3. **Dynamic Navigation Bar Updates:** As a user, I want the navigation bar to update dynamically based on my login status and role.
-4. **Dynamic Authentication Display:** As a user, I want the authentication display to be dynamic so that I can see login/register options when logged out and my profile when logged in.
-5. **Seamless Routing:** As a user, I want seamless navigation so that I can move through the app without interruptions.
-6. **Enhanced Navigation & Authentication:** As a user, I want enhanced navigation and authentication so that I can easily access and use the platform.
+1. Pre-login Homepage Viewing
+2. Accessing the "About" Page
+3. Dynamic Navigation Bar Updates
+4. Dynamic Authentication Display
+5. Seamless Routing
+6. Enhanced Navigation & Authentication
 
 **Epic 5: Testing and Deployment**
 **Description:** Ensure the reliability and readiness of the application through thorough testing and deployment processes.
 
 **User Stories:**
-1. **Testing - Ensuring Application Reliability:** As a developer, I want to conduct thorough testing so that I can ensure the application is reliable.
-2. **Documentation - Enhancing Understanding:** As a developer, I want to provide clear documentation so that other developers and users can understand the application.
-3. **Contact Functionality:** As a user, I want to have a contact functionality so that I can reach out for support or inquiries.
-4. **Application Deployment:** Deploy the application to a live environment, ensuring all features work correctly and the platform is stable.
+1. Testing - Ensuring Application Reliability
+2. Documentation - Enhancing Understanding
+3. Contact Functionality
+4. Application Deployment
 
 ## Scope Plane
 
@@ -762,3 +780,126 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 | **Likes**             | Like posts   | See likes on posts| -                    | Unlike posts  |
 |**Follow/Unfollow**  | Follow users       |	View followers and following lists	 | - | Unfollow users             |
 | **Search**            | -                         | Search posts/users          | -                    | -                       |
+
+### All Existing Features with Screenshots
+
+#### Home Page
+
+  - The initial point of contact with Fit&Fine, where users can understand the platform's offerings. Featured challenges, latest posts, and prominent categories are displayed here.
+
+**Home page before user login**
+  ![Home Page Screenshot](documentation/screenshots/homebefore.JPG)
+**Home page after user login**
+  ![Home Page Screenshot](documentation/screenshots/homeafter.JPG)
+
+#### User Registration, Login
+
+  - New users can sign up by providing their username, email, and password. Existing users can log in using their credentials to access personalized features.
+
+  **Registration/SignUp**
+  ![Sign Up Screenshot](documentation/screenshots/signup.JPG)
+
+  **Login/SignIn**  
+  ![Login Screenshot](documentation/screenshots/signin.JPG)
+
+#### User Profile
+
+  - Upon logging in, users can view and edit their profiles, username and password.
+
+  ![Profile Screenshot](documentation/screenshots/profilepage.JPG)
+
+#### Search Functionality
+
+  - Both registered and unregistered users can filter for specific challenges and search post title, post content, tags and usernames.
+
+  ![Search Screenshot](documentation/screenshots/search.JPG)
+  ![Search Screenshot](documentation/screenshots/filter.JPG)
+
+#### Responsive Navigation Bar
+
+  - The navigation bar provides easy access to all sections of the site, adjusts for different screen sizes, and includes user authentication options.
+
+**Before user login**
+  ![Navigation Bar Screenshot](documentation/screenshots/beforeloginnavbar.JPG)
+
+**After user login**
+  ![Navigation Bar Screenshot](documentation/screenshots/afterloginnavbar.JPG)
+
+**After superuser login**
+  ![Navigation Bar Screenshot](documentation/screenshots/aftersuloginnavbar.JPG)
+
+#### Challenges Page
+
+  - Users can read each challenge, engage with content through joining or leaving challenges.
+
+  ![Challenge Details Screenshot](documentation/screenshots/challenges.JPG)
+
+  - SuperUsers can read, edit and delete each challenge, engage with content through joining or leaving challenges.
+
+  ![Superusers Challenges page Screenshot](documentation/screenshots/superuserchallenges.JPG)
+
+#### Add Challenge Page(only for superusers)
+
+  - Superusers can create new challenges by providing a title, description, start and end dates, and selecting the sport type.
+
+  ![Add Challenge Screenshot](documentation/screenshots/createchallenge.JPG)
+
+#### My Challenges Page
+
+  - Users can view their joined challenegs and leave challenges.
+
+  ![My Challenges Screenshot](documentation/screenshots/mychallenges.JPG)
+
+#### Add Posts
+
+  - Users can create posts by providing a title, content, tag and image.
+  
+  ![Add posts Screenshot](documentation/screenshots/addpost.JPG)
+
+#### Comments
+
+  - Users can leave comments on posts, engage in discussions, and provide feedback. They can also edit and delete their own comments.
+
+  ![Comments Screenshot](documentation/screenshots/mycomments.JPG)
+
+#### My Posts
+
+  - Users can manage their posts through 'My Profile'. They can view all their contributions, edit existing posts, or delete any content they no longer wish to share.
+  
+  ![My posts Screenshot](documentation/screenshots/myposts.JPG)
+
+#### Add Daily Routines
+
+  - Users can create their daily routines including wake-up times, meal times, workout durations, and sleep times.
+
+  ![Add Daily Routines Screenshot](documentation/screenshots/createdailyroutine.JPG)
+
+#### My Daily Routines
+
+  - Users can  view, and manage (edit and delete) their daily routines.
+
+  ![My Daily Routines Screenshot](documentation/screenshots/mydailyroutinepage.JPG)
+
+#### My Likes
+
+  - The 'My Likes' feature allows users to revisit posts they have liked. This feature encourages users to engage with content and authors they appreciate.
+
+  ![My Likes Screenshot](documentation/screenshots/likes.JPG)
+
+#### My Feeds
+
+  - The 'My Feeds' feature allows users to revisit the posts posted by users they are following. 
+  
+  ![My Comments Screenshot](documentation/screenshots/feeds.JPG)
+
+#### Footer
+
+  - The footer is consistent across the platform and offers additional navigation options, social media links, and legal information.
+
+  ![Footer Screenshot](documentation/screenshots/footer.JPG)
+
+#### Error Handling
+
+  - Custom error pages are designed to inform users of various errors such as Not Found  along with a user-friendly message.
+
+  ![Error Page Screenshot](documentation/screenshots/error.JPG)
