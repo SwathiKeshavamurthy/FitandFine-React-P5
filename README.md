@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" width="50" height="50" style="vertical-align: middle;">
+  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" width="80" height="80" style="vertical-align: middle;">
   <span style="font-size: 2em; margin: 0 10px;">Fit&Fine</span>
-  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" width="50" height="50" style="vertical-align: middle;">
+  <img src="documentation/screenshots/favicon.JPG" alt="Fit&Fine Logo" width="80" height="80" style="vertical-align: middle;">
 </p>
 
 <h2 style="text-align: center;">Welcome</h2>
