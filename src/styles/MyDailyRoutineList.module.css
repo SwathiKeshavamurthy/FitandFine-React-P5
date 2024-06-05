@@ -1,3 +1,4 @@
+/* Search bar styles */
 .SearchBar {
   position: relative;
   width: 100%;
@@ -11,6 +12,7 @@
   margin-bottom: 16px;
   border: 1px solid #f1410b;
   outline: none;
+  width: 100%;
 }
 
 .SearchIcon {
@@ -27,12 +29,13 @@
 }
 
 .SearchBar input:focus {
-  border-color: #f1410b; 
+  border-color: #f1410b;
 }
 
+/* Table styles */
 .ExcelSheet {
-  display: grid;
-  gap: 0.5rem;
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 1rem;
 }
 
@@ -42,27 +45,33 @@
   align-items: center;
   padding: 0.5rem;
   border-bottom: 1px solid #ddd;
+  background-color: #fff;
 }
 
 .ExcelHeader {
   font-weight: bold;
   background-color: #f2f2f2;
   padding: 0.5rem;
+  text-align: center;
 }
 
 .ExcelCell {
   padding: 0.5rem;
+  text-align: center;
 }
 
-.EditIcon {
-  color: #0a0a0a;
+.EditIcon,
+.DeleteIcon {
   cursor: pointer;
   margin-right: 0.5rem;
 }
 
+.EditIcon {
+  color: #0a0a0a;
+}
+
 .DeleteIcon {
   color: #0e0d0d;
-  cursor: pointer;
 }
 
 .Content {
