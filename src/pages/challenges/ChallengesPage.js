@@ -222,7 +222,7 @@ function ChallengesPage() {
             </Row>
           </InfiniteScroll>
         ) : (
-          <Asset src={NoResults} message="No challenges available." />
+          <Asset src={NoResults} message="No challenges available in this category." />
         )
       ) : (
         <Asset spinner />
