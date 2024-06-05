@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Asset from "../../components/Asset";
-import { useLocation, useHistory } from "react-router";
+import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { axiosReq } from "../../api/axiosDefaults";
+import { useLocation, useHistory } from "react-router";
 import { toast } from 'react-toastify';
+import { axiosReq } from "../../api/axiosDefaults";
+import Asset from "../../components/Asset";
 import NoResults from "../../assets/noresults.JPG";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/MyDailyRoutineList.module.css";
+import appStyles from "../../App.module.css";
 
 function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
   const [routines, setRoutines] = useState({ results: [] });
@@ -20,11 +22,12 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
   const { pathname } = useLocation();
   const history = useHistory();
   const currentUser = useCurrentUser();
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchRoutines = async () => {
       try {
-        const { data } = await axiosReq.get(`/dailyroutines/?${filter}`);
+        const { data } = await axiosReq.get(`/dailyroutines/?search=${searchTerm}&${filter}`);
         
         const filteredData = {
           ...data,
@@ -45,7 +48,7 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, pathname, currentUser]);
+  }, [filter, pathname, currentUser, searchTerm]);
 
   const handleEdit = (id) => {
     history.push(`/dailyroutines/${id}/edit`);
@@ -67,6 +70,19 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
 
   return (
     <Container className="mt-3">
+      <Form
+        className={styles.SearchBar}
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <i className={`fas fa-search ${styles.SearchIcon}`} />
+        <Form.Control
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          type="text"
+          className="mr-sm-2"
+          placeholder="Search routines by person name"
+        />
+      </Form>
       {hasLoaded ? (
         <>
           {routines.results.length ? (
@@ -122,14 +138,18 @@ function MyDailyRoutineList({ message = "No routines found.", filter = "" }) {
                 ))}
               </div>
             </InfiniteScroll>
+          ) : searchTerm ? (
+            <Container className={appStyles.Content}>
+              <Asset src={NoResults} message="No results found with that name." />
+            </Container>
           ) : (
-            <Container className={styles.Content}>
-              <Asset src={NoResults} message="You haven't added any Daily Routines yet." />
+            <Container className={appStyles.Content}>
+              <Asset src={NoResults} message={message} />
             </Container>
           )}
         </>
       ) : (
-        <Container className={styles.Content}>
+        <Container className={appStyles.Content}>
           <Asset spinner />
         </Container>
       )}
