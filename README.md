@@ -816,9 +816,12 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 
 #### Search Functionality
 
-  - Both registered and unregistered users can filter for specific challenges and search post title, post content, tags and usernames.
+  - Both registered and unregistered users can search post title, post content, tags and usernames.
+  - Registered  users can filter for daily routinesby searching person name on search bar.
+  - Both registered and unregistered users can filter for specific challenges.
 
   ![Search Screenshot](documentation/screenshots/search.JPG)
+  ![Search Screenshot](documentation/screenshots/search1.JPG)
   ![Search Screenshot](documentation/screenshots/filter.JPG)
 
 #### Responsive Navigation Bar
