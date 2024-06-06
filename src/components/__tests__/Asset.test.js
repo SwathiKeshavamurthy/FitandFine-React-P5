@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Asset from '../Asset';
-import { Spinner } from 'react-bootstrap';
 
 jest.mock('react-bootstrap', () => ({
   Spinner: () => <div>Spinner</div>,
