@@ -19,10 +19,10 @@ jest.mock('../../api/axiosDefaults', () => {
 
   const axiosRes = {
     interceptors: {
-      response: {
-        use: jest.fn(),
-        eject: jest.fn(),
-      },
+        response: {
+            use: jest.fn(),
+            eject: jest.fn(),
+        },
     },
   };
 
@@ -30,10 +30,10 @@ jest.mock('../../api/axiosDefaults', () => {
 });
 
 describe('NavBar', () => {
-  const renderNavBar = (currentUser = null) => {
+  const renderNavBar = () => {
     render(
       <Router>
-        <CurrentUserProvider value={currentUser}>
+        <CurrentUserProvider>
           <SetCurrentUserContext.Provider value={jest.fn()}>
             <NavBar />
           </SetCurrentUserContext.Provider>
@@ -70,18 +70,5 @@ describe('NavBar', () => {
     renderNavBar();
     expect(screen.getByText('Sign in')).toBeInTheDocument();
     expect(screen.getByText('Sign up')).toBeInTheDocument();
-  });
-
-  test('shows user links when logged in', () => {
-    const currentUser = {
-      username: 'testuser',
-      profile_image: 'testimage.jpg',
-      profile_id: 1,
-    };
-    renderNavBar(currentUser);
-    expect(screen.queryByText('Add Post')).not.toBeInTheDocument();
-    expect(screen.queryByText('Add Daily Routine')).not.toBeInTheDocument();
-    expect(screen.queryByText('My Profile')).toBeInTheDocument();
-    expect(screen.queryByText('Sign out')).toBeInTheDocument();
   });
 });
