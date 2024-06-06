@@ -15,6 +15,8 @@ Return back to the [README.md](README.md) file.
       - [Steps to Run JavaScript Validation](#steps-to-run-javascript-validation)
       - [Prettier for Code Formatting](#prettier-for-code-formatting)
     - [Lighthouse](#lighthouse)
+    - [Wave Accessibility Evaluation](#wave-accessibility-evaluation)
+  - [Manual Testing](#manual-testing)
 
 ## Validation 
 
@@ -112,7 +114,7 @@ npm run format
 ### Lighthouse
 - **Tool Used:** [Google Lighthouse](https://en.wikipedia.org/wiki/Google_Lighthouse)
 - **Purpose:** To assess the quality of web pages in terms of performance, accessibility, progressive web apps, SEO, and best practices.
-- **Process:** Software Stacks is tested with Google Lighthouse, which provides a detailed report on various aspects of the site’s performance and offers recommendations for improvement.
+- **Process:** Fit&Fine is tested with Google Lighthouse, which provides a detailed report on various aspects of the site’s performance and offers recommendations for improvement.
 
 | HTML Page / Source           |     Lighthouse Report Screenshot     | 
 |------------------------------|--------------------------------------|
@@ -131,3 +133,12 @@ npm run format
 | **My Daily Routine Page**            | ![screenshot](documentation/validation/lighthouse/dailzroutine.JPG) | 
 
 I have converted few images to webp and Even after compressing the images, could not increase the performance scores.
+
+### Wave Accessibility Evaluation
+- **Tool Used:** [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/)
+- **Purpose:** To ensure that the website is accessible to individuals with disabilities by identifying and suggesting fixes for web accessibility issues.
+- **Process:** The Wave tool evaluates each page of Fit&Fine to ensure it complies with accessibility standards like WCAG and Section 508.
+
+![Wave Web Accessibility Evaluation Tool](documentation/validation/wave.JPG)
+
+## Manual Testing
