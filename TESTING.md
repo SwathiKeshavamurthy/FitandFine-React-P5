@@ -17,6 +17,10 @@ Return back to the [README.md](README.md) file.
     - [Lighthouse](#lighthouse)
     - [Wave Accessibility Evaluation](#wave-accessibility-evaluation)
   - [Manual Testing](#manual-testing)
+    - [User Input/Form Validation](#user-inputform-validation)
+    - [Browser Compatibility](#browser-compatibility)
+    - [Toastify Messages Implementation Testing](#toastify-messages-implementation-testing)
+    - [Responsiveness](#responsiveness)
 
 ## Validation 
 
@@ -142,3 +146,99 @@ I have converted few images to webp and Even after compressing the images, could
 ![Wave Web Accessibility Evaluation Tool](documentation/validation/wave.JPG)
 
 ## Manual Testing
+
+### User Input/Form Validation
+
+Thorough testing was conducted on all forms throughout Fit&Fine to ensure accurate user input validation and to provide necessary feedback.
+
+**Form Validation**
+
+| Feature             | Tested? | Action        | Expected Outcome | Pass/Fail | Screenshots |
+|---------------------|---------|---------------|------------------|-----------|-------------|
+| SignUp Form   | Yes     | Submit form   | User receives confirmation message and is redirected to the Home page | Pass      | ![screenshot](documentation/screenshots/signup1.JPG) ![screenshot](documentation/screenshots/signup2.JPG) ![screenshot](documentation/screenshots/signup3.JPG)    |
+| SignIn Form          | Yes     | Submit credentials | User is logged in and redirected to the Home page | Pass      | ![screenshot](documentation/screenshots/signin1.JPG) ![screenshot](documentation/screenshots/signin2.JPG) ![screenshot](documentation/screenshots/signin3.JPG)     |
+| Profile Edit Form       | Yes     | Profile Edit   | Profile is edited and displayed | Pass      | ![screenshot](documentation/screenshots/profilepage.JPG) ![screenshot](documentation/screenshots/profile1.JPG) ![screenshot](documentation/screenshots/changepassword2.JPG)     |
+| Add Post Form       | Yes     | Create post   | Post is created and displayed | Pass      | ![screenshot](documentation/screenshots/addpostvalidation.JPG)     |
+| Add Daily Routine Form  | Yes     | Create dailyroutine   | Routine is created and added to user's daily routines | Pass      | ![screenshot](documentation/screenshots/dailyroutinevalidate.JPG)     |
+| Comment Form        | Yes     | Submit comment | Comment is added to the post | Pass      | ![screenshot](documentation/screenshots/comment1.JPG)     |
+| Challenge Creation Form | Yes  | Create challenge | Challenge is created and listed | Pass      | ![screenshot](documentation/screenshots/challengevalidation.JPG)     |
+| Collaborate Form        | Yes     | Submit form   | User receives confirmation message  | Pass      | ![screenshot](documentation/screenshots/collaborate1.JPG)     |
+
+**User Input**
+
+| Feature                               | Tested? | User Input Required           | User Feedback Provided                                                          | Pass/Fail | Notes on Fix (If Any) |
+|---------------------------------------|---------|------------------------------|--------------------------------------------------------------------------------|-----------|----------------------|
+| Navigation Links                      | Yes     | Click                        | Links redirect to corresponding pages. Hover effects indicate interactivity.    | Pass      | -                    |
+| Home Page                       | Yes     | Click                        | Clicking on posts takes users to detailed views. | Pass      | -                    |
+| Sign Up Page                          | Yes     | Username/Password/Confirm password     | Validation prompts for incorrect input. Success message on account creation.    | Pass      | -                    |
+| Sign In Page                            | Yes     | Username and Password        | Correct credentials required for login. Error message for failed login attempt. | Pass      | -                    |
+| Add Post and Submission               | Yes     | Text/Image Upload  | Mandatory fields checked. Confirmation message upon successful submission.       | Pass      | -                    |
+| Add Challenge and Submission         | Yes     | Text/Image Upload  | Mandatory fields checked. Confirmation message upon successful submission.       | Pass      | -                    |
+| Add Daily Routine                    | Yes     | Text Input/Time Input | All fields validated for correct input. Confirmation message upon successful submission. | Pass      | -                    |
+| Edit Profile                         | Yes     | Text/Image Upload  | Changes saved and confirmation message displayed. Updated profile information shown. | Pass      | -                    |
+| Comment Submission                    | Yes     | Text Input                   | Users can submit comments. Confirmation message displayed.                     | Pass      | -                    |
+| Like/Follow Interaction             | Yes     | Click                        | Visual feedback on like/follow. Counts update accordingly.                    | Pass      | -                    |
+| Search & Filter functionality                  | Yes     | Text Input/Click                   | Relevant search results displayed. Message for no results found.                 | Pass      | -                    |
+| Collaborate Form Submission            | Yes     | Text Input                   | Contact details of the user are submitted. Confirmation message displayed.      | Pass      | -                    |
+| Post Detail Interaction               | Yes     | Click on various elements    | Detailed view of post with comments and like/follow options.                  | Pass      | -                    |
+| Mobile Navigation (Hamburger Menu)    | Yes     | Touch/Click                  | Responsive menu works on touch devices. Toggles correctly.                       | Pass      | -                    |
+| Form Error Handling                   | Yes     | Invalid Inputs               | Forms handle errors with descriptive messages guiding the user.                  | Pass      | -                    |
+| Logout Functionality                  | Yes     | Click                        | Users can log out successfully with a confirmation message.                      | Pass      | -                    |
+| Footer Social Media Icons             | Yes     | Click                        | Social media icons link to external pages in a new tab.                          | Pass      | -                    |
+| Responsive Design Elements            | Yes     | Resize/Change Orientation    | All elements resize and adjust appropriately for different screen sizes.         | Pass      | -                    |
+| Accessibility Features (e.g., ARIA)   | Yes     | Use of assistive technology  | ARIA labels and roles are present, ensuring accessibility compliance.            | Pass      | -                    |
+
+### Browser Compatibility
+
+Fit&Fine was tested on the latest versions of major browsers to ensure compatibility across different platforms.
+
+| Browser              | Tested? | Issues Found | Pass/Fail |
+|----------------------|---------|--------------|-----------|
+| Chrome               | Yes     | None         | Pass      |
+| Firefox              | Yes     | None         | Pass      |
+| Microsoft Edge       | Yes     | None         | Pass      |
+
+These validation steps confirm that Fit&Fine provides a seamless and accessible user experience across various devices and browsers.
+
+### Toastify Messages Implementation Testing
+
+This table documents the Toastify messages used throughout the Fit&Fine website to provide feedback to users after certain actions have been performed.
+
+| Action Performed                      | Message Type | Message Text                                          | Implementation Location         |  Screenshots           |
+|---------------------------------------|--------------|------------------------------------------------------|---------------------------------|---------|
+| SignUp Success | Success   | "Successfully signed in." | After user form submission      | ![screenshot](documentation/screenshots/signinsuccess.JPG)   |
+| Login Success  | Success      | "Logged in successfully."  | After user authentication       | ![screenshot](documentation/screenshots/signinsuccess.JPG)   |
+| Logout Action  | Success      | "Successfully logged out!"   | After user clicks logout        |  ![screenshot](documentation/screenshots/signoutsuccess.JPG)   |
+| Post Submission Success            | Success      | "Your post has been submitted for review."         | After submitting a post form|  ![screenshot](documentation/screenshots/postcreated.JPG)   |
+| Post Updated            | Success      | "Your post has been updated"."         | After editing a post | ![screenshot](documentation/screenshots/postupdated.JPG)  |
+| Post Deletion Confirmation           | Success      | "Your post has been deleted."                      | After deleting a post           | ![screenshot](documentation/screenshots/postdeletemodal.JPG) ![screenshot](documentation/screenshots/postdeletesuccess.JPG) |
+| Comment           | Success      | "Your comment has been posted."| After submitting a comment     | ![screenshot](documentation/screenshots/commented.JPG)   |
+| Comment Updated                        | Success      | "Your comment has been updated."| After updating a comment     |  ![screenshot](documentation/screenshots/commentupdatesuccess.JPG)   |
+| Comment Deleted                         | Success      | "Your comment has been deleted."| After deleting a comment     |  ![screenshot](documentation/screenshots/commentdeletemodal.JPG) ![screenshot](documentation/screenshots/commentdeletesuccess.JPG)   |
+| Followed   | Info         | "Followed successfully."         | When a user is followed       |  ![screenshot](documentation/screenshots/follow.JPG)    |
+| Unfollowed        | Info         |    "Unfollowed successfully"   |  "When a user is unfollowed."       |  ![screenshot](documentation/screenshots/unfollow.JPG)   |
+| Collaborate       | Info     | "Collaboration form submitted successfully!"       | When details are submitted.       | ![screenshot](documentation/screenshots/collaboratemessage.JPG) |
+| Challenge Join Success                 | Success      | "You have joined the challenge!"          | After joining a challenge            |  ![screenshot](documentation/screenshots/challengejoin.JPG)   |
+| Challenge Leave Success                 | Success      | "You have left the challenge!"          | After leaving a challenge            |  ![screenshot](documentation/screenshots/leavechallenge.JPG)   |
+| Challenge Created                     | Success      | "Challenge created successfully!"                    | After creating a challenge      | ![screenshot](documentation/screenshots/challengecreate.JPG) |
+| Challenge Updated                     | Success      | "Challenge updated successfully!"                    | After updating a challenge      | ![screenshot](documentation/screenshots/challengeupdate.JPG) |
+| Challenge Deleted                     | Success      | "Challenge deleted successfully!"                    | After deleting a challenge      | ![screenshot](documentation/screenshots/challengedeletemodal.JPG) ![screenshot](documentation/screenshots/challengedelete.JPG) |
+| Daily Routine Created                 | Success      | "Daily routine created successfully!"                | After creating a daily routine  | ![screenshot](documentation/screenshots/dailyroutinesuccess.JPG) |
+| Daily Routine Updated                 | Success      | "Daily routine updated successfully!"                | After updating a daily routine  | ![screenshot](documentation/screenshots/updatedailyroutine.JPG) |
+| Daily Routine Deleted                 | Success      | "Daily routine deleted successfully!"                | After deleting a daily routine  |  ![screenshot](documentation/screenshots/dailyroutinedeletesuccess.JPG) |
+
+### Responsiveness
+
+Responsiveness and interactive elements were thoroughly tested on various devices and through browser developer tools to ensure a seamless user experience across different platforms and screen sizes.
+
+| Device/Method           | Features Tested |
+|-------------------------|-----------------|
+| Chrome DevTools         | All            |
+| Firefox Responsive Mode | All          |
+| iPhone 13          | Navigation, forms, posts |
+| Tab               | Few |
+| Real Android Device     |All  |
+
+**Identified Issue**
+**Add Post Page:** On some devices, the add post page did not display correctly. 
+
