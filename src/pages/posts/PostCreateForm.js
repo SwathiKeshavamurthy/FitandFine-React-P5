@@ -157,7 +157,11 @@ function PostCreateForm() {
               {image ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
+                    <Image
+                      className={`${appStyles.Image} ${styles.Image}`}
+                      src={image}
+                      rounded
+                    />
                   </figure>
                   <div>
                     <Form.Label
@@ -176,6 +180,7 @@ function PostCreateForm() {
                   <Asset
                     src={Upload}
                     message="Click or tap to upload an image"
+                    className={styles.Image}
                   />
                 </Form.Label>
               )}
