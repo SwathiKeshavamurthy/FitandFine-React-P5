@@ -10,6 +10,10 @@ Return back to the [README.md](README.md) file.
   - [Validation](#validation)
     - [HTML Validation](#html-validation)
     - [CSS Validation](#css-validation)
+    - [JavaScript Validation](#javascript-validation)
+      - [ESLint](#eslint)
+      - [Steps to Run JavaScript Validation](#steps-to-run-javascript-validation)
+      - [Prettier for Code Formatting](#prettier-for-code-formatting)
 
 ## Validation 
 
@@ -48,3 +52,58 @@ The following vendor-specific extensions and pseudo-elements are used in the pro
    - `::-webkit-scrollbar-thumb`
 
 These styles are essential for ensuring optimal font rendering and custom scrollbar appearance, particularly in WebKit-based browsers (such as Chrome and Safari).
+
+### JavaScript Validation
+
+#### ESLint
+
+**Tool Used:** [ESLint](https://eslint.org/)
+
+**Purpose:** To detect errors and potential problems in the JavaScript code, ensuring that all scripts run efficiently and are error-free. ESLint helps enforce consistent coding styles and best practices by identifying and fixing problematic patterns in JavaScript code.
+
+**Process:** JavaScript code is run through ESLint to identify issues related to syntax, deprecated methods, and other inefficiencies. The validation steps include running `npm test`, `npx eslint .`, and `npm run lint`.
+
+#### Steps to Run JavaScript Validation
+
+1. **Install Dependencies:**
+   Ensure all required packages are installed by running:
+   ```sh
+   npm install
+   ```
+
+2. **Run ESLint:**
+   To run ESLint across the project and identify any issues, use:
+   ```sh
+   npx eslint .
+   ```
+   ![JS Validation Screenshot](documentation/validation/eserror.JPG)
+   ![JS Validation Screenshot](documentation/validation/esnoerror.JPG)
+
+3. **Run Lint Script:**
+   To run the lint script defined in `package.json`, use:
+   ```sh
+   npm run lint
+   ```
+   ![JS Validation Screenshot](documentation/validation/linterror.JPG)
+   ![JS Validation Screenshot](documentation/validation/linterror1.JPG)
+   ![JS Validation Screenshot](documentation/validation/lintnoerror.JPG)
+
+4. **Run Tests:**
+   To ensure all tests are passing and there are no issues with the codebase, run:
+   ```sh
+   npm test
+   ```
+   ![JS Validation Screenshot](documentation/validation/test.JPG)
+
+#### Prettier for Code Formatting
+
+To maintain a consistent code style across the project, Prettier is used to automatically format code. Run the following command to format all code files:
+
+```sh
+npm run format
+```
+![JS Validation Screenshot](documentation/validation/prettier.JPG)
+![JS Validation Screenshot](documentation/validation/prettier1.JPG)
+![JS Validation Screenshot](documentation/validation/prettier2.JPG)
+![JS Validation Screenshot](documentation/validation/prettier3.JPG)
+![JS Validation Screenshot](documentation/validation/prettier4.JPG)
