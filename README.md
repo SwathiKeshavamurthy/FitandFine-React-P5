@@ -98,6 +98,10 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Validation Tools](#validation-tools)
   - [Others](#others)
 - [Testing \& Validation](#testing--validation)
+- [Deployment](#deployment)
+  - [Step-by-Step Guide:](#step-by-step-guide)
+  - [Additional Configurations](#additional-configurations)
+
 
 # UX Experience
 
@@ -992,3 +996,72 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 # Testing & Validation
 
 For all testing and validation, please refer to the [TESTING.md](TESTING.md) file.
+
+# Deployment
+
+Deploying the Fit&Fine frontend involves using Heroku, a popular cloud platform that enables easy application deployment. Below are the steps for deploying the React frontend of the Fit&Fine application without using the Heroku CLI.
+
+**Prerequisites:**
+- A GitHub account
+- A Heroku account
+- The React application(own version) repository pushed to GitHub or [Fit&Fine React Backend Github Repo](https://github.com/SwathiKeshavamurthy/FitandFine-P5)
+
+**You will need to ensure the value of axios.defaults.baseURL in src/api/axiosDefaults.js is set to the base URL for your API. Pull to your local development environment and push back to GitHub if necessary; otherwise, leave as is to use the original**
+
+## Step-by-Step Guide:
+
+1. **Create a Production Build:**
+
+   Before deploying, you need to create a production build of your React application. Run the following command in your local development environment:
+
+   ```sh
+   npm run build
+   ```
+
+   This will create a `build` directory with a production build of your app.
+
+2. **Create a New Heroku Application:**
+
+   - Log in to your Heroku account and navigate to the dashboard. Click on "New" and select "Create new app."
+   - Enter a unique name for your application and select your region.
+
+3. **Connect GitHub Repository to Heroku:**
+
+  - In your Heroku dashboard, navigate to the "Deploy" tab of your newly created application. Under the "Deployment method" section, select "GitHub."
+  - Click on "Connect to GitHub" and authorize Heroku to access your GitHub account. Search for your repository name and connect it.
+
+4. **Enable Automatic Deploys:**
+
+   After connecting your repository, enable automatic deploys by clicking on the "Enable Automatic Deploys" button. This will ensure that every push to your GitHub repository triggers a new deployment on Heroku.
+
+5. **Manual Deployment:**
+
+   To manually deploy your app, scroll down to the "Manual deploy" section, select the branch you want to deploy (typically `main` or `master`), and click "Deploy Branch."
+
+6. **Configure Buildpacks:**
+
+   Heroku automatically detects the buildpack for create-react-app, but if needed, you can add the buildpack manually. Navigate to the "Settings" tab, click "Add buildpack," and select "nodejs."
+
+7. **Configure Environment Variables:**
+
+   If your application uses environment variables, configure them in the Heroku dashboard under the "Settings" tab. Click on "Reveal Config Vars" and add your key-value pairs.
+
+8. **Monitor Deployment:**
+
+   Once the deployment process begins, you can monitor its progress in the "Activity" tab. Heroku will show the build logs and indicate whether the deployment was successful.
+
+9. **Access Your Application:**
+
+   Once the deployment is successful, Heroku will provide a URL to access your application. Click on "Open App" in the Heroku dashboard to view your live site.
+
+## Additional Configurations
+
+**Static Files Serving:**
+Ensure your React app is configured to serve static files correctly by setting the appropriate paths in your build configuration.
+
+**Error Handling:**
+Make sure your app has proper error handling for production, including custom error pages and logging mechanisms.
+
+**Security:**
+Use environment variables for sensitive information and ensure HTTPS is enforced on your Heroku app.
+
