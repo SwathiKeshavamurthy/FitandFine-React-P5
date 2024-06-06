@@ -82,7 +82,7 @@ export const CurrentUserProvider = ({ children }) => {
       axiosReq.interceptors.request.eject(requestInterceptor);
       axiosRes.interceptors.response.eject(responseInterceptor);
     };
-  }, [history]);
+  }, [history, setCurrentUser]);
 
   const contextValue = useMemo(
     () => ({ currentUser, setCurrentUser }),
