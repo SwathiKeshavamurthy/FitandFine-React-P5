@@ -118,18 +118,30 @@ const Post = (props) => {
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
-                overlay={<Tooltip>You can't like your own post!</Tooltip>}
+                overlay={<Tooltip>You can&apos;t like your own post!</Tooltip>}
               >
                 <i className="far fa-heart" />
               </OverlayTrigger>
             ) : like_id ? (
-              <span onClick={handleUnlike}>
-                <i className={`fas fa-heart ${styles.Heart}`} />
-              </span>
+              <span
+                role="button"
+                tabIndex={0}
+                onClick={handleUnlike}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleUnlike();
+                }}
+                className={`fas fa-heart ${styles.Heart}`}
+              />
             ) : currentUser ? (
-              <span onClick={handleLike}>
-                <i className={`far fa-heart ${styles.HeartOutline}`} />
-              </span>
+              <span
+                role="button"
+                tabIndex={0}
+                onClick={handleLike}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleLike();
+                }}
+                className={`far fa-heart ${styles.HeartOutline}`}
+              />
             ) : (
               <OverlayTrigger
                 placement="top"

@@ -33,7 +33,7 @@ describe('NavBar', () => {
   const renderNavBar = (currentUser = null) => {
     render(
       <Router>
-        <CurrentUserProvider>
+        <CurrentUserProvider value={currentUser}>
           <SetCurrentUserContext.Provider value={jest.fn()}>
             <NavBar />
           </SetCurrentUserContext.Provider>
@@ -81,7 +81,7 @@ describe('NavBar', () => {
     renderNavBar(currentUser);
     expect(screen.queryByText('Add Post')).not.toBeInTheDocument();
     expect(screen.queryByText('Add Daily Routine')).not.toBeInTheDocument();
-    expect(screen.queryByText('My Profile')).not.toBeInTheDocument();
-    expect(screen.queryByText('Sign out')).not.toBeInTheDocument();
+    expect(screen.queryByText('My Profile')).toBeInTheDocument();
+    expect(screen.queryByText('Sign out')).toBeInTheDocument();
   });
 });

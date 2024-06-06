@@ -14,7 +14,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/MyDailyRoutineList.module.css";
 import appStyles from "../../App.module.css";
 
-function MyDailyRoutineList({ message = "You haven't added any rotines yet.", filter = "" }) {
+function MyDailyRoutineList({ message = "You haven't added any routines yet.", filter = "" }) {
   const [routines, setRoutines] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -131,10 +131,20 @@ function MyDailyRoutineList({ message = "You haven't added any rotines yet.", fi
                         <i
                           className={`fas fa-edit ${styles.EditIcon}`}
                           onClick={() => handleEdit(routine.id)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') handleEdit(routine.id);
+                          }}
                         ></i>
                         <i
                           className={`fas fa-trash ${styles.DeleteIcon}`}
                           onClick={() => { setShowDeleteModal(true); setRoutineToDelete(routine.id); }}
+                          role="button"
+                          tabIndex={0}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') { setShowDeleteModal(true); setRoutineToDelete(routine.id); }
+                          }}
                         ></i>
                       </td>
                     </tr>

@@ -11,10 +11,18 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
       e.preventDefault();
       onClick(e);
     }}
+    onKeyPress={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onClick(e);
+      }
+    }}
     aria-label="toggle-dropdown"
     role="button"
+    tabIndex="0"
   />
 ));
+ThreeDots.displayName = 'ThreeDots';
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (

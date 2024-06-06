@@ -5,12 +5,11 @@ import { useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { axiosRes } from "../../api/axiosDefaults";
 import { toast } from 'react-toastify';
-import styles from "../../styles/Challenge.module.css";
+import styles from "../../styles/Challenges.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const Challenge = ({
   id,
-  owner,
   title,
   description,
   start_date,
@@ -107,8 +106,24 @@ const Challenge = ({
           )}
           {currentUser && currentUser.is_superuser && (
             <div className={styles.ActionIcons}>
-              <i className={`fas fa-edit ${styles.EditIcon}`} onClick={() => history.push(`/challenges/${id}/edit`)}></i>
-              <i className={`fas fa-trash ${styles.DeleteIcon}`} onClick={confirmDelete}></i>
+              <i
+                className={`fas fa-edit ${styles.EditIcon}`}
+                onClick={() => history.push(`/challenges/${id}/edit`)}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') history.push(`/challenges/${id}/edit`);
+                }}
+              ></i>
+              <i
+                className={`fas fa-trash ${styles.DeleteIcon}`}
+                onClick={confirmDelete}
+                role="button"
+                tabIndex={0}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') confirmDelete();
+                }}
+              ></i>
             </div>
           )}
         </Card.Body>

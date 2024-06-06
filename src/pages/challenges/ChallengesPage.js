@@ -189,15 +189,25 @@ function ChallengesPage() {
                               Join Challenge
                             </Button>
                           )}
-                          {currentUser.is_superuser && (
+                          {currentUser.is_superuser && challenge.owner === currentUser.username && (
                             <div className={styles.ActionIcons}>
                               <i
                                 className={`fas fa-edit ${styles.EditIcon}`}
                                 onClick={() => handleEdit(challenge.id)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyPress={(e) => {
+                                  if (e.key === 'Enter') handleEdit(challenge.id);
+                                }}
                               ></i>
                               <i
                                 className={`fas fa-trash ${styles.DeleteIcon}`}
                                 onClick={() => confirmDelete(challenge.id)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyPress={(e) => {
+                                  if (e.key === 'Enter') confirmDelete(challenge.id);
+                                }}
                               ></i>
                             </div>
                           )}
