@@ -14,6 +14,7 @@ Return back to the [README.md](README.md) file.
       - [ESLint](#eslint)
       - [Steps to Run JavaScript Validation](#steps-to-run-javascript-validation)
       - [Prettier for Code Formatting](#prettier-for-code-formatting)
+    - [Lighthouse](#lighthouse)
 
 ## Validation 
 
@@ -107,3 +108,24 @@ npm run format
 ![JS Validation Screenshot](documentation/validation/prettier2.JPG)
 ![JS Validation Screenshot](documentation/validation/prettier3.JPG)
 ![JS Validation Screenshot](documentation/validation/prettier4.JPG)
+
+### Lighthouse
+- **Tool Used:** [Google Lighthouse](https://en.wikipedia.org/wiki/Google_Lighthouse)
+- **Purpose:** To assess the quality of web pages in terms of performance, accessibility, progressive web apps, SEO, and best practices.
+- **Process:** Software Stacks is tested with Google Lighthouse, which provides a detailed report on various aspects of the site’s performance and offers recommendations for improvement.
+
+| HTML Page / Source           |     Lighthouse Report Screenshot     | 
+|------------------------------|--------------------------------------|
+| **Home Page**                | ![screenshot](documentation/validation/lighthouse/home.JPG) |  
+| **Collaborate Page**     | ![screenshot](documentation/validation/lighthouse/collaborate.JPG) | 
+| **Challenges Page**          | ![screenshot](documentation/validation/lighthouse/challenges.JPG) |
+| **Add Post Page**      | ![screenshot](documentation/validation/lighthouse/addpost.JPG) | 
+| **Add Challenge Page**            | ![screenshot](documentation/validation/lighthouse/createchallenge.JPG) | 
+| **Add DailyRoutine Page**               | ![screenshot](documentation/validation/lighthouse/createdailyroutine.JPG) | 
+| **Sigin Page**              | ![screenshot](documentation/validation/lighthouse/signin.JPG) | 
+| **Signup Page**              | ![screenshot](documentation/validation/lighthouse/signup.JPG) |
+| **Profile Page**         | ![screenshot](documentation/validation/lighthouse/profile.JPG) | 
+| **My Likes Page**           | ![screenshot](documentation/validation/lighthouse/likes.JPG) | 
+| **My Feeds Page**        | ![screenshot](documentation/validation/lighthouse/feeds.JPG) | 
+| **My Comments Page**            | ![screenshot](documentation/validation/lighthouse/comments.JPG) |  
+| **My Daily Routine Page**            | ![screenshot](documentation/validation/lighthouse/dailzroutine.JPG) | 
