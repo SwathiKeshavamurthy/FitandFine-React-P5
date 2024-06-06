@@ -1,16 +1,46 @@
+/* ChallengesPage.module.css */
+
 .ChallengesPage {
   margin-top: 20px;
+  padding: 0 15px;
 }
 
-.Header {
-  text-align: center;
+.ButtonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Add gap between buttons */
   margin-bottom: 20px;
 }
 
-.ChallengeCard {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+.FilterButton {
+  background-color: #ff792e;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px; /* Add padding for better appearance */
+  font-size: 1rem; /* Adjust font size for readability */
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.FilterButton:hover {
+  background-color: #ffa62e;
+}
+
+.SelectedFilterButton {
+  background-color: #ffa62e;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.FilterButton:focus,
+.FilterButton:active,
+.SelectedFilterButton:focus,
+.SelectedFilterButton:active {
+  outline: none;
+  box-shadow: none;
 }
 
 .CardImg {
@@ -35,40 +65,41 @@
   cursor: default;
 }
 
-.FilterButton {
-  background-color: #ff792e;
+.LeaveButton {
+  background-color: #dc3545;
   border: none;
   color: white;
   cursor: pointer;
-  margin: 0 5px;
 }
 
-.FilterButton:hover {
-  background-color: #ffa62e;
+.LeaveButton:hover {
+  background-color: #c82333;
 }
 
-.SelectedFilterButton {
-  background-color: #ffa62e;
-  border: none;
-  color: white;
+.LeaveButton:disabled {
+  background-color: #c82333;
+  cursor: default;
+}
+
+.ActionIcons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.EditIcon,
+.DeleteIcon {
   cursor: pointer;
-  margin: 0 5px;
+  color: #ff792e;
 }
 
-.FilterButton:focus,
-.FilterButton:active,
-.JoinButton:focus,
-.JoinButton:active,
-.SelectedFilterButton:focus,
-.SelectedFilterButton:active {
-  outline: none;
-  box-shadow: none;
-  background-color: #ffa62e;
+.EditIcon:hover,
+.DeleteIcon:hover {
+  color: #ffa62e;
 }
 
-.Alert {
-  text-align: center;
-  margin-top: 20px;
-  background-color: #ff792e;
-  color: black;
+.CardImg {
+  height: 200px;
+  object-fit: cover;
 }

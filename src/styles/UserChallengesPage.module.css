@@ -1,5 +1,16 @@
+/* UserChallengesPage.module.css */
+
 .ChallengesPage {
   margin-top: 20px;
+  padding: 0 15px;
+}
+
+.ButtonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Add gap between buttons */
+  margin-bottom: 20px;
 }
 
 .FilterButton {
@@ -7,7 +18,10 @@
   border: none;
   color: white;
   cursor: pointer;
-  margin: 0 5px;
+  padding: 10px 15px; /* Add padding for better appearance */
+  font-size: 1rem; /* Adjust font size for readability */
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .FilterButton:hover {
@@ -19,7 +33,6 @@
   border: none;
   color: white;
   cursor: pointer;
-  margin: 0 5px;
 }
 
 .FilterButton:focus,
@@ -28,24 +41,11 @@
 .SelectedFilterButton:active {
   outline: none;
   box-shadow: none;
-  background-color: #ffa62e;
 }
 
-.JoinButton {
-  background-color: #ff792e;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin-top: auto;
-}
-
-.JoinButton:hover {
-  background-color: #ffa62e;
-}
-
-.JoinButton:disabled {
-  background-color: #28a745;
-  cursor: default;
+.CardImg {
+  height: 200px;
+  object-fit: cover;
 }
 
 .LeaveButton {
@@ -62,27 +62,4 @@
 .LeaveButton:disabled {
   background-color: #c82333;
   cursor: default;
-}
-
-.ActionIcons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.EditIcon,
-.DeleteIcon {
-  cursor: pointer;
-  color: #ff792e;
-}
-
-.EditIcon:hover,
-.DeleteIcon:hover {
-  color: #ffa62e;
-}
-
-.CardImg {
-  height: 200px;
-  object-fit: cover;
 }

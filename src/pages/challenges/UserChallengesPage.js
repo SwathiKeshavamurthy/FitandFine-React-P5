@@ -76,7 +76,7 @@ function UserChallengesPage() {
 
   return (
     <Container className={styles.ChallengesPage}>
-      <div className="d-flex justify-content-center my-3">
+      <div className={styles.ButtonContainer}>
         {sports.map((sport) => (
           <Button
             key={sport}
@@ -96,7 +96,7 @@ function UserChallengesPage() {
         filteredChallenges.length ? (
           <Row>
             {filteredChallenges.map((challenge) => (
-              <Col key={challenge.id} md={6} lg={4} className="mb-4">
+              <Col key={challenge.id} xs={12} md={6} lg={4} className="mb-4">
                 <Card className={styles.ChallengeCard}>
                   <Card.Img
                     variant="top"
