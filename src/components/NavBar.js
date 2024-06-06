@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
@@ -17,6 +17,7 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
+  const history = useHistory(); // Initialize useHistory
 
   const handleSignOut = async () => {
     try {
@@ -24,6 +25,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
       toast.success("Successfully logged out!");  // Show success message
+      history.push("/"); // Redirect to home page after logout
     } catch (err) {
       console.error('Sign out failed: ', err);
       toast.error("Failed to log out.");  // Show error message
