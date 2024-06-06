@@ -50,14 +50,14 @@
 .UpdateButton:hover {
   color: hsl(0, 0%, 8%);
   background-color: #fcfaf8;
-  cursor: pointer; 
+  cursor: pointer;
   transition: color ease-in-out 0.3s;
 }
 
 .CancelButton:hover {
   color: hsl(0, 0%, 8%);
   background-color: #fcfaf8;
-  cursor: pointer; 
+  cursor: pointer;
   transition: color ease-in-out 0.3s;
 }
 
@@ -70,6 +70,6 @@
 .CreateButton:hover {
   color: hsl(0, 0%, 8%);
   background-color: #fcfaf8;
-  cursor: pointer; 
+  cursor: pointer;
   transition: color ease-in-out 0.3s;
 }

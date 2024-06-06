@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 import { toast } from 'react-toastify';
-import { axiosReq } from "../../api/axiosDefaults";
-import styles from "../../styles/DailyRoutineCreateEditForm.module.css";
+import { axiosReq } from '../../api/axiosDefaults';
+import styles from '../../styles/DailyRoutineCreateEditForm.module.css';
 
 function DailyRoutineEditForm() {
   const { id } = useParams();
   const history = useHistory();
   const [errors, setErrors] = useState({});
   const [routineData, setRoutineData] = useState({
-    person_name: "",
-    date: "",
-    wake_up_time: "",
-    breakfast_time: "",
-    lunch_time: "",
-    dinner_time: "",
-    total_calorie_intake: "",
-    water_intake: "",
-    sleep_time: "",
-    workout_minutes: "",
+    person_name: '',
+    date: '',
+    wake_up_time: '',
+    breakfast_time: '',
+    lunch_time: '',
+    dinner_time: '',
+    total_calorie_intake: '',
+    water_intake: '',
+    sleep_time: '',
+    workout_minutes: '',
     junk: false,
-    mood: "happy",
+    mood: 'happy',
   });
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function DailyRoutineEditForm() {
         const { data } = await axiosReq.get(`/dailyroutines/${id}/`);
         setRoutineData(data);
       } catch (err) {
-        toast.error("Failed to fetch daily routine data.");
+        toast.error('Failed to fetch daily routine data.');
       }
     };
     fetchRoutineData();
@@ -72,11 +72,11 @@ function DailyRoutineEditForm() {
     event.preventDefault();
     try {
       await axiosReq.put(`/dailyroutines/${id}/`, routineData);
-      toast.success("Daily routine updated successfully!");
-      history.push("/dailyroutines");
+      toast.success('Daily routine updated successfully!');
+      history.push('/dailyroutines');
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Failed to update daily routine.");
+      toast.error('Failed to update daily routine.');
     }
   };
 
@@ -236,7 +236,12 @@ function DailyRoutineEditForm() {
 
         <Form.Group controlId="mood">
           <Form.Label>Mood</Form.Label>
-          <Form.Control as="select" name="mood" value={mood} onChange={handleChange}>
+          <Form.Control
+            as="select"
+            name="mood"
+            value={mood}
+            onChange={handleChange}
+          >
             <option value="happy">Happy</option>
             <option value="sad">Sad</option>
             <option value="tired">Tired</option>
@@ -266,8 +271,18 @@ function DailyRoutineEditForm() {
         </Form.Group>
 
         <div className={styles.ButtonGroup}>
-          <Button type="submit" className={`${styles.Button} ${styles.UpdateButton}`}>Update</Button>
-          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={() => history.push("/dailyroutines")}>Cancel</Button>
+          <Button
+            type="submit"
+            className={`${styles.Button} ${styles.UpdateButton}`}
+          >
+            Update
+          </Button>
+          <Button
+            className={`${styles.Button} ${styles.CancelButton}`}
+            onClick={() => history.push('/dailyroutines')}
+          >
+            Cancel
+          </Button>
         </div>
       </Form>
     </Container>

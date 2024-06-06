@@ -1,5 +1,5 @@
-import jwtDecode from "jwt-decode";
-import { axiosReq } from "../api/axiosDefaults";
+import jwtDecode from 'jwt-decode';
+import { axiosReq } from '../api/axiosDefaults';
 
 /**
  * Fetches more data from a paginated resource and updates the state.
@@ -20,7 +20,7 @@ export const fetchMoreData = async (resource, setResource) => {
       }, prevResource.results),
     }));
   } catch (err) {
-    console.error("Error fetching more data:", err);
+    console.error('Error fetching more data:', err);
   }
 };
 
@@ -84,7 +84,7 @@ export const unfollowHelper = (profile, clickedProfile) => {
  */
 export const setTokenTimestamp = (data) => {
   const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
-  localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+  localStorage.setItem('refreshTokenTimestamp', refreshTokenTimestamp);
 };
 
 /**
@@ -93,12 +93,12 @@ export const setTokenTimestamp = (data) => {
  * @returns {boolean} - True if the token should be refreshed, false otherwise.
  */
 export const shouldRefreshToken = () => {
-  return !!localStorage.getItem("refreshTokenTimestamp");
+  return !!localStorage.getItem('refreshTokenTimestamp');
 };
 
 /**
  * Removes the token timestamp from local storage.
  */
 export const removeTokenTimestamp = () => {
-  localStorage.removeItem("refreshTokenTimestamp");
+  localStorage.removeItem('refreshTokenTimestamp');
 };

@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq } from '../../api/axiosDefaults';
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from "../../contexts/CurrentUserContext";
+} from '../../contexts/CurrentUserContext';
 
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
-import { toast } from "react-toastify";
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
+import { toast } from 'react-toastify';
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -27,10 +27,10 @@ const ProfileEditForm = () => {
   const imageFile = useRef();
 
   const [profileData, setProfileData] = useState({
-    content: "",
-    image: "",
-    email: "",
-    birthday: "",
+    content: '',
+    image: '',
+    email: '',
+    birthday: '',
   });
   const { content, image, email, birthday } = profileData;
 
@@ -44,11 +44,11 @@ const ProfileEditForm = () => {
           const { content, image, email, birthday } = data;
           setProfileData({ content, image, email, birthday });
         } catch (err) {
-          toast.error("Error fetching profile data.");
-          history.push("/");
+          toast.error('Error fetching profile data.');
+          history.push('/');
         }
       } else {
-        history.push("/");
+        history.push('/');
       }
     };
 
@@ -65,27 +65,27 @@ const ProfileEditForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("content", content);
-    formData.append("email", email);
+    formData.append('content', content);
+    formData.append('email', email);
 
     if (birthday) {
-      formData.append("birthday", birthday);
+      formData.append('birthday', birthday);
     }
 
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append('image', imageFile?.current?.files[0]);
     }
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
-      toast.success("Profile updated successfully.");
+      toast.success('Profile updated successfully.');
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.image,
       }));
       history.goBack();
     } catch (err) {
-      toast.error("Error updating profile.");
+      toast.error('Error updating profile.');
       setErrors(err.response?.data);
     }
   };
@@ -187,7 +187,7 @@ const ProfileEditForm = () => {
                     });
                   }
                 }}
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>

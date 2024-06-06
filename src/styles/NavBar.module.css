@@ -40,8 +40,8 @@
   text-align: left;
 }
 
-.CurrentUserDropdownItem:hover, 
-.CurrentUserDropdownItem:focus, 
+.CurrentUserDropdownItem:hover,
+.CurrentUserDropdownItem:focus,
 .CurrentUserDropdownItem:active,
 .navbar-nav .dropdown-menu .CurrentUserDropdownItem.active,
 .navbar-nav .dropdown-menu .CurrentUserDropdownItem.show,

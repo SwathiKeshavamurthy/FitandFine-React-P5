@@ -1,9 +1,8 @@
 .Container {
-    min-height: 343px;
-    border-color: #ffa62e; 
-  }
+  min-height: 343px;
+  border-color: #ffa62e;
+}
 
 .hidden-file-input {
-    display: none;
-  }
-  
+  display: none;
+}

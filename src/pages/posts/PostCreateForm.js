@@ -1,20 +1,20 @@
-import React, { useRef, useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import Image from "react-bootstrap/Image";
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.jpg";
-import styles from "../../styles/PostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
-import { toast } from "react-toastify";
+import React, { useRef, useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
+import Asset from '../../components/Asset';
+import Upload from '../../assets/upload.jpg';
+import styles from '../../styles/PostCreateEditForm.module.css';
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import { useHistory } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
+import { useRedirect } from '../../hooks/useRedirect';
+import { toast } from 'react-toastify';
 
 const TAG_CHOICES = [
   { value: 'cycling', label: 'Cycling' },
@@ -28,14 +28,14 @@ const TAG_CHOICES = [
 ];
 
 function PostCreateForm() {
-  useRedirect("loggedOut");
+  useRedirect('loggedOut');
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
-    title: "",
-    content: "",
-    image: "",
-    tags: "physical_activity", // Default tag
+    title: '',
+    content: '',
+    image: '',
+    tags: 'physical_activity', // Default tag
   });
   const { title, content, image, tags } = postData;
 
@@ -63,17 +63,17 @@ function PostCreateForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
-    formData.append("tags", tags);
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('image', imageInput.current.files[0]);
+    formData.append('tags', tags);
 
     try {
-      const { data } = await axiosReq.post("/posts/", formData);
-      toast.success("Post created successfully!");
+      const { data } = await axiosReq.post('/posts/', formData);
+      toast.success('Post created successfully!');
       history.push(`/posts/${data.id}`);
     } catch (err) {
-      toast.error("Failed to create post.");
+      toast.error('Failed to create post.');
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -185,7 +185,7 @@ function PostCreateForm() {
                 accept="image/*"
                 onChange={handleChangeImage}
                 ref={imageInput}
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
               />
               <Button
                 className={`${btnStyles.Button} ${btnStyles.Blue} mt-2`}

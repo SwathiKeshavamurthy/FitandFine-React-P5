@@ -10,18 +10,18 @@ import styles from '../../styles/DailyRoutineCreateEditForm.module.css';
 
 const DailyRoutineCreateForm = () => {
   const [routineData, setRoutineData] = useState({
-    person_name: "",
-    date: "",
-    wake_up_time: "",
-    breakfast_time: "",
-    lunch_time: "",
-    dinner_time: "",
-    total_calorie_intake: "",
-    water_intake: "",
-    sleep_time: "",
-    workout_minutes: "",
+    person_name: '',
+    date: '',
+    wake_up_time: '',
+    breakfast_time: '',
+    lunch_time: '',
+    dinner_time: '',
+    total_calorie_intake: '',
+    water_intake: '',
+    sleep_time: '',
+    workout_minutes: '',
     junk: false,
-    mood: "happy",
+    mood: 'happy',
   });
   const [errors, setErrors] = useState({});
   const history = useHistory();
@@ -38,11 +38,11 @@ const DailyRoutineCreateForm = () => {
     event.preventDefault();
     try {
       await axiosReq.post('/dailyroutines/', routineData);
-      toast.success("Daily routine created successfully!");
+      toast.success('Daily routine created successfully!');
       history.push('/dailyroutines');
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Failed to create daily routine.");
+      toast.error('Failed to create daily routine.');
     }
   };
 
@@ -241,10 +241,16 @@ const DailyRoutineCreateForm = () => {
         ))}
 
         <div className={styles.ButtonGroup}>
-          <Button className={`${styles.Button} ${styles.CreateButton}`} type="submit">
+          <Button
+            className={`${styles.Button} ${styles.CreateButton}`}
+            type="submit"
+          >
             Create
           </Button>
-          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={handleCancel}>
+          <Button
+            className={`${styles.Button} ${styles.CancelButton}`}
+            onClick={handleCancel}
+          >
             Cancel
           </Button>
         </div>

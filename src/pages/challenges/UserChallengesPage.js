@@ -1,41 +1,41 @@
-import React, { useEffect, useState, useCallback } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useEffect, useState, useCallback } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
-import Asset from "../../components/Asset";
-import NoResults from "../../assets/noresults.JPG";
-import styles from "../../styles/UserChallengesPage.module.css";
+import Asset from '../../components/Asset';
+import NoResults from '../../assets/noresults.JPG';
+import styles from '../../styles/UserChallengesPage.module.css';
 
 const sports = [
-  "All", 
-  "Cycling", 
-  "Hiking", 
-  "Swimming", 
-  "Yoga", 
-  "Running", 
-  "Physical_Activity", 
-  "Nature", 
-  "Other_Activities"
+  'All',
+  'Cycling',
+  'Hiking',
+  'Swimming',
+  'Yoga',
+  'Running',
+  'Physical_Activity',
+  'Nature',
+  'Other_Activities',
 ];
 
 function UserChallengesPage() {
   const [challenges, setChallenges] = useState([]);
   const [filteredChallenges, setFilteredChallenges] = useState([]);
-  const [selectedSport, setSelectedSport] = useState("All");
+  const [selectedSport, setSelectedSport] = useState('All');
   const [hasLoaded, setHasLoaded] = useState(false);
 
-  const fetchChallenges = useCallback(async (url = "/my-challenges/") => {
+  const fetchChallenges = useCallback(async (url = '/my-challenges/') => {
     try {
       const { data } = await axiosReq.get(url);
       setChallenges(data.results);
       setFilteredChallenges(data.results);
       setHasLoaded(true);
     } catch (err) {
-      console.error("Error fetching challenges:", err);
+      console.error('Error fetching challenges:', err);
       setHasLoaded(true);
     }
   }, []);
@@ -47,20 +47,24 @@ function UserChallengesPage() {
   const leaveChallenge = async (id) => {
     try {
       await axiosReq.post(`/challenges/${id}/leave/`);
-      toast.success("You have left the challenge!");
-      setChallenges(challenges.filter(challenge => challenge.id !== id));
-      setFilteredChallenges(filteredChallenges.filter(challenge => challenge.id !== id));
+      toast.success('You have left the challenge!');
+      setChallenges(challenges.filter((challenge) => challenge.id !== id));
+      setFilteredChallenges(
+        filteredChallenges.filter((challenge) => challenge.id !== id)
+      );
     } catch (err) {
-      toast.error("Failed to leave the challenge.");
+      toast.error('Failed to leave the challenge.');
     }
   };
 
   const filterChallenges = (sport) => {
     setSelectedSport(sport);
-    if (sport === "All") {
+    if (sport === 'All') {
       setFilteredChallenges(challenges);
     } else {
-      const filtered = challenges.filter(challenge => challenge.sport.toLowerCase() === sport.toLowerCase());
+      const filtered = challenges.filter(
+        (challenge) => challenge.sport.toLowerCase() === sport.toLowerCase()
+      );
       setFilteredChallenges(filtered);
     }
   };
@@ -76,14 +80,18 @@ function UserChallengesPage() {
         {sports.map((sport) => (
           <Button
             key={sport}
-            className={selectedSport === sport ? styles.SelectedFilterButton : styles.FilterButton}
+            className={
+              selectedSport === sport
+                ? styles.SelectedFilterButton
+                : styles.FilterButton
+            }
             onClick={() => filterChallenges(sport)}
           >
             {sport}
           </Button>
         ))}
       </div>
-      
+
       {hasLoaded ? (
         filteredChallenges.length ? (
           <Row>
@@ -98,12 +106,20 @@ function UserChallengesPage() {
                   <Card.Body>
                     <Card.Title>{challenge.title}</Card.Title>
                     <Card.Text>{challenge.description}</Card.Text>
-                    <Card.Text><strong>Sport:</strong> {challenge.sport}</Card.Text>
                     <Card.Text>
-                      <strong>Joined on:</strong> 
-                      {challenge.joined_at ? formatDate(challenge.joined_at) : 'N/A'}
+                      <strong>Sport:</strong> {challenge.sport}
                     </Card.Text>
-                    <Button onClick={() => leaveChallenge(challenge.id)} variant="danger" className={styles.LeaveButton}>
+                    <Card.Text>
+                      <strong>Joined on:</strong>
+                      {challenge.joined_at
+                        ? formatDate(challenge.joined_at)
+                        : 'N/A'}
+                    </Card.Text>
+                    <Button
+                      onClick={() => leaveChallenge(challenge.id)}
+                      variant="danger"
+                      className={styles.LeaveButton}
+                    >
                       Leave Challenge
                     </Button>
                   </Card.Body>
@@ -112,7 +128,10 @@ function UserChallengesPage() {
             ))}
           </Row>
         ) : (
-          <Asset src={NoResults} message="You haven't joined any Challenges in this category yet." />
+          <Asset
+            src={NoResults}
+            message="You haven't joined any Challenges in this category yet."
+          />
         )
       ) : (
         <Asset spinner />

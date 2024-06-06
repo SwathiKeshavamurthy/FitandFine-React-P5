@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import { useLocation, useHistory } from "react-router";
+import React, { useEffect, useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { useLocation, useHistory } from 'react-router';
 import { toast } from 'react-toastify';
-import { axiosReq } from "../../api/axiosDefaults";
-import Asset from "../../components/Asset";
-import NoResults from "../../assets/noresults.JPG";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import styles from "../../styles/MyDailyRoutineList.module.css";
-import appStyles from "../../App.module.css";
+import { axiosReq } from '../../api/axiosDefaults';
+import Asset from '../../components/Asset';
+import NoResults from '../../assets/noresults.JPG';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import styles from '../../styles/MyDailyRoutineList.module.css';
+import appStyles from '../../App.module.css';
 
-function MyDailyRoutineList({ message = "You haven't added any routines yet.", filter = "" }) {
+function MyDailyRoutineList({
+  message = "You haven't added any routines yet.",
+  filter = '',
+}) {
   const [routines, setRoutines] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -22,21 +25,25 @@ function MyDailyRoutineList({ message = "You haven't added any routines yet.", f
   const { pathname } = useLocation();
   const history = useHistory();
   const currentUser = useCurrentUser();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchRoutines = async () => {
       try {
-        const { data } = await axiosReq.get(`/dailyroutines/?search=${searchTerm}&${filter}`);
-        
+        const { data } = await axiosReq.get(
+          `/dailyroutines/?search=${searchTerm}&${filter}`
+        );
+
         const filteredData = {
           ...data,
-          results: data.results.filter(routine => routine.owner === currentUser?.username),
+          results: data.results.filter(
+            (routine) => routine.owner === currentUser?.username
+          ),
         };
         setRoutines(filteredData);
         setHasLoaded(true);
       } catch (err) {
-        toast.error("Failed to fetch daily routines.");
+        toast.error('Failed to fetch daily routines.');
       }
     };
 
@@ -61,9 +68,9 @@ function MyDailyRoutineList({ message = "You haven't added any routines yet.", f
         ...prevRoutines,
         results: prevRoutines.results.filter((routine) => routine.id !== id),
       }));
-      toast.success("Daily routine deleted successfully!");
+      toast.success('Daily routine deleted successfully!');
     } catch (err) {
-      toast.error("Failed to delete daily routine.");
+      toast.error('Failed to delete daily routine.');
     }
     setShowDeleteModal(false);
   };
@@ -115,17 +122,33 @@ function MyDailyRoutineList({ message = "You haven't added any routines yet.", f
                   {routines.results.map((routine, index) => (
                     <tr key={routine.id} className={styles.ExcelRow}>
                       <td className={styles.ExcelCell}>{index + 1}</td>
-                      <td className={styles.ExcelCell}>{routine.person_name || "N/A"}</td>
+                      <td className={styles.ExcelCell}>
+                        {routine.person_name || 'N/A'}
+                      </td>
                       <td className={styles.ExcelCell}>{routine.date}</td>
-                      <td className={styles.ExcelCell}>{routine.wake_up_time}</td>
-                      <td className={styles.ExcelCell}>{routine.breakfast_time}</td>
+                      <td className={styles.ExcelCell}>
+                        {routine.wake_up_time}
+                      </td>
+                      <td className={styles.ExcelCell}>
+                        {routine.breakfast_time}
+                      </td>
                       <td className={styles.ExcelCell}>{routine.lunch_time}</td>
-                      <td className={styles.ExcelCell}>{routine.dinner_time}</td>
-                      <td className={styles.ExcelCell}>{routine.total_calorie_intake}</td>
-                      <td className={styles.ExcelCell}>{routine.water_intake} ml</td>
+                      <td className={styles.ExcelCell}>
+                        {routine.dinner_time}
+                      </td>
+                      <td className={styles.ExcelCell}>
+                        {routine.total_calorie_intake}
+                      </td>
+                      <td className={styles.ExcelCell}>
+                        {routine.water_intake} ml
+                      </td>
                       <td className={styles.ExcelCell}>{routine.sleep_time}</td>
-                      <td className={styles.ExcelCell}>{routine.workout_minutes} min</td>
-                      <td className={styles.ExcelCell}>{routine.junk ? "Yes" : "No"}</td>
+                      <td className={styles.ExcelCell}>
+                        {routine.workout_minutes} min
+                      </td>
+                      <td className={styles.ExcelCell}>
+                        {routine.junk ? 'Yes' : 'No'}
+                      </td>
                       <td className={styles.ExcelCell}>{routine.mood}</td>
                       <td className={styles.ExcelCell}>
                         <i
@@ -139,11 +162,17 @@ function MyDailyRoutineList({ message = "You haven't added any routines yet.", f
                         ></i>
                         <i
                           className={`fas fa-trash ${styles.DeleteIcon}`}
-                          onClick={() => { setShowDeleteModal(true); setRoutineToDelete(routine.id); }}
+                          onClick={() => {
+                            setShowDeleteModal(true);
+                            setRoutineToDelete(routine.id);
+                          }}
                           role="button"
                           tabIndex={0}
                           onKeyPress={(e) => {
-                            if (e.key === 'Enter') { setShowDeleteModal(true); setRoutineToDelete(routine.id); }
+                            if (e.key === 'Enter') {
+                              setShowDeleteModal(true);
+                              setRoutineToDelete(routine.id);
+                            }
                           }}
                         ></i>
                       </td>
@@ -154,7 +183,10 @@ function MyDailyRoutineList({ message = "You haven't added any routines yet.", f
             </InfiniteScroll>
           ) : searchTerm ? (
             <Container className={appStyles.Content}>
-              <Asset src={NoResults} message="No results found with that name." />
+              <Asset
+                src={NoResults}
+                message="No results found with that name."
+              />
             </Container>
           ) : (
             <Container className={appStyles.Content}>
@@ -172,12 +204,17 @@ function MyDailyRoutineList({ message = "You haven't added any routines yet.", f
         <Modal.Header closeButton>
           <Modal.Title>Delete Daily Routine</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this daily routine?</Modal.Body>
+        <Modal.Body>
+          Are you sure you want to delete this daily routine?
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={() => handleDelete(routineToDelete)}>
+          <Button
+            variant="danger"
+            onClick={() => handleDelete(routineToDelete)}
+          >
             Delete
           </Button>
         </Modal.Footer>

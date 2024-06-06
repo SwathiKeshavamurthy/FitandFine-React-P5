@@ -1,39 +1,39 @@
-import React, { useEffect, useState, useCallback } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
-import Tooltip from "react-bootstrap/Tooltip";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Modal from "react-bootstrap/Modal";
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useEffect, useState, useCallback } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Modal from 'react-bootstrap/Modal';
+import { useHistory } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
-import Asset from "../../components/Asset";
-import NoResults from "../../assets/noresults.JPG";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import styles from "../../styles/ChallengesPage.module.css";
+import Asset from '../../components/Asset';
+import NoResults from '../../assets/noresults.JPG';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import styles from '../../styles/ChallengesPage.module.css';
 
 const sports = [
-  "All", 
-  "Cycling", 
-  "Hiking", 
-  "Swimming", 
-  "Yoga", 
-  "Running", 
-  "Physical_Activity", 
-  "Nature", 
-  "Other_Activities"
+  'All',
+  'Cycling',
+  'Hiking',
+  'Swimming',
+  'Yoga',
+  'Running',
+  'Physical_Activity',
+  'Nature',
+  'Other_Activities',
 ];
 
 function ChallengesPage() {
   const [challenges, setChallenges] = useState([]);
   const [filteredChallenges, setFilteredChallenges] = useState([]);
-  const [selectedSport, setSelectedSport] = useState("All");
+  const [selectedSport, setSelectedSport] = useState('All');
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -41,24 +41,27 @@ function ChallengesPage() {
   const currentUser = useCurrentUser();
   const history = useHistory();
 
-  const fetchChallenges = useCallback(async (url = "/challenges/") => {
+  const fetchChallenges = useCallback(async (url = '/challenges/') => {
     try {
       const { data } = await axiosReq.get(url);
-      setChallenges(prevChallenges => [...prevChallenges, ...data.results]);
-      setFilteredChallenges(prevChallenges => [...prevChallenges, ...data.results]);
+      setChallenges((prevChallenges) => [...prevChallenges, ...data.results]);
+      setFilteredChallenges((prevChallenges) => [
+        ...prevChallenges,
+        ...data.results,
+      ]);
       if (!data.next) {
         setHasLoaded(true);
       } else {
         fetchChallenges(data.next);
       }
     } catch (err) {
-      console.error("Error fetching challenges:", err);
+      console.error('Error fetching challenges:', err);
       setHasLoaded(true);
     }
   }, []);
 
   useEffect(() => {
-    setChallenges([]); 
+    setChallenges([]);
     setFilteredChallenges([]);
     fetchChallenges();
   }, [currentUser, fetchChallenges]);
@@ -70,12 +73,16 @@ function ChallengesPage() {
   const handleDelete = async (id) => {
     try {
       await axiosReq.delete(`/challenges/${id}/`);
-      setChallenges((prevChallenges) => prevChallenges.filter(challenge => challenge.id !== id));
-      setFilteredChallenges((prevFilteredChallenges) => prevFilteredChallenges.filter(challenge => challenge.id !== id));
-      toast.success("Challenge deleted successfully!");
+      setChallenges((prevChallenges) =>
+        prevChallenges.filter((challenge) => challenge.id !== id)
+      );
+      setFilteredChallenges((prevFilteredChallenges) =>
+        prevFilteredChallenges.filter((challenge) => challenge.id !== id)
+      );
+      toast.success('Challenge deleted successfully!');
     } catch (err) {
-      console.error("Error deleting challenge:", err);
-      toast.error("Failed to delete challenge.");
+      console.error('Error deleting challenge:', err);
+      toast.error('Failed to delete challenge.');
     }
   };
 
@@ -102,28 +109,28 @@ function ChallengesPage() {
     }
     try {
       await axiosReq.post(`/challenges/${id}/join/`);
-      toast.success("You have joined the challenge!");
+      toast.success('You have joined the challenge!');
       setChallenges((prevChallenges) => {
         const updatedChallenges = prevChallenges.map((challenge) =>
-          challenge.id === id
-            ? { ...challenge, is_joined: true }
-            : challenge
+          challenge.id === id ? { ...challenge, is_joined: true } : challenge
         );
         setFilteredChallenges(updatedChallenges);
         return updatedChallenges;
       });
     } catch (err) {
-      console.error("Error joining challenge:", err);
-      toast.error("Failed to join the challenge.");
+      console.error('Error joining challenge:', err);
+      toast.error('Failed to join the challenge.');
     }
   };
 
   const filterChallenges = (sport) => {
     setSelectedSport(sport);
-    if (sport === "All") {
+    if (sport === 'All') {
       setFilteredChallenges(challenges);
     } else {
-      const filtered = challenges.filter(challenge => challenge.sport.toLowerCase() === sport.toLowerCase());
+      const filtered = challenges.filter(
+        (challenge) => challenge.sport.toLowerCase() === sport.toLowerCase()
+      );
       setFilteredChallenges(filtered);
     }
   };
@@ -140,7 +147,11 @@ function ChallengesPage() {
         {sports.map((sport) => (
           <Button
             key={sport}
-            className={selectedSport === sport ? styles.SelectedFilterButton : styles.FilterButton}
+            className={
+              selectedSport === sport
+                ? styles.SelectedFilterButton
+                : styles.FilterButton
+            }
             onClick={() => filterChallenges(sport)}
           >
             {sport}
@@ -149,7 +160,11 @@ function ChallengesPage() {
       </div>
 
       {showAlert && (
-        <Alert variant="warning" onClose={() => setShowAlert(false)} dismissible>
+        <Alert
+          variant="warning"
+          onClose={() => setShowAlert(false)}
+          dismissible
+        >
           Please sign in or register to join a challenge.
         </Alert>
       )}
@@ -159,10 +174,12 @@ function ChallengesPage() {
             dataLength={filteredChallenges.length}
             loader={<Asset spinner />}
             hasMore={!!filteredChallenges.next}
-            next={() => fetchMoreData(filteredChallenges, setFilteredChallenges)}
+            next={() =>
+              fetchMoreData(filteredChallenges, setFilteredChallenges)
+            }
           >
             <Row>
-              {filteredChallenges.map(challenge => (
+              {filteredChallenges.map((challenge) => (
                 <Col key={challenge.id} md={6} lg={4} className="mb-4">
                   <Card className={styles.ChallengeCard}>
                     <Card.Img
@@ -173,11 +190,17 @@ function ChallengesPage() {
                     <Card.Body>
                       <Card.Title>{challenge.title}</Card.Title>
                       <Card.Text>{challenge.description}</Card.Text>
-                      <Card.Text><strong>Sport:</strong> {challenge.sport}</Card.Text>
+                      <Card.Text>
+                        <strong>Sport:</strong> {challenge.sport}
+                      </Card.Text>
                       {currentUser ? (
                         <>
                           {challenge.is_joined ? (
-                            <Button variant="success" disabled className={styles.JoinButton}>
+                            <Button
+                              variant="success"
+                              disabled
+                              className={styles.JoinButton}
+                            >
                               Joined
                             </Button>
                           ) : (
@@ -189,34 +212,34 @@ function ChallengesPage() {
                               Join Challenge
                             </Button>
                           )}
-                          {currentUser.is_superuser && challenge.owner === currentUser.username && (
-                            <div className={styles.ActionIcons}>
-                              <i
-                                className={`fas fa-edit ${styles.EditIcon}`}
-                                onClick={() => handleEdit(challenge.id)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyPress={(e) => {
-                                  if (e.key === 'Enter') handleEdit(challenge.id);
-                                }}
-                              ></i>
-                              <i
-                                className={`fas fa-trash ${styles.DeleteIcon}`}
-                                onClick={() => confirmDelete(challenge.id)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyPress={(e) => {
-                                  if (e.key === 'Enter') confirmDelete(challenge.id);
-                                }}
-                              ></i>
-                            </div>
-                          )}
+                          {currentUser.is_superuser &&
+                            challenge.owner === currentUser.username && (
+                              <div className={styles.ActionIcons}>
+                                <i
+                                  className={`fas fa-edit ${styles.EditIcon}`}
+                                  onClick={() => handleEdit(challenge.id)}
+                                  role="button"
+                                  tabIndex={0}
+                                  onKeyPress={(e) => {
+                                    if (e.key === 'Enter')
+                                      handleEdit(challenge.id);
+                                  }}
+                                ></i>
+                                <i
+                                  className={`fas fa-trash ${styles.DeleteIcon}`}
+                                  onClick={() => confirmDelete(challenge.id)}
+                                  role="button"
+                                  tabIndex={0}
+                                  onKeyPress={(e) => {
+                                    if (e.key === 'Enter')
+                                      confirmDelete(challenge.id);
+                                  }}
+                                ></i>
+                              </div>
+                            )}
                         </>
                       ) : (
-                        <OverlayTrigger
-                          placement="top"
-                          overlay={renderTooltip}
-                        >
+                        <OverlayTrigger placement="top" overlay={renderTooltip}>
                           <Button
                             variant="primary"
                             className={styles.JoinButton}
@@ -232,7 +255,10 @@ function ChallengesPage() {
             </Row>
           </InfiniteScroll>
         ) : (
-          <Asset src={NoResults} message="No challenges available in this category." />
+          <Asset
+            src={NoResults}
+            message="No challenges available in this category."
+          />
         )
       ) : (
         <Asset spinner />

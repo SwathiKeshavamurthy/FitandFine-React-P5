@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import Form from "react-bootstrap/Form";
-import { axiosRes } from "../../api/axiosDefaults";
-import styles from "../../styles/CommentCreateEditForm.module.css";
+import Form from 'react-bootstrap/Form';
+import { axiosRes } from '../../api/axiosDefaults';
+import styles from '../../styles/CommentCreateEditForm.module.css';
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
@@ -25,15 +25,15 @@ function CommentEditForm(props) {
             ? {
                 ...comment,
                 content: formContent.trim(),
-                updated_at: "now",
+                updated_at: 'now',
               }
             : comment;
         }),
       }));
       setShowEditForm(false);
-      toast.success("Comment edited successfully!");
+      toast.success('Comment edited successfully!');
     } catch (err) {
-      toast.error("Failed to edit comment.");
+      toast.error('Failed to edit comment.');
     }
   };
 

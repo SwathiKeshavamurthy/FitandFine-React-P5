@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
-import styles from "../../styles/DailyRoutineCreateEditForm.module.css";
+import styles from '../../styles/DailyRoutineCreateEditForm.module.css';
 
 const ChallengeEditForm = () => {
   const [challengeData, setChallengeData] = useState({
-    title: "",
-    description: "",
-    start_date: "",
-    end_date: "",
-    sport: "",
-    image: "",
+    title: '',
+    description: '',
+    start_date: '',
+    end_date: '',
+    sport: '',
+    image: '',
   });
   const [errors, setErrors] = useState({});
   const history = useHistory();
@@ -27,11 +27,11 @@ const ChallengeEditForm = () => {
         const { data } = await axiosReq.get(`/challenges/${id}/`);
         setChallengeData({
           ...data,
-          image: data.image || "",
+          image: data.image || '',
         });
       } catch (err) {
         // console.log(err);
-        toast.error("Failed to load challenge.");
+        toast.error('Failed to load challenge.');
       }
     };
 
@@ -57,27 +57,27 @@ const ChallengeEditForm = () => {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("title", challengeData.title);
-    formData.append("description", challengeData.description);
-    formData.append("start_date", challengeData.start_date);
-    formData.append("end_date", challengeData.end_date);
-    formData.append("sport", challengeData.sport);
-    if (challengeData.image && typeof challengeData.image === "object") {
-      formData.append("image", challengeData.image);
+    formData.append('title', challengeData.title);
+    formData.append('description', challengeData.description);
+    formData.append('start_date', challengeData.start_date);
+    formData.append('end_date', challengeData.end_date);
+    formData.append('sport', challengeData.sport);
+    if (challengeData.image && typeof challengeData.image === 'object') {
+      formData.append('image', challengeData.image);
     }
 
     try {
       await axiosRes.put(`/challenges/${id}/`, formData);
-      toast.success("Challenge updated successfully!");
+      toast.success('Challenge updated successfully!');
       history.push(`/challenges`);
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Failed to update challenge.");
+      toast.error('Failed to update challenge.');
     }
   };
 
   const handleCancel = () => {
-    history.push("/challenges");
+    history.push('/challenges');
   };
 
   return (
@@ -172,11 +172,7 @@ const ChallengeEditForm = () => {
 
         <Form.Group controlId="image">
           <Form.Label>Image</Form.Label>
-          <Form.Control
-            type="file"
-            name="image"
-            onChange={handleImageChange}
-          />
+          <Form.Control type="file" name="image" onChange={handleImageChange} />
         </Form.Group>
         {errors.image?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
@@ -185,10 +181,16 @@ const ChallengeEditForm = () => {
         ))}
 
         <div className={styles.ButtonGroup}>
-          <Button className={`${styles.Button} ${styles.CreateButton}`} type="submit">
+          <Button
+            className={`${styles.Button} ${styles.CreateButton}`}
+            type="submit"
+          >
             Save
           </Button>
-          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={handleCancel}>
+          <Button
+            className={`${styles.Button} ${styles.CancelButton}`}
+            onClick={handleCancel}
+          >
             Cancel
           </Button>
         </div>

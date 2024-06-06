@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import signupImage from "../../assets/signup.webp";
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
-import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import signupImage from '../../assets/signup.webp';
+import styles from '../../styles/SignInUpForm.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
+import { Form, Button, Col, Row, Container, Alert } from 'react-bootstrap';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
-    username: "",
-    password1: "",
-    password2: "",
+    username: '',
+    password1: '',
+    password2: '',
   });
   const { username, password1, password2 } = signUpData;
 
@@ -30,12 +30,12 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData);
-      toast.success("Successfully signed up! Please sign in.");
-      history.push("/signin");
+      await axios.post('/dj-rest-auth/registration/', signUpData);
+      toast.success('Successfully signed up! Please sign in.');
+      history.push('/signin');
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Failed to sign up.");
+      toast.error('Failed to sign up.');
     }
   };
 
@@ -124,7 +124,6 @@ const SignUpForm = () => {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
       >
-        
         <img
           className={`${appStyles.FillerImage} ${styles.SignUpImage}`}
           src={signupImage}

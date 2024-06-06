@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
-import btnStyles from "../../styles/Button.module.css";
+import btnStyles from '../../styles/Button.module.css';
 
 const UserPasswordForm = () => {
   const [passwordData, setPasswordData] = useState({
-    new_password1: "",
-    new_password2: "",
+    new_password1: '',
+    new_password2: '',
   });
 
   const { new_password1, new_password2 } = passwordData;
@@ -29,11 +29,11 @@ const UserPasswordForm = () => {
     event.preventDefault();
     try {
       await axiosReq.post(`/dj-rest-auth/password/change/`, passwordData);
-      toast.success("Password changed successfully!");
+      toast.success('Password changed successfully!');
       history.goBack();
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Failed to change password.");
+      toast.error('Failed to change password.');
     }
   };
 
@@ -70,7 +70,10 @@ const UserPasswordForm = () => {
           </Alert>
         ))}
 
-        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          type="submit"
+        >
           Change Password
         </Button>
         <Button

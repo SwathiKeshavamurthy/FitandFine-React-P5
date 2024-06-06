@@ -24,7 +24,9 @@ describe('MoreDropdown', () => {
     );
 
     // Click the custom dropdown toggle (ThreeDots)
-    const toggleButton = screen.getByRole('button', { name: /toggle-dropdown/i });
+    const toggleButton = screen.getByRole('button', {
+      name: /toggle-dropdown/i,
+    });
     fireEvent.click(toggleButton);
 
     // Check if edit and delete options are rendered
@@ -49,7 +51,9 @@ describe('ProfileEditDropdown', () => {
     );
 
     // Click the custom dropdown toggle (ThreeDots)
-    const toggleButton = screen.getByRole('button', { name: /toggle-dropdown/i });
+    const toggleButton = screen.getByRole('button', {
+      name: /toggle-dropdown/i,
+    });
     fireEvent.click(toggleButton);
 
     // Check if edit profile, edit username, and edit password options are rendered

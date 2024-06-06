@@ -22,8 +22,10 @@
   margin: 0 5px;
 }
 
-.FilterButton:focus, .FilterButton:active,
-.SelectedFilterButton:focus, .SelectedFilterButton:active {
+.FilterButton:focus,
+.FilterButton:active,
+.SelectedFilterButton:focus,
+.SelectedFilterButton:active {
   outline: none;
   box-shadow: none;
   background-color: #ffa62e;
@@ -42,7 +44,7 @@
 }
 
 .JoinButton:disabled {
-  background-color: #28a745; 
+  background-color: #28a745;
   cursor: default;
 }
 
@@ -69,12 +71,14 @@
   margin-top: 10px;
 }
 
-.EditIcon, .DeleteIcon {
+.EditIcon,
+.DeleteIcon {
   cursor: pointer;
   color: #ff792e;
 }
 
-.EditIcon:hover, .DeleteIcon:hover {
+.EditIcon:hover,
+.DeleteIcon:hover {
   color: #ffa62e;
 }
 

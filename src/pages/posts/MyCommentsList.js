@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { axiosReq } from "../../api/axiosDefaults";
-import Asset from "../../components/Asset";
-import Post from "./Post";
-import NoResults from "../../assets/noresults.JPG";
-import PopularProfiles from "../profiles/PopularProfiles";
-import appStyles from "../../App.module.css";
-import styles from "../../styles/PostsPage.module.css";
-import { fetchMoreData } from "../../utils/utils";
+import React, { useEffect, useState } from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { axiosReq } from '../../api/axiosDefaults';
+import Asset from '../../components/Asset';
+import Post from './Post';
+import NoResults from '../../assets/noresults.JPG';
+import PopularProfiles from '../profiles/PopularProfiles';
+import appStyles from '../../App.module.css';
+import styles from '../../styles/PostsPage.module.css';
+import { fetchMoreData } from '../../utils/utils';
 
 function MyCommentsList() {
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/?commented_by_me=True&search=${query}`);
+        const { data } = await axiosReq.get(
+          `/posts/?commented_by_me=True&search=${query}`
+        );
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
@@ -43,7 +45,10 @@ function MyCommentsList() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <PopularProfiles mobile />
-        <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
+        <Form
+          className={styles.SearchBar}
+          onSubmit={(event) => event.preventDefault()}
+        >
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form.Control
             value={query}
@@ -68,7 +73,10 @@ function MyCommentsList() {
               </InfiniteScroll>
             ) : (
               <Container className={appStyles.Content}>
-                <Asset src={NoResults} message="You haven't commented on any posts yet." />
+                <Asset
+                  src={NoResults}
+                  message="You haven't commented on any posts yet."
+                />
               </Container>
             )}
           </>

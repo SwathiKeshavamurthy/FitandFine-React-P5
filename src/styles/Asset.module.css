@@ -1,8 +1,8 @@
 .Asset {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 50px;
-    border-color: #ffa62e; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  border-color: #ffa62e;
 }

@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import { axiosReq } from '../../api/axiosDefaults';
 import { toast } from 'react-toastify';
-import styles from "../../styles/DailyRoutineCreateEditForm.module.css";
+import styles from '../../styles/DailyRoutineCreateEditForm.module.css';
 
 const ChallengeCreateForm = () => {
   const [challengeData, setChallengeData] = useState({
-    title: "",
-    description: "",
-    start_date: "",
-    end_date: "",
-    sport: "",
-    image: "",
+    title: '',
+    description: '',
+    start_date: '',
+    end_date: '',
+    sport: '',
+    image: '',
   });
   const [errors, setErrors] = useState({});
   const history = useHistory();
@@ -39,27 +39,27 @@ const ChallengeCreateForm = () => {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("title", challengeData.title);
-    formData.append("description", challengeData.description);
-    formData.append("start_date", challengeData.start_date);
-    formData.append("end_date", challengeData.end_date);
-    formData.append("sport", challengeData.sport);
+    formData.append('title', challengeData.title);
+    formData.append('description', challengeData.description);
+    formData.append('start_date', challengeData.start_date);
+    formData.append('end_date', challengeData.end_date);
+    formData.append('sport', challengeData.sport);
     if (challengeData.image) {
-      formData.append("image", challengeData.image);
+      formData.append('image', challengeData.image);
     }
 
     try {
-      await axiosReq.post("/challenges/", formData);
-      toast.success("Challenge created successfully!");
-      history.push("/challenges");
+      await axiosReq.post('/challenges/', formData);
+      toast.success('Challenge created successfully!');
+      history.push('/challenges');
     } catch (err) {
       setErrors(err.response?.data);
-      toast.error("Failed to create challenge.");
+      toast.error('Failed to create challenge.');
     }
   };
 
   const handleCancel = () => {
-    history.push("/challenges");
+    history.push('/challenges');
   };
 
   return (
@@ -154,11 +154,7 @@ const ChallengeCreateForm = () => {
 
         <Form.Group controlId="image">
           <Form.Label>Image</Form.Label>
-          <Form.Control
-            type="file"
-            name="image"
-            onChange={handleImageChange}
-          />
+          <Form.Control type="file" name="image" onChange={handleImageChange} />
         </Form.Group>
         {errors.image?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
@@ -167,10 +163,16 @@ const ChallengeCreateForm = () => {
         ))}
 
         <div className={styles.ButtonGroup}>
-          <Button className={`${styles.Button} ${styles.CreateButton}`} type="submit">
+          <Button
+            className={`${styles.Button} ${styles.CreateButton}`}
+            type="submit"
+          >
             Create
           </Button>
-          <Button className={`${styles.Button} ${styles.CancelButton}`} onClick={handleCancel}>
+          <Button
+            className={`${styles.Button} ${styles.CancelButton}`}
+            onClick={handleCancel}
+          >
             Cancel
           </Button>
         </div>

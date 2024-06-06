@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import styles from "../../styles/Post.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Card from "react-bootstrap/Card";
-import Media from "react-bootstrap/Media";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import { Link, useHistory } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
-import { toast } from "react-toastify";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import React, { useState } from 'react';
+import styles from '../../styles/Post.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import Card from 'react-bootstrap/Card';
+import Media from 'react-bootstrap/Media';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { Link, useHistory } from 'react-router-dom';
+import Avatar from '../../components/Avatar';
+import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import { toast } from 'react-toastify';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const Post = (props) => {
   const {
@@ -47,17 +47,17 @@ const Post = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
-      toast.success("Post deleted successfully.");
-      history.push("/");
+      toast.success('Post deleted successfully.');
+      history.push('/');
     } catch (err) {
-      toast.error("Failed to delete post.");
+      toast.error('Failed to delete post.');
     }
     handleClose();
   };
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { post: id });
+      const { data } = await axiosRes.post('/likes/', { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -67,7 +67,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      toast.error("Failed to like post.");
+      toast.error('Failed to like post.');
     }
   };
 
@@ -83,7 +83,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      toast.error("Failed to unlike post.");
+      toast.error('Failed to unlike post.');
     }
   };
 
@@ -113,7 +113,11 @@ const Post = (props) => {
         <Card.Body>
           {title && <Card.Title className="text-center">{title}</Card.Title>}
           {content && <Card.Text>{content}</Card.Text>}
-          {tags && <div className="text-center"><small>{tags}</small></div>}
+          {tags && (
+            <div className="text-center">
+              <small>{tags}</small>
+            </div>
+          )}
           <div className={styles.PostBar}>
             {is_owner ? (
               <OverlayTrigger
@@ -128,7 +132,7 @@ const Post = (props) => {
                 tabIndex={0}
                 onClick={handleUnlike}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") handleUnlike();
+                  if (e.key === 'Enter') handleUnlike();
                 }}
                 className={`fas fa-heart ${styles.Heart}`}
               />
@@ -138,7 +142,7 @@ const Post = (props) => {
                 tabIndex={0}
                 onClick={handleLike}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") handleLike();
+                  if (e.key === 'Enter') handleLike();
                 }}
                 className={`far fa-heart ${styles.HeartOutline}`}
               />

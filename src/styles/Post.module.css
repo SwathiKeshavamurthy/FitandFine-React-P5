@@ -1,36 +1,36 @@
 .Post {
-    background-color: #ffffff;
-    border: 1px solid #f8a406;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  .Post figure, h5 {
-    margin: 0;
-  }
-  
-  .Heart {
-    color: #f85032;
-  }
-  
-  .Heart:hover {
-    color: #121213;
-  }
-  
-  .HeartOutline:hover {
-    color: #f85032;
-  }
-  
-  .Post .normal {
-    filter: none;
-  }
-  
-  .Post .filter-1977 {
-    filter: sepia(1) hue-rotate(-30deg) saturate(1.4) brightness(1.1);
-  }
-  
-  .Post .brannan {
-    filter: contrast(1.4) sepia(0.5);
-  }
-  
+  background-color: #ffffff;
+  border: 1px solid #f8a406;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.Post figure,
+h5 {
+  margin: 0;
+}
+
+.Heart {
+  color: #f85032;
+}
+
+.Heart:hover {
+  color: #121213;
+}
+
+.HeartOutline:hover {
+  color: #f85032;
+}
+
+.Post .normal {
+  filter: none;
+}
+
+.Post .filter-1977 {
+  filter: sepia(1) hue-rotate(-30deg) saturate(1.4) brightness(1.1);
+}
+
+.Post .brannan {
+  filter: contrast(1.4) sepia(0.5);
+}

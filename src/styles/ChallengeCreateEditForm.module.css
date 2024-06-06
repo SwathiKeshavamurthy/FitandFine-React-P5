@@ -1,18 +1,17 @@
 .Container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .FormLabel {
-    font-weight: bold;
-  }
-  
-  .FormControl {
-    margin-bottom: 10px;
-  }
-  
-  .Button {
-    margin-top: 20px;
-  }
-  
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.FormLabel {
+  font-weight: bold;
+}
+
+.FormControl {
+  margin-bottom: 10px;
+}
+
+.Button {
+  margin-top: 20px;
+}

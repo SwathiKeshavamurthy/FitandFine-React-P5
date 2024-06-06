@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Media } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
-import { MoreDropdown } from "../../components/MoreDropdown";
-import CommentEditForm from "./CommentEditForm";
+import React, { useState } from 'react';
+import { Media } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Avatar from '../../components/Avatar';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import CommentEditForm from './CommentEditForm';
 import { toast } from 'react-toastify';
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";  // Import Button from react-bootstrap
-import styles from "../../styles/Comment.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button'; // Import Button from react-bootstrap
+import styles from '../../styles/Comment.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Comment = (props) => {
   const {
@@ -44,9 +44,9 @@ const Comment = (props) => {
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-      toast.success("Comment deleted successfully!");
+      toast.success('Comment deleted successfully!');
     } catch (err) {
-      toast.error("Failed to delete comment.");
+      toast.error('Failed to delete comment.');
     }
     setShowDeleteModal(false);
   };

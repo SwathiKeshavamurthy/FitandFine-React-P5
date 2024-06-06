@@ -1,7 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { CurrentUserProvider, SetCurrentUserContext } from '../../contexts/CurrentUserContext';
+import {
+  CurrentUserProvider,
+  SetCurrentUserContext,
+} from '../../contexts/CurrentUserContext';
 import NavBar from '../NavBar';
 import axios from 'axios';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
@@ -19,10 +22,10 @@ jest.mock('../../api/axiosDefaults', () => {
 
   const axiosRes = {
     interceptors: {
-        response: {
-            use: jest.fn(),
-            eject: jest.fn(),
-        },
+      response: {
+        use: jest.fn(),
+        eject: jest.fn(),
+      },
     },
   };
 
@@ -45,7 +48,9 @@ describe('NavBar', () => {
   beforeEach(() => {
     axios.post.mockResolvedValue({});
     axios.get.mockResolvedValue({ data: null });
-    axiosReq.interceptors.request.use.mockImplementation((callback) => callback);
+    axiosReq.interceptors.request.use.mockImplementation(
+      (callback) => callback
+    );
     axiosRes.interceptors.response.use.mockImplementation(
       (response) => response,
       (err) => Promise.reject(err)

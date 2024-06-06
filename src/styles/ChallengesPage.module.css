@@ -31,7 +31,7 @@
 }
 
 .JoinButton:disabled {
-  background-color: #28a745; 
+  background-color: #28a745;
   cursor: default;
 }
 
@@ -55,9 +55,12 @@
   margin: 0 5px;
 }
 
-.FilterButton:focus, .FilterButton:active,
-.JoinButton:focus, .JoinButton:active,
-.SelectedFilterButton:focus, .SelectedFilterButton:active {
+.FilterButton:focus,
+.FilterButton:active,
+.JoinButton:focus,
+.JoinButton:active,
+.SelectedFilterButton:focus,
+.SelectedFilterButton:active {
   outline: none;
   box-shadow: none;
   background-color: #ffa62e;
