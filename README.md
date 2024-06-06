@@ -97,6 +97,7 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Security](#security-1)
   - [Validation Tools](#validation-tools)
   - [Others](#others)
+- [Testing \& Validation](#testing--validation)
 
 # UX Experience
 
@@ -982,7 +983,12 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 
 ## Others
 - [**React Infinite Scroll Component**](https://github.com/ankeetmaini/react-infinite-scroll-component): A simple React component to handle infinite scroll for large datasets.
+- **Custom hooks** - The useSingle page custom hook is used throughout the app so that components can check whether the app is currently running in 'single page' mode, and render themselves accordingly.
 - [**Font Awesome**](https://fontawesome.com/): A popular icon set and toolkit used to add vector icons and social logos to the project.
 - [**Favicon.io**](https://favicon.io/): To generate favicon icons for the website.
 - [**Tiny Png**](https://tinypng.com/): To compress the images.
 - [**Free Convert**](https://www.freeconvert.com/): To convert PNG, JPG, JPEG...images to Webp format.
+
+# Testing & Validation
+
+For all testing and validation, please refer to the [TESTING.md](TESTING.md) file.
