@@ -129,3 +129,5 @@ npm run format
 | **My Feeds Page**        | ![screenshot](documentation/validation/lighthouse/feeds.JPG) | 
 | **My Comments Page**            | ![screenshot](documentation/validation/lighthouse/comments.JPG) |  
 | **My Daily Routine Page**            | ![screenshot](documentation/validation/lighthouse/dailzroutine.JPG) | 
+
+I have converted few images to webp and Even after compressing the images, could not increase the performance scores.
