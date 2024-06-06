@@ -95,7 +95,8 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Deployment and Version Control](#deployment-and-version-control)
   - [Development Tools](#development-tools)
   - [Security](#security-1)
-  - [Other Libraries](#other-libraries)
+  - [Validation Tools](#validation-tools)
+  - [Others](#others)
 
 # UX Experience
 
@@ -948,7 +949,6 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 - [**React Router**](https://reactrouter.com/): A collection of navigational components that compose declaratively with your application.
 - [**Axios**](https://axios-http.com/): A promise-based HTTP client for making requests to the backend API.
 - [**React Toastify**](https://fkhadra.github.io/react-toastify/): A React library for notifications. Allows you to add notifications to your app with ease.
-- [**Font Awesome**](https://fontawesome.com/): A popular icon set and toolkit used to add vector icons and social logos to the project.
 
 ## Backend
 - [**Django**](https://www.djangoproject.com/): A high-level Python web framework.
@@ -974,5 +974,15 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 - **Data Encryption**: All sensitive data, including user passwords and personal information, are encrypted using robust encryption methods.
 - **CSRF Tokens**: Included in every form to authenticate the request with the server when the form is submitted, protecting against Cross-Site Request Forgery attacks.
 
-## Other Libraries
+## Validation Tools
+- [**W3C Markup Validation Service**](https://validator.w3.org/): For validating HTML5 code.
+- [**W3C CSS Validation Service**](https://jigsaw.w3.org/css-validator/): For validating CSS3 code.
+- [**JSHint**](https://jshint.com/): A tool that helps to detect errors and potential problems in JavaScript code.
+- [**Google Lighthouse**](https://developers.google.com/web/tools/lighthouse): For auditing performance, accessibility, and search engine optimization of web pages.
+
+## Others
 - [**React Infinite Scroll Component**](https://github.com/ankeetmaini/react-infinite-scroll-component): A simple React component to handle infinite scroll for large datasets.
+- [**Font Awesome**](https://fontawesome.com/): A popular icon set and toolkit used to add vector icons and social logos to the project.
+- [**Favicon.io**](https://favicon.io/): To generate favicon icons for the website.
+- [**Tiny Png**](https://tinypng.com/): To compress the images.
+- [**Free Convert**](https://www.freeconvert.com/): To convert PNG, JPG, JPEG...images to Webp format.
