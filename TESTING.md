@@ -21,6 +21,9 @@ Return back to the [README.md](README.md) file.
     - [Browser Compatibility](#browser-compatibility)
     - [Toastify Messages Implementation Testing](#toastify-messages-implementation-testing)
     - [Responsiveness](#responsiveness)
+  - [Automated Testing](#automated-testing)
+    - [Tools Used:](#tools-used)
+    - [Running Tests](#running-tests)
 
 ## Validation 
 
@@ -242,3 +245,26 @@ Responsiveness and interactive elements were thoroughly tested on various device
 **Identified Issue**
 **Add Post Page:** On some devices, the add post page did not display correctly. 
 
+## Automated Testing
+
+### Tools Used:
+- **Jest**: A JavaScript testing framework for creating and running tests.
+- **React Testing Library**: A set of helpers that let you test React components without relying on their implementation details.
+
+**Key Areas Tested:**
+- **Component Rendering**: Ensure all components render as expected.
+- **User Interactions**: Verify interactions like button clicks, form submissions, and navigation.
+- **Form Validations**: Check that form inputs are validated correctly and error messages are displayed as needed.
+
+### Running Tests
+
+1. **Install the dependencies:**
+   ```sh
+   npm install
+   ```
+
+2. **Run the tests:**
+   ```sh
+   npm test
+   ```
+![JS Validation Screenshot](documentation/validation/test.JPG)
