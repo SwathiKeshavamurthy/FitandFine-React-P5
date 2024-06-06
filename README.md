@@ -94,6 +94,8 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Backend](#backend)
   - [Deployment and Version Control](#deployment-and-version-control)
   - [Development Tools](#development-tools)
+  - [Security](#security-1)
+  - [Other Libraries](#other-libraries)
 
 # UX Experience
 
@@ -942,7 +944,11 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 - [**CSS3**](https://developer.mozilla.org/en-US/docs/Web/CSS): Styling of the web content.
 - [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript): Enhancements of interactivity and web behaviors.
 - [**React**](https://reactjs.org/): JavaScript library for building user interfaces.
-- [**Bootstrap**](https://getbootstrap.com/): Responsive design and layout framework.
+- [**React Bootstrap**](https://react-bootstrap.github.io/): The most popular front-end framework rebuilt for React. Provides a variety of reusable components for responsive web design.
+- [**React Router**](https://reactrouter.com/): A collection of navigational components that compose declaratively with your application.
+- [**Axios**](https://axios-http.com/): A promise-based HTTP client for making requests to the backend API.
+- [**React Toastify**](https://fkhadra.github.io/react-toastify/): A React library for notifications. Allows you to add notifications to your app with ease.
+- [**Font Awesome**](https://fontawesome.com/): A popular icon set and toolkit used to add vector icons and social logos to the project.
 
 ## Backend
 - [**Django**](https://www.djangoproject.com/): A high-level Python web framework.
@@ -959,5 +965,14 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 ## Development Tools
 - [**GitPod**](https://www.gitpod.io/): Preferred IDE for writing and editing code.
 - [**Django Extensions**](https://github.com/django-extensions/django-extensions): Provides custom management extensions for Django.
+- [**Django AllAuth**](https://django-allauth.readthedocs.io/en/latest/): Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
 - [**Balsamiq**](https://balsamiq.com/wireframes/): Used for creating wireframes and mockups.
 - [**dbdiagram**](https://dbdiagram.io/home): Used to design site's ERD.
+
+## Security
+- [**Django AllAuth**](https://django-allauth.readthedocs.io/en/latest/): For user registration, account management, and third-party authentication.
+- **Data Encryption**: All sensitive data, including user passwords and personal information, are encrypted using robust encryption methods.
+- **CSRF Tokens**: Included in every form to authenticate the request with the server when the form is submitted, protecting against Cross-Site Request Forgery attacks.
+
+## Other Libraries
+- [**React Infinite Scroll Component**](https://github.com/ankeetmaini/react-infinite-scroll-component): A simple React component to handle infinite scroll for large datasets.
