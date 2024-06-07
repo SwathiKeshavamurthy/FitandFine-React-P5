@@ -99,7 +99,8 @@ These styles are essential for ensuring optimal font rendering and custom scroll
    npm run lint
    ```
    ![JS Validation Screenshot](documentation/validation/linterror.JPG)
-   ![JS Validation Screenshot](documentation/validation/linterror1.JPG)
+
+   **After fixing all errors and warnings there are no 0 errors and warnings.**
    ![JS Validation Screenshot](documentation/validation/lintnoerror.JPG)
 
 4. **Run Tests:**
