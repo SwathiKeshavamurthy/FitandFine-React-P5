@@ -4,9 +4,9 @@ This is the TESTING file for the [Fit&Fine](https://fitandfine-react-p5-f5d23da9
 
 Return back to the [README.md](README.md) file.
 
-# Table of Contents
+## Table of Contents
 - [Testing](#testing)
-- [Table of Contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Validation](#validation)
     - [HTML Validation](#html-validation)
     - [CSS Validation](#css-validation)
@@ -22,8 +22,12 @@ Return back to the [README.md](README.md) file.
     - [Toastify Messages Implementation Testing](#toastify-messages-implementation-testing)
     - [Responsiveness](#responsiveness)
   - [Automated Testing](#automated-testing)
-    - [Tools Used:](#tools-used)
+    - [Tools Used](#tools-used)
     - [Running Tests](#running-tests)
+  - [Bugs](#bugs)
+    - [Solved Bugs](#solved-bugs)
+    - [Known Bugs](#known-bugs)
+    - [Unknown Bugs](#unknown-bugs)
 
 ## Validation 
 
@@ -247,7 +251,7 @@ Responsiveness and interactive elements were thoroughly tested on various device
 
 ## Automated Testing
 
-### Tools Used:
+### Tools Used
 - **Jest**: A JavaScript testing framework for creating and running tests.
 - **React Testing Library**: A set of helpers that let you test React components without relying on their implementation details.
 
@@ -268,3 +272,63 @@ Responsiveness and interactive elements were thoroughly tested on various device
    npm test
    ```
 ![JS Validation Screenshot](documentation/validation/test.JPG)
+
+## Bugs
+
+### Solved Bugs
+
+1. **Incorrect Display of Joined Date**
+   - **Issue:** The joined date for challenges was incorrectly displayed or not formatted properly.
+   - **Solution:** Implemented proper date formatting using `toLocaleDateString` to ensure the joined date was displayed in "dd-mm-yyyy" format.
+   - **Reference:** [JavaScript Date toLocaleDateString Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)
+
+2. **Navigation Bar Toggle Issue on Mobile Devices**
+   - **Issue:** The navigation bar toggle was not working correctly on some mobile devices.
+   - **Solution:** Updated the React Bootstrap NavBar component to ensure the toggle functioned properly across all screen sizes.
+   - **Reference:** [React Bootstrap NavBar Documentation](https://react-bootstrap.github.io/docs/components/navbar)
+
+3. **Dynamic Filtering of Challenges**
+   - **Issue:** Filtering challenges by sport was not dynamically updating the displayed list.
+   - **Solution:** Implemented state management using React hooks to ensure the filtered list updated correctly based on user selection.
+   - **Reference:** [React Hooks Documentation](https://reactjs.org/docs/hooks-intro.html)
+
+4. **Form Submission Validation for Daily Routines**
+   - **Issue:** Users were able to submit daily routines with future dates and unrealistic water intake values.
+   - **Solution:** Added custom validation in the Django serializers to ensure dates were not in the future and water intake was within a realistic range.
+   - **Reference:** [Django Serializers Documentation](https://www.django-rest-framework.org/api-guide/serializers/)
+
+5. **Image Upload Errors**
+   - **Issue:** Users encountered errors when uploading images, especially when the images exceeded the maximum file size.
+   - **Solution:** Integrated file size validation and compression before uploading images to Cloudinary, and provided user feedback on file size issues.
+   - **Reference:** [Cloudinary Documentation on Image Uploads](https://cloudinary.com/documentation/image_upload_api)
+
+6. **Navigation Bar Update Issues**
+   - **Issue:** The navigation bar did not update dynamically to reflect the user's authentication status.
+   - **Solution:** Utilized React's context API to manage global state, ensuring the navigation bar updates in real-time when the user's authentication status changes.
+   - **Reference:** [React Context API Documentation](https://reactjs.org/docs/context.html)
+
+7. **Challenges Filtering by Sport**
+   - **Issue:** Users were unable to filter challenges by specific sports effectively.
+   - **Solution:** Added filter functionality to the challenges API and implemented corresponding frontend filters to allow users to select and view challenges based on specific sports.
+   - **Reference:** [Django QuerySet API](https://docs.djangoproject.com/en/3.2/ref/models/querysets/)
+  
+8. **Improving Button Layout**
+
+   - **Issue:** Buttons on the Challenges page were overlapping, making them difficult to interact with.
+   - **Solution:** Updated the CSS styles to ensure buttons are spaced properly and do not overlap.
+   - **Reference:** [CSS Flexbox Documentation](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+### Known Bugs
+
+1. **Add Post Page Responsiveness**
+   - The Add Post page does not appear responsive on some devices.
+
+2. **Intermittent Login Issues**
+   - Some users experience intermittent issues while logging in, where the login button becomes unresponsive.
+
+3. **Slow Load Times on Initial Page Load**
+   - The initial page load time is slower than expected, particularly on the home page with many posts.
+
+### Unknown Bugs
+
+There may be other bugs that have not yet been identified.
