@@ -96,7 +96,6 @@ Join Fit and Fine today and become part of a community dedicated to health and w
   - [Deployment and Version Control](#deployment-and-version-control)
   - [Development Tools](#development-tools)
   - [Security](#security-1)
-  - [Validation Tools](#validation-tools)
   - [Others](#others)
 - [Testing \& Validation](#testing--validation)
 - [Deployment](#deployment)
@@ -1017,12 +1016,6 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 - [**Django AllAuth**](https://django-allauth.readthedocs.io/en/latest/): For user registration, account management, and third-party authentication.
 - **Data Encryption**: All sensitive data, including user passwords and personal information, are encrypted using robust encryption methods.
 - **CSRF Tokens**: Included in every form to authenticate the request with the server when the form is submitted, protecting against Cross-Site Request Forgery attacks.
-
-## Validation Tools
-- [**W3C Markup Validation Service**](https://validator.w3.org/): For validating HTML5 code.
-- [**W3C CSS Validation Service**](https://jigsaw.w3.org/css-validator/): For validating CSS3 code.
-- [**JSHint**](https://jshint.com/): A tool that helps to detect errors and potential problems in JavaScript code.
-- [**Google Lighthouse**](https://developers.google.com/web/tools/lighthouse): For auditing performance, accessibility, and search engine optimization of web pages.
 
 ## Others
 - [**React Infinite Scroll Component**](https://github.com/ankeetmaini/react-infinite-scroll-component): A simple React component to handle infinite scroll for large datasets.
