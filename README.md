@@ -89,6 +89,7 @@ Join Fit and Fine today and become part of a community dedicated to health and w
       - [Footer](#footer)
       - [Error Handling](#error-handling)
   - [Future Features](#future-features)
+- [Future Features](#future-features-1)
 - [Technology Used](#technology-used)
   - [Frontend](#frontend)
   - [Backend](#backend)
@@ -104,6 +105,15 @@ Join Fit and Fine today and become part of a community dedicated to health and w
 - [Cloning and Forking](#cloning-and-forking)
   - [Cloning the Repository](#cloning-the-repository)
   - [Forking the Repository](#forking-the-repository)
+- [Credits](#credits)
+  - [Code](#code)
+  - [Media](#media)
+- [Acknowledgements](#acknowledgements)
+  - [Inspiration](#inspiration)
+  - [Project Guidance](#project-guidance)
+  - [ReadMe Structure](#readme-structure)
+  - [Technical Solutions](#technical-solutions)
+  - [Personal Thanks](#personal-thanks)
 
 
 # UX Experience
@@ -934,6 +944,20 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 - **Description**: Introduce group challenges where users can form teams and compete against each other in various fitness activities.
 - **Benefit**: Promotes social interaction and motivation, encouraging users to stay active and engaged with the platform.
 
+**Integration with Wearable Devices**
+- **Description**: Enable integration with popular wearable fitness devices (e.g., Fitbit, Apple Watch) to automatically sync workout data and track progress.
+- **Benefit**: Streamlines the process of logging workouts and provides a more comprehensive view of a user's fitness journey by incorporating data from various sources.
+
+# Future Features
+
+**Advanced Fitness Tracking**
+- **Description**: Implement detailed fitness tracking options, allowing users to log their workouts, meals, and progress over time with advanced analytics.
+- **Benefit**: Provides users with deeper insights into their fitness journey, helping them achieve their goals more effectively.
+
+**Group Challenges**
+- **Description**: Introduce group challenges where users can form teams and compete against each other in various fitness activities.
+- **Benefit**: Promotes social interaction and motivation, encouraging users to stay active and engaged with the platform.
+
 **Live Workout Sessions**
 - **Description**: Offer live-streamed workout sessions with professional trainers, including interactive Q&A sessions and real-time feedback.
 - **Benefit**: Enhances user engagement by providing professional guidance and a sense of community during live workouts.
@@ -945,6 +969,18 @@ The table below describes the CRUD operations that can be performed on Fit&Fine'
 **Integration with Wearable Devices**
 - **Description**: Enable integration with popular wearable fitness devices (e.g., Fitbit, Apple Watch) to automatically sync workout data and track progress.
 - **Benefit**: Streamlines the process of logging workouts and provides a more comprehensive view of a user's fitness journey by incorporating data from various sources.
+
+**Enhanced Validation and Performance Optimization**
+- **Description**: Improve the validation mechanisms for all forms to ensure robust data integrity, including stricter checks on user inputs and more informative error messages.
+- **Benefit**: Ensures a higher quality of data entered by users, reducing errors and enhancing the overall user experience.
+
+**Comprehensive Testing Suite**
+- **Description**: Develop a comprehensive suite of automated tests for all existing features, including unit tests, integration tests, and end-to-end tests.
+- **Benefit**: Ensures the reliability and stability of the application, reducing the risk of bugs and regressions in future updates.
+
+**Security Enhancements**
+- **Description**: Strengthen security measures across the platform, including enhanced encryption for user data, more robust authentication mechanisms, and regular security audits.
+- **Benefit**: Protects user data and ensures the platform remains secure against potential threats, fostering trust among users.
 
 # Technology Used
 
@@ -1122,3 +1158,68 @@ Please note that in order to directly open the project in Gitpod, you need to ha
 7. **Create a pull request** from your fork back to the original repo.
 
 By following these steps, you can either clone or fork the Fit&Fine repository and start contributing to the project or set it up for your own use.
+
+# Credits
+
+## Code
+
+| Feature/Issue                           | Description                                                                                                      | Source                                                                                                                                               |
+|-----------------------------------------|------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| User Authentication                     | Implementation of secure user login and registration functionalities.                                            | [Django AllAuth Documentation](https://medium.com/jungletronics/all-auth-with-django-allauth-5f7451db652b)                                                                     |
+| User Input/Form Validation              | Comprehensive validation of user inputs across various forms to ensure data integrity and user experience.       | [Moments Walkthrough Project](https://github.com/Code-Institute-Solutions/moments)                                                                    |
+| Responsive Design Elements              | Implementation of responsive design to ensure usability across different devices and screen sizes.                | [Bootstrap Documentation](https://getbootstrap.com/docs/4.0/getting-started/introduction/)                                                            |
+| Infinite Scroll                         | Infinite scrolling implementation to enhance user experience while browsing challenges and posts.                | [React Infinite Scroll Component](https://github.com/ankeetmaini/react-infinite-scroll-component)                                                     |
+|  Component Testing                 | Unit tests for components to ensure correct rendering of images, messages, avatars, dropdown, navbar and spinners.                | [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)                                                               |
+| Incorrect Display of Joined Date        | The joined date for challenges was incorrectly displayed or not formatted properly.                              | [JavaScript Date toLocaleDateString Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) |
+| Navigation Bar Toggle Issue on Mobile   | The navigation bar toggle was not working correctly on some mobile devices.                                      | [React Bootstrap NavBar Documentation](https://react-bootstrap.github.io/docs/components/navbar)                                                         |
+| Dynamic Filtering of Challenges         | Filtering challenges by sport was not dynamically updating the displayed list.                                   | [React Hooks Documentation](https://reactjs.org/docs/hooks-intro.html)                                                                                |
+| Form Submission Validation for Daily Routines | Users were able to submit daily routines with future dates and unrealistic water intake values.                    | [Django Serializers Documentation](https://www.django-rest-framework.org/api-guide/serializers/)                                                     |
+| Improving Loading Indicators            | The loading spinner was not consistently displayed during data fetching operations.                              | [React Conditional Rendering Documentation](https://reactjs.org/docs/conditional-rendering.html)                                                     |
+| Proper Handling of Axios Errors         | Axios requests were not properly handling errors, leading to uninformative error messages.                       | [Axios Error Handling Documentation](https://axios-http.com/docs/handling_errors)                                                                    |
+| User Profile Editing                    | Users could not properly update their profile information, leading to incomplete or incorrect profile data.      | [React Forms Documentation](https://reactjs.org/docs/forms.html)                                                                                      |
+| Responsive Design Enhancements          | Some components were not fully responsive, causing layout issues on smaller screens.                             | [CSS Flexbox Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)                      |
+| Comment Submission Feedback             | Users were not receiving immediate feedback after submitting a comment, leading to confusion.                    | [React Toastify Documentation](https://fkhadra.github.io/react-toastify/) |
+| User Challenges Page Excel View         | Implemented an Excel-like view for the User Challenges page to enhance data readability and user interaction.     | [React Table Documentation](https://mui.com/material-ui/react-table/)                                                                                       |
+## Media
+
+The following sites were used to gather the photographic media used:
+**[Freepik](https://www.freepik.com/)**
+- [zinkevych](https://www.freepik.com/free-photo/boy-goggles-swimming-splashing-pool_31298356.htm#fromView=search&page=1&position=6&uuid=9e04f325-f452-44b1-bdd5-ea5d9df13eff)
+- [standret](https://www.freepik.com/free-photo/couple-jogging-running-outdoors-park-near-water-young-bearded-man-woman-exercising-together-morning_9276920.htm#fromView=search&page=1&position=4&uuid=0d577ab2-da9c-43cf-8254-ee16b3f1cfbf)
+- [starline](https://www.freepik.com/free-vector/background-with-person-running_1014946.htm#fromView=search&page=1&position=3&uuid=0d577ab2-da9c-43cf-8254-ee16b3f1cfbf)
+- [freepik](https://www.freepik.com/free-photo/man-woman-running-track-side-view_32408109.htm#fromView=search&page=1&position=9&uuid=0d577ab2-da9c-43cf-8254-ee16b3f1cfbf)
+- [cookie_studio](https://www.freepik.com/free-photo/close-up-sportive-man-jogging-field-sunrise_7851127.htm#fromView=search&page=2&position=3&uuid=0d577ab2-da9c-43cf-8254-ee16b3f1cfbf)
+- [wirestock](https://www.freepik.com/free-photo/couple-hiking-nanos-plateau-slovenia-against-blue-sky_12449506.htm#fromView=search&page=1&position=1&uuid=f75b525d-1f4d-44ea-bf1c-03184e08b43a)
+- [cookie-studio](https://www.freepik.com/free-photo/young-beautiful-friends-travelers-with-backpacks-walking-canyon_7783182.htm#fromView=search&page=1&position=3&uuid=f75b525d-1f4d-44ea-bf1c-03184e08b43a)
+- [freepik](https://www.freepik.com/free-ai-image/portrait-person-practicing-yoga-outdoors-nature_94483992.htm#fromView=image_search_similar&page=1&position=14&uuid=838f0922-9262-4389-b9f6-2749f363d8df)
+- [bublikhaus](https://www.freepik.com/free-photo/cyclist-man-riding-bike-road_11357721.htm#fromView=search&page=1&position=0&uuid=a0f6c346-ce8d-4107-bb56-f7bacd914f07)
+- [rawpixel.com](https://www.freepik.com/free-photo/group-friends-ride-mountain-bike-forest-together_2894020.htm#fromView=search&page=1&position=16&uuid=a0f6c346-ce8d-4107-bb56-f7bacd914f07)
+- [freepik](https://www.freepik.com/free-ai-image/portrait-female-tourist-visiting-great-wall-china_152369781.htm#fromView=search&page=1&position=9&uuid=8aaf6a74-234a-42c3-9115-56e7d25e26a3)
+- [freepik](https://www.freepik.com/free-ai-image/portrait-female-tourist-visiting-great-wall-china_152369813.htm#fromView=search&page=1&position=26&uuid=8aaf6a74-234a-42c3-9115-56e7d25e26a3)
+- [halayalex](https://www.freepik.com/free-photo/portrait-handsome-sunbathed-fashion-man-model-wearing-white-shirt-clothes-posing-street_6526518.htm)
+- [freepik](https://www.freepik.com/free-ai-image/close-up-handsome-man-portrait-indoors_65390756.htm)
+- [freepik](https://www.freepik.com/free-photo/portrait-smiley-woman_12811127.htm)
+
+# Acknowledgements
+
+The development of Fit&Fine has been an exciting journey, and I am grateful for the inspiration, guidance, and resources that have contributed to the project. 
+
+## Inspiration
+- **Strava**: The idea for Fit&Fine was inspired by [Strava](https://www.strava.com/), a leading platform for fitness enthusiasts to track their activities, compete with others, and share their fitness journeys. Strava's robust features and community-centric approach motivated me to create a similar platform focused on comprehensive fitness tracking and community engagement.
+
+## Project Guidance
+**Moments DJANGO REST DRF API and Moments REACT Walkthrough Project** I utilized the Moments Walkthrough Project as a foundational guide. This project provided valuable insights into structuring the application, implementing various features, and ensuring a seamless user experience.
+The Moments project had several ideas and functionalities similar to what I envisioned for Fit&Fine, which helped streamline my development process.
+
+## ReadMe Structure
+- **TribeHub React Project**: The structure and format of the ReadMe file were inspired by the [TribeHub React](https://github.com/andy-guttridge/tribehub_react) project. The detailed and organized presentation of information in their ReadMe served as a great example for documenting Fit&Fine.
+-  My own Project4 **Software Stacks Walkthrough Project**: I utilized the [Software Stacks P4](https://github.com/SwathiKeshavamurthy/SoftwareStacks-P4) repository as a foundational guide. This project provided valuable insights into structuring the application, implementing various features, and ensuring a seamless user experience.
+
+## Technical Solutions
+- **React Toastify Messages**: The implementation of Toastify messages for user notifications was inspired by the [Book Worms](https://book-worms-761406c409e0.herokuapp.com/) project. The effective use of Toastify in their application guided me in providing immediate feedback to users in Fit&Fine.
+
+## Personal Thanks
+- Many thanks to **my husband** for his incredible support and encouragement throughout this journey.
+- My heartfelt gratitude to **my son**, who is 18 months old, for bringing joy and motivation into my life.
+- Thanks to **Kristyna, Cohort facilitator** at Code Institute, for always being there to provide all the information needed and for keeping the positive energy up.
+- Thanks to  my Code Institute **mentor** and my **fellow students** for constantly inspiring me on Slack and being there for each other to help in times of trouble.
