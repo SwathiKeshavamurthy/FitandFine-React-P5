@@ -292,7 +292,7 @@ To effectively manage project scope, Fit&Fine implements the MoSCoW prioritizati
 
 [Fit&Fine User Stories Link](https://github.com/SwathiKeshavamurthy/FitandFine-P5/issues?page=2&q=is%3Aissue+is%3Aclosed)
 
-[Fit&Fine Milestones Link](https://github.com/SwathiKeshavamurthy/FitandFine-P5/milestones)
+[Fit&Fine Milestones Link](https://github.com/SwathiKeshavamurthy/FitandFine-P5/milestones?state=closed)
 
 [Fit&Fine Frontend GitHub Link](https://github.com/SwathiKeshavamurthy/fitandfine-react-p5)
 
